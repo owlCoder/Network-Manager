@@ -1,0 +1,111 @@
+﻿using NetworkService.Helpers;
+
+namespace NetworkService.Model
+{
+    public class Entitet : ValidationBase
+    {
+        #region POLJA KLASE Entitet
+        private int id;
+        private string naziv;
+        private string ip;
+        private string slika;
+        private int zauzece;
+        #endregion
+
+        #region KONSTRUKTOR KLASE Entitet
+        public Entitet()
+        {
+            // prazan konstruktor
+        }
+        #endregion
+
+        #region PROPERTY KLASE Entitet
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                if(id != value)
+                {
+                    id = value;
+                    OnPropertyChanged("Id");
+                }
+            }
+        }
+
+        public string Naziv
+        { 
+            get 
+            { 
+                return naziv; 
+            }
+
+            set
+            {
+                if(naziv != value)
+                {
+                    naziv = value;
+                    OnPropertyChanged("Naziv");
+                }
+            }
+        }
+
+        public string IP
+        {
+            get
+            {
+                return ip;
+            }
+
+            set
+            {
+                if(ip != value)
+                {
+                    ip = value;
+                    OnPropertyChanged("IP");
+                }    
+            }
+        }
+
+        public string Slika
+        {
+            get
+            {
+                return slika;
+            }
+
+            set
+            {
+                if (slika != value)
+                {
+                    slika = value;
+                    OnPropertyChanged("Slika");
+                }
+            }
+        }
+
+        public int Zauzece
+        {
+            get
+            {
+                return zauzece;
+            }
+
+            set
+            {
+                if (zauzece != value)
+                {
+                    zauzece = value;
+                    OnPropertyChanged("Zauzece");
+                }
+            }
+        }
+        #endregion
+
+        // TO DO VALIDATE SELF
+    }
+}

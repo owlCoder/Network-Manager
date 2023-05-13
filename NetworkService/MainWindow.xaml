@@ -1,0 +1,207 @@
+﻿<Window 
+    x:Class="NetworkService.MainWindow" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:local="clr-namespace:NetworkService" 
+    xmlns:viewModel="clr-namespace:NetworkService.ViewModel"
+    xmlns:views="clr-namespace:NetworkService.Views"
+    mc:Ignorable="d"
+    AllowsTransparency="True"
+    Background="Transparent"
+    ResizeMode="NoResize" 
+    WindowStyle="None" 
+    WindowStartupLocation="CenterScreen" 
+    Title="Monitor Mrežnih Entiteta"
+    Name="MainWindowRef"
+    Height="800" 
+    Width="1300">
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModel:PocetnaViewModel}">
+            <views:PocetnaView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:MrezniEntitetiViewModel}">
+            <views:MrezniEntitetiView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:RasporedMrezeViewModel}">
+            <views:RasporedMrezeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:StatistikaMrezeViewModel}">
+            <views:StatistikaMrezeView />
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Border Background="{StaticResource UIPrimaryColor}" CornerRadius="10" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <!--// Meni za navigaciju //-->
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+                <Border Margin="20, 10, 20, 5" Background="{StaticResource UISecondaryColor}" CornerRadius="12">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="230" />
+                            <ColumnDefinition Width="210" />
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <!--// Dugme pocetna //-->
+                        <Button Grid.Column="0" 
+                                x:Name="pocetna" 
+                                Width="200" 
+                                Command="{Binding NavCommand}" 
+                                Template="{StaticResource NoMouseOverButtonTemplate}" 
+                                Style="{StaticResource DockBtnStyle}" 
+                                BorderThickness="0" 
+                                Background="Transparent"
+                                HorizontalAlignment="Left"
+                                Margin="10,0,-10,0"
+                                CommandParameter="pocetna">
+                            <StackPanel Background="Transparent" Orientation="Horizontal" VerticalAlignment="Center" Width="190">
+                                <Image Source="Assets/home.png" Stretch="Uniform" Width="40" />
+                                <TextBlock Margin="5,0,0,0" FontSize="18" Foreground="{StaticResource UIWhiteColor}" FontWeight="SemiBold" VerticalAlignment="Center">Početna</TextBlock>
+                            </StackPanel>
+                        </Button>
+                        
+                        <!--// Dugme mrezni entiteti //-->
+                        <Button
+                            Grid.Column="1"
+                            x:Name="mrezni_entiteti"
+                            Width="200"
+                            Command="{Binding NavCommand}"
+                            Template="{StaticResource NoMouseOverButtonTemplate}"
+                            Style="{StaticResource DockBtnStyle}"
+                            BorderThickness="0"
+                            Background="Transparent"
+                            CommandParameter="mrezni_entiteti">
+                            <StackPanel
+                                Background="Transparent"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                                <Image
+                                    Source="Assets/network.png"
+                                    Stretch="Uniform"
+                                    Width="40" />
+                                <TextBlock
+                                    Margin="5,0,0,0"
+                                    FontSize="18"
+                                    Foreground="{StaticResource UIWhiteColor}"
+                                    FontWeight="SemiBold"
+                                    VerticalAlignment="Center">Mrežni entiteti</TextBlock>
+                            </StackPanel>
+                        </Button>
+                       
+                        <!-- // Dugme statistika mreže //-->
+                        <Button
+                            Grid.Column="2"
+                            x:Name="statistika_mreze"
+                            Width="210"
+                            Command="{Binding NavCommand}"
+                            Template="{StaticResource NoMouseOverButtonTemplate}"
+                            Style="{StaticResource DockBtnStyle}"
+                            BorderThickness="0"
+                            Background="Transparent"
+                            HorizontalAlignment="Left"
+                            Margin="-10,0,0,0"
+                            CommandParameter="statistika_mreze">
+                            <StackPanel
+                                Background="Transparent"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center"
+                                Width="200">
+                                <Image
+                                    Source="Assets/stats.png"
+                                    Stretch="Uniform"
+                                    Width="40" />
+                                <TextBlock
+                                    Margin="5,0,-10,0"
+                                    FontSize="18"
+                                    Foreground="{StaticResource UIWhiteColor}"
+                                    FontWeight="SemiBold"
+                                    VerticalAlignment="Center">Statistika mreže</TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <!-- // Dugme raspored mreže //-->
+                        <Button
+                            Grid.Column="3"
+                            x:Name="raspored_mreze"
+                            Width="200"
+                            Command="{Binding NavCommand}"
+                            Template="{StaticResource NoMouseOverButtonTemplate}"
+                            Style="{StaticResource DockBtnStyle}"
+                            BorderThickness="0"
+                            Background="Transparent"
+                            HorizontalAlignment="Left"
+                            Margin="10,0,0,0" 
+                            CommandParameter="raspored_mreze">
+                            <StackPanel
+                                Background="Transparent"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center"
+                                Width="200">
+                                <Image
+                                    Source="Assets/grid.png"
+                                    Stretch="Uniform"
+                                    Width="40" />
+                                <TextBlock
+                                    Margin="5,0,0,0"
+                                    FontSize="18"
+                                    Foreground="{StaticResource UIWhiteColor}"
+                                    FontWeight="SemiBold"
+                                    VerticalAlignment="Center">Raspored mreže</TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Margin="20, 10, 20, 15" Background="{StaticResource UITertiaryColor}" CornerRadius="12">
+                <ContentControl Margin="10" Content="{Binding CurrentViewModel}" />
+            </Border>
+            <!--// Dugme izlaz //-->
+            <Button
+                Grid.Column="4"
+                x:Name="izlaz"
+                Width="200"
+                Template="{StaticResource NoMouseOverButtonTemplate}"
+                Style="{StaticResource DockBtnStyle}"
+                BorderThickness="0"
+                Background="Transparent"
+                HorizontalAlignment="Right"
+                Margin="10,0,-30,0" 
+                Command="{Binding CloseWindowCommand}" 
+                CommandParameter="{Binding ElementName=MainWindowRef}">
+                <StackPanel
+                    Background="Transparent"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    Width="200">
+                    <Image
+                        Source="Assets/close.png"
+                        Stretch="Uniform"
+                        Width="40" />
+                    <TextBlock
+                        Margin="5,0,0,0"
+                        FontSize="18"
+                        Foreground="{StaticResource UIWhiteColor}"
+                        FontWeight="SemiBold"
+                        VerticalAlignment="Center">Kraj rada</TextBlock>
+                </StackPanel>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
