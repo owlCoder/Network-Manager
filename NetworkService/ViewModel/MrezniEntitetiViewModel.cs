@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace NetworkService.ViewModel
 {
@@ -15,11 +16,11 @@ namespace NetworkService.ViewModel
         // Komanda za filtriranje
         public MyICommand FiltrirajKomanda { get; set; }
 
-        private static readonly ObservableCollection<string> adresneKlase = new ObservableCollection<string> 
+        private static readonly ObservableCollection<string> adresneKlase = new ObservableCollection<string>
                                                                    { "Adrese Klase A", "Adrese Klase B", "Adrese Klase C",
                                                                      "Adrese Klase D", "Adrese Klase E"};
 
-        private enum KLASE { A, B, C, D, E};
+        private enum KLASE { A, B, C, D, E };
 
         private int odabranaKlasaIndeks;
 
@@ -33,6 +34,12 @@ namespace NetworkService.ViewModel
 
         private int odabraniIndeksIstorijeFiltera;
 
+        private int odabraniIndeksDodavanjeEntiteta;
+
+        private bool moguceBrisanje;
+
+        private Entitet odabraniEntitet;
+
         private Filter odabraniFilter = new Filter();
 
         // Ako nije primenjen nijedan filter - prikazuje se originalna lista entiteta
@@ -41,7 +48,7 @@ namespace NetworkService.ViewModel
         #endregion
 
         #region KONSTRUKTOR KLASE MrezniEntitetiViewModel
-        public MrezniEntitetiViewModel() 
+        public MrezniEntitetiViewModel()
         {
             odabranaKlasaIndeks = 0;
             veceCekirano = true;
@@ -50,8 +57,11 @@ namespace NetworkService.ViewModel
             trenutniId = 0;
             IstorijaFiltera = new ObservableCollection<Filter>();
             OdabraniIndeksIstorijeFiltera = 0;
+            odabraniIndeksDodavanjeEntiteta = 0;
             FiltrirajKomanda = new MyICommand(OnFilterPress);
             listaEntiteta = MainWindowViewModel.Entiteti; // na prvi prikaz prikazuju se svi entiteti
+            MoguceBrisanje = false;
+            OdabraniEntitet = null; // nije odabran nijedan entitet
         }
         #endregion
 
@@ -81,6 +91,42 @@ namespace NetworkService.ViewModel
             }
         }
 
+        public Entitet OdabraniEntitet
+        {
+            get
+            {
+                return odabraniEntitet;
+            }
+
+            set
+            {
+                if(odabraniEntitet != value)
+                {
+                    odabraniEntitet = value;
+                    OnPropertyChanged("OdabraniEntitet");
+                    OnPropertyChanged("MoguceBrisanje");
+                }
+            }
+        }
+
+        public bool MoguceBrisanje
+        {
+            get
+            {
+                return OdabraniEntitet != null;
+            }
+
+            set
+            {
+                if(moguceBrisanje != value)
+                {
+                    moguceBrisanje = value;
+                    OnPropertyChanged("MoguceBrisanje");
+                    OnPropertyChanged("Background");
+                }
+            }
+        }
+
         public int OdabranaKlasaIndeks
         {
             get
@@ -94,6 +140,22 @@ namespace NetworkService.ViewModel
                 {
                     odabranaKlasaIndeks = value;
                     OnPropertyChanged("OdabranaKlasaIndeks");
+                }
+            }
+        }
+        public int OdabraniIndeksDodavanjeEntiteta
+        {
+            get
+            {
+                return odabraniIndeksDodavanjeEntiteta;
+            }
+
+            set
+            {
+                if(odabraniIndeksDodavanjeEntiteta  != value)
+                {
+                    odabraniIndeksDodavanjeEntiteta = value;
+                    OnPropertyChanged("OdabraniIndeksDodavanjeEntiteta");
                 }
             }
         }
@@ -276,6 +338,9 @@ namespace NetworkService.ViewModel
         {
             ObservableCollection<Entitet> filtrirani = new ObservableCollection<Entitet>();
             ObservableCollection<Entitet> svi = MainWindowViewModel.Entiteti;
+
+            // Nije odabran nijedan entitet
+            OdabraniEntitet = null;
 
             if (svi != null && svi.Count > 0)
             {

@@ -65,9 +65,7 @@
                     <Button Grid.Column="0" 
                                 x:Name="filter" 
                                 Width="110" 
-                                Command="{Binding FiltrirajKomanda}" 
-                                Template="{StaticResource NoMouseOverButtonTemplate}" 
-                                Style="{StaticResource DockBtnStyle}" 
+                                Command="{Binding FiltrirajKomanda}"
                                 BorderThickness="0.5"
                             Height="37"
                                 Background="{StaticResource UIQuatriraryColor}"
@@ -92,11 +90,68 @@
 
 
         <Border Grid.Row="0" Grid.Column="1" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.8*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="UPRAVLJANJE ENTITETIMA" FontSize="20" FontWeight="Bold" Foreground="{StaticResource UIWhiteColor}" />
 
+                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0, 10, 0, 0" Content="ODABERITE KLASU:" FontSize="18" FontWeight="SemiBold" Foreground="{StaticResource UIWhiteColor}" />
+                <ComboBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Height="25" FontSize="18" FontWeight="Bold" ItemsSource="{Binding AdresneKlase}" SelectedIndex="{Binding OdabraniIndeksDodavanjeEntiteta}" />
+
+                <Button Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3"
+                                x:Name="dodavanje" 
+                                Width="270" 
+                                Command="{Binding DodajKomanda}" 
+                                BorderThickness="0.5"
+                            Height="37"
+                                Background="{StaticResource UIBlueColor}"
+                                HorizontalAlignment="Left"
+                                Margin="20,0,-10,0">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="7"/>
+                        </Style>
+                    </Button.Resources>
+                    <StackPanel Background="Transparent" Orientation="Horizontal" VerticalAlignment="Center" Width="220">
+                        <Image Source="/Assets/plus.png" Stretch="Uniform" Width="30" Margin="5, 0, 0, 0" />
+                        <TextBlock Margin="5,0,0,0" FontSize="18" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center">DODAVANJE ENTITETA</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3"
+                                x:Name="brisanje" 
+                                Width="270" 
+                                Command="{Binding ObrisiKomanda}" 
+                                BorderThickness="0.5"
+                                Height="37"
+                                Background="{StaticResource UIRedColor}"
+                                IsEnabled="{Binding MoguceBrisanje}"
+                                HorizontalAlignment="Left"
+                                Margin="20,0,-10,0">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="7"/>
+                        </Style>
+                    </Button.Resources>
+                    <StackPanel Background="Transparent" Orientation="Horizontal" VerticalAlignment="Center" Width="220">
+                        <Image Source="/Assets/minus.png" Stretch="Uniform" Width="30" Margin="5, 0, 0, 0" />
+                        <TextBlock Margin="5,0,0,0" FontSize="18" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center">BRISANJE ENTITETA</TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
         </Border>
 
         <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
-            <DataGrid ItemsSource="{Binding ListaEntiteta}" AutoGenerateColumns="False" IsReadOnly="True" FontWeight="Bold" FontSize="18" Margin="10">
+            <DataGrid ItemsSource="{Binding ListaEntiteta}" CanUserSortColumns="False" CanUserResizeColumns="False" SelectedItem="{Binding OdabraniEntitet}" SelectionMode="Single" SelectionUnit="FullRow"  AutoGenerateColumns="False" IsReadOnly="True" FontWeight="Bold" FontSize="18" Margin="10">
                 <DataGrid.Columns>
                     <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="ID" Binding="{Binding Id}" Width="100" />
                     <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="Naziv" Binding="{Binding Naziv}" Width="250" />
