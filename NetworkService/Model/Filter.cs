@@ -110,5 +110,17 @@ namespace NetworkService.Model
             }
         }
         #endregion
+
+        #region METODA PROVERA JEDNAKOSTI OBJEKTA
+        public override bool Equals(object obj)
+        {
+            return obj is Filter filter &&
+                   IndeksUListiAdresneKlase == filter.IndeksUListiAdresneKlase &&
+                   VeceCekirano == filter.VeceCekirano &&
+                   ManjeCekirano == filter.ManjeCekirano &&
+                   JednakoCekirano == filter.JednakoCekirano &&
+                   TrazeniId == filter.TrazeniId;
+        }
+        #endregion
     }
 }
