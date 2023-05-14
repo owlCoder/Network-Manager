@@ -1,4 +1,5 @@
 ﻿using NetworkService.Helpers;
+using NetworkService.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -120,6 +121,19 @@ namespace NetworkService.Model
                    ManjeCekirano == filter.ManjeCekirano &&
                    JednakoCekirano == filter.JednakoCekirano &&
                    TrazeniId == filter.TrazeniId;
+        }
+        #endregion
+
+        #region METODA ZA ISPIS U STRING
+        public override string ToString()
+        {
+            string formatirano = MrezniEntitetiViewModel.AdresneKlase[IndeksUListiAdresneKlase] + " | ";
+
+            if (VeceCekirano) formatirano += "ID > " + TrazeniId;
+            if (ManjeCekirano) formatirano += "ID <" + TrazeniId;
+            if (JednakoCekirano) formatirano += "ID = " + TrazeniId;
+
+            return formatirano;
         }
         #endregion
     }

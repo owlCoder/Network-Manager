@@ -57,6 +57,34 @@ namespace NetworkService.ViewModel
             CurrentViewModel = pocetnaViewModel;
 
             Messenger.Default.Register<Entitet>(this, AddToList);
+
+            // test entiteti
+            Entiteti.Add(new Entitet()
+            {
+                Id = 1,
+                Naziv = "Entitet 1",
+                IP = "192.168.0.1",
+                Slika = "",
+                Zauzece = 15
+            }) ;
+
+            Entiteti.Add(new Entitet()
+            {
+                Id = 2,
+                Naziv = "Entitet 2",
+                IP = "233.168.0.1",
+                Slika = "",
+                Zauzece = 15
+            });
+
+            Entiteti.Add(new Entitet()
+            {
+                Id = 3,
+                Naziv = "Entitet 3",
+                IP = "14.168.0.1",
+                Slika = "",
+                Zauzece = 15
+            });
         }
         #endregion
 

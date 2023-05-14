@@ -12,6 +12,9 @@ namespace NetworkService.ViewModel
     public class MrezniEntitetiViewModel : BindableBase
     {
         #region POLJA KLASE MrezniEntitetiViewModel
+        // Komanda za filtriranje
+        public MyICommand FiltrirajKomanda { get; set; }
+
         private static readonly ObservableCollection<string> adresneKlase = new ObservableCollection<string> 
                                                                    { "Adrese Klase A", "Adrese Klase B", "Adrese Klase C",
                                                                      "Adrese Klase D", "Adrese Klase E"};
@@ -27,6 +30,8 @@ namespace NetworkService.ViewModel
         private int trenutniId;
 
         public static ObservableCollection<Filter> IstorijaFiltera { get; set; }
+
+        private int odabraniIndeksIstorijeFiltera;
 
         private Filter odabraniFilter = new Filter();
 
@@ -44,11 +49,13 @@ namespace NetworkService.ViewModel
             jednakoCekirano = false;
             trenutniId = 0;
             IstorijaFiltera = new ObservableCollection<Filter>();
+            OdabraniIndeksIstorijeFiltera = 0;
+            FiltrirajKomanda = new MyICommand(OnFilterPress);
         }
         #endregion
 
         #region PROPERTY KLASE MrezniEntitetiViewModel
-        public ObservableCollection<string> AdresneKlase
+        public static ObservableCollection<string> AdresneKlase
         {
             get
             {
@@ -69,6 +76,23 @@ namespace NetworkService.ViewModel
                 {
                     odabranaKlasaIndeks = value;
                     OnPropertyChanged("OdabranaKlasaIndeks");
+                }
+            }
+        }
+
+        public int OdabraniIndeksIstorijeFiltera
+        {
+            get
+            {
+                return odabraniIndeksIstorijeFiltera;
+            }
+
+            set
+            {
+                if(odabraniIndeksIstorijeFiltera != value)
+                {
+                    odabraniIndeksIstorijeFiltera = value;
+                    OnPropertyChanged("OdabraniIndeksIstorijeFiltera");
                 }
             }
         }
@@ -272,7 +296,8 @@ namespace NetworkService.ViewModel
             return pripada;
         }
         #endregion
-        
+
+        #region FILTRIRANJE PODATAKA
         bool PrimeniFilter(Entitet trenutni)
         {
             if(VeceCekirano && (trenutni.Id > TrenutniId))
@@ -292,5 +317,6 @@ namespace NetworkService.ViewModel
                 return false;
             }
         }
+        #endregion
     }
 }

@@ -65,15 +65,14 @@
                     <Button Grid.Column="0" 
                                 x:Name="filter" 
                                 Width="110" 
-                                Command="{Binding OnFilterPress}" 
+                                Command="{Binding FiltrirajKomanda}" 
                                 Template="{StaticResource NoMouseOverButtonTemplate}" 
                                 Style="{StaticResource DockBtnStyle}" 
                                 BorderThickness="0.5"
                             Height="37"
                                 Background="{StaticResource UIQuatriraryColor}"
                                 HorizontalAlignment="Left"
-                                Margin="10,0,-10,0"
-                                CommandParameter="filter">
+                                Margin="10,0,-10,0">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="7"/>
