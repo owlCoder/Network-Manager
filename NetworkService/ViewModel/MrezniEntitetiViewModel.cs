@@ -319,7 +319,7 @@ namespace NetworkService.ViewModel
             // CG1 - Na osnovu odabrane adresne klase kreira random entitet
 
             // novi id je trenutni najveci id + 1
-            int max_id = ListaEntiteta.Max(x => x.Id) + 1;
+            int max_id = ListaEntiteta.Count != 0 ? ListaEntiteta.Max(x => x.Id) + 1 : 1;
 
             int odabrana_adresna_klasa = OdabraniIndeksDodavanjeEntiteta;
             const int ip_min = 0, ip_max = 255;
