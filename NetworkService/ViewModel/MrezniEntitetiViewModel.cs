@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
@@ -12,10 +13,18 @@ namespace NetworkService.ViewModel
 {
     public class MrezniEntitetiViewModel : BindableBase
     {
-        #region POLJA KLASE MrezniEntitetiViewModel
+        #region KOMANDE
         // Komanda za filtriranje
         public MyICommand FiltrirajKomanda { get; set; }
 
+        // Komanda za dodavanje
+        public MyICommand DodajKomanda { get; set; }
+
+        // Komanda za brisanje
+        public MyICommand ObrisiKomanda { get; set; }
+        #endregion
+
+        #region POLJA KLASE MrezniEntitetiViewModel
         private static readonly ObservableCollection<string> adresneKlase = new ObservableCollection<string>
                                                                    { "Adrese Klase A", "Adrese Klase B", "Adrese Klase C",
                                                                      "Adrese Klase D", "Adrese Klase E"};
@@ -59,6 +68,8 @@ namespace NetworkService.ViewModel
             OdabraniIndeksIstorijeFiltera = 0;
             odabraniIndeksDodavanjeEntiteta = 0;
             FiltrirajKomanda = new MyICommand(OnFilterPress);
+            ObrisiKomanda = new MyICommand(OnBrisanjePress);
+            DodajKomanda = new MyICommand(OnDodajPress);
             listaEntiteta = MainWindowViewModel.Entiteti; // na prvi prikaz prikazuju se svi entiteti
             MoguceBrisanje = false;
             OdabraniEntitet = null; // nije odabran nijedan entitet
@@ -296,6 +307,61 @@ namespace NetworkService.ViewModel
                     OnPropertyChanged("OdabraniFilter");
                 }
             }
+        }
+        #endregion
+
+        #region Implementacija komadni za dodavanje i brisanje entiteta
+        public void OnDodajPress()
+        {
+            OdabraniEntitet = null;
+            ListaEntiteta = MainWindowViewModel.Entiteti;
+
+            // CG1 - Na osnovu odabrane adresne klase kreira random entitet
+
+            // novi id je trenutni najveci id + 1
+            int max_id = ListaEntiteta.Max(x => x.Id) + 1;
+
+            int odabrana_adresna_klasa = OdabraniIndeksDodavanjeEntiteta;
+            const int ip_min = 0, ip_max = 255;
+            int ip_prvi_oktet, ip_drugi_oktet, ip_treci_oktet, ip_cetvrti_oktet;
+            string ip;
+
+            // generisanje na osnovu odabrane adresne klase
+            switch(odabrana_adresna_klasa)
+            {
+                case 0: ip_prvi_oktet = new Random().Next(  1, 127); break;
+                case 1: ip_prvi_oktet = new Random().Next(128, 191); break;
+                case 2: ip_prvi_oktet = new Random().Next(192, 223); break;
+                case 3: ip_prvi_oktet = new Random().Next(224, 239); break;
+                case 4: ip_prvi_oktet = new Random().Next(240, 255); break;
+                default: ip_prvi_oktet = 0; break;
+            }
+
+            ip_drugi_oktet = new Random().Next(ip_min, ip_max);
+            Thread.Sleep(50);
+            ip_treci_oktet = new Random().Next(ip_min, ip_max);
+            Thread.Sleep(50);
+            ip_cetvrti_oktet = new Random().Next(ip_min, ip_max);
+
+            ip = ip_prvi_oktet + "." + ip_drugi_oktet + "." + ip_treci_oktet + "." + ip_cetvrti_oktet;
+
+            ListaEntiteta.Add(
+                new Entitet()
+                {
+                    Id = max_id,
+                    Naziv = "Entitet " + max_id,
+                    IP = ip,
+                    Slika = "/Assets/uredjaj.png",
+                    Zauzece = new Random().Next(0, 100)
+                }
+                );
+        }
+
+        public void OnBrisanjePress()
+        {
+            MainWindowViewModel.Entiteti.Remove(OdabraniEntitet);
+            OdabraniEntitet = null;
+            ListaEntiteta = MainWindowViewModel.Entiteti;
         }
         #endregion
 

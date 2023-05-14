@@ -11,8 +11,8 @@
         <SolidColorBrush x:Key="UIAccentColor" Color="#3F5576" />
         <SolidColorBrush x:Key="UIQuatriraryColor" Color="#D3EAE7" />
         <SolidColorBrush x:Key="UIWhiteColor" Color="White" />
-        <SolidColorBrush x:Key="UIBlueColor" Color="#AEC09A" />
-        <SolidColorBrush x:Key="UIRedColor" Color="#EDD1EC" />
+        <SolidColorBrush x:Key="UIBlueColor" Color="#d3e29d" />
+        <SolidColorBrush x:Key="UIRedColor" Color="#f9d692" />
 
         <Color x:Key="GradientColorOne" R="176" G="141" B="0" A="100" />
         <Color x:Key="GradientColorTwo" R="92" G="68" B="0" A="100" />
