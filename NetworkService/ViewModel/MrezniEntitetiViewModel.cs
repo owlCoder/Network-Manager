@@ -95,7 +95,7 @@ namespace NetworkService.ViewModel
 
             set
             {
-                if(listaEntiteta != null)
+                if (listaEntiteta != null)
                 {
                     listaEntiteta = value;
                     OnPropertyChanged("ListaEntiteta");
@@ -112,7 +112,7 @@ namespace NetworkService.ViewModel
 
             set
             {
-                if(odabraniEntitet != value)
+                if (odabraniEntitet != value)
                 {
                     odabraniEntitet = value;
                     OnPropertyChanged("OdabraniEntitet");
@@ -130,7 +130,7 @@ namespace NetworkService.ViewModel
 
             set
             {
-                if(moguceBrisanje != value)
+                if (moguceBrisanje != value)
                 {
                     moguceBrisanje = value;
                     OnPropertyChanged("MoguceBrisanje");
@@ -148,7 +148,7 @@ namespace NetworkService.ViewModel
 
             set
             {
-                if(odabranaKlasaIndeks  != value)
+                if (odabranaKlasaIndeks != value)
                 {
                     odabranaKlasaIndeks = value;
                     OnPropertyChanged("OdabranaKlasaIndeks");
@@ -164,7 +164,7 @@ namespace NetworkService.ViewModel
 
             set
             {
-                if(odabraniIndeksDodavanjeEntiteta  != value)
+                if (odabraniIndeksDodavanjeEntiteta != value)
                 {
                     odabraniIndeksDodavanjeEntiteta = value;
                     OnPropertyChanged("OdabraniIndeksDodavanjeEntiteta");
@@ -181,7 +181,7 @@ namespace NetworkService.ViewModel
 
             set
             {
-                if(odabraniIndeksIstorijeFiltera != value)
+                if (odabraniIndeksIstorijeFiltera != value)
                 {
                     odabraniIndeksIstorijeFiltera = value;
                     OnPropertyChanged("OdabraniIndeksIstorijeFiltera");
@@ -227,11 +227,11 @@ namespace NetworkService.ViewModel
 
             set
             {
-                if(manjeCekirano != value)
+                if (manjeCekirano != value)
                 {
                     manjeCekirano = value;
 
-                    if(manjeCekirano)
+                    if (manjeCekirano)
                     {
                         VeceCekirano = false;
                         JednakoCekirano = false;
@@ -254,11 +254,11 @@ namespace NetworkService.ViewModel
 
             set
             {
-                if(jednakoCekirano != value)
+                if (jednakoCekirano != value)
                 {
                     jednakoCekirano = value;
 
-                    if(jednakoCekirano)
+                    if (jednakoCekirano)
                     {
                         VeceCekirano = false;
                         ManjeCekirano = false;
@@ -302,7 +302,7 @@ namespace NetworkService.ViewModel
 
             set
             {
-                if(odabraniFilter != value)
+                if (odabraniFilter != value)
                 {
                     odabraniFilter = value;
 
@@ -313,10 +313,15 @@ namespace NetworkService.ViewModel
                     JednakoCekirano = odabraniFilter.JednakoCekirano;
                     TrenutniId = odabraniFilter.TrazeniId;
 
+                    OnPropertyChanged("OdabraniFilter");
+                    OnPropertyChanged("OdabranaKlasaIndeks");
+                    OnPropertyChanged("VeceCekirano");
+                    OnPropertyChanged("ManjeCekirano");
+                    OnPropertyChanged("JednakoCekirano");
+                    OnPropertyChanged("TrenutniId");
+
                     // primeni filter
                     OnFilterPress();
-
-                    OnPropertyChanged("OdabraniFilter");
                 }
             }
         }
@@ -326,7 +331,7 @@ namespace NetworkService.ViewModel
         public void OnDodajPress()
         {
             OdabraniEntitet = null;
-            Messenger.Default.Send(ListaEntiteta);
+            ListaEntiteta = MainWindowViewModel.Entiteti;
 
             // CG1 - Na osnovu odabrane adresne klase kreira random entitet
 
@@ -339,9 +344,9 @@ namespace NetworkService.ViewModel
             string ip;
 
             // generisanje na osnovu odabrane adresne klase
-            switch(odabrana_adresna_klasa)
+            switch (odabrana_adresna_klasa)
             {
-                case 0: ip_prvi_oktet = new Random().Next(  1, 127); break;
+                case 0: ip_prvi_oktet = new Random().Next(1, 127); break;
                 case 1: ip_prvi_oktet = new Random().Next(128, 191); break;
                 case 2: ip_prvi_oktet = new Random().Next(192, 223); break;
                 case 3: ip_prvi_oktet = new Random().Next(224, 239); break;
@@ -391,16 +396,16 @@ namespace NetworkService.ViewModel
 
             // Ako filter vec postoji u listi filtera - ne dodaje ste
             bool postoji = false;
-            foreach(Filter tmp in IstorijaFiltera) 
-            { 
-                if(tmp.Equals(istorija))
+            foreach (Filter tmp in IstorijaFiltera)
+            {
+                if (tmp.Equals(istorija))
                 {
                     postoji = true;
                     break;
                 }
             }
 
-            if(!postoji)
+            if (!postoji)
             {
                 IstorijaFiltera.Add(istorija);
             }
@@ -414,28 +419,28 @@ namespace NetworkService.ViewModel
         ObservableCollection<Entitet> Filtracija()
         {
             ObservableCollection<Entitet> filtrirani = new ObservableCollection<Entitet>();
-            ObservableCollection<Entitet> svi = new ObservableCollection<Entitet>();
-            Messenger.Default.Send(svi);
+            ObservableCollection<Entitet> svi = MainWindowViewModel.Entiteti;
+            //Messenger.Default.Send(svi);
 
             // Nije odabran nijedan entitet
             OdabraniEntitet = null;
 
             if (svi != null && svi.Count > 0)
             {
-                foreach(Entitet t in svi)
+                foreach (Entitet t in svi)
                 {
                     int klasa = ProveriAdresnuKlasu(t.IP);
 
                     // Pripada odabranoj klasi
-                    if(OdabranaKlasaIndeks == klasa)
+                    if (OdabranaKlasaIndeks == klasa)
                     {
                         // Proveri vece, manje, jednako
-                        if(PrimeniFilter(t))
+                        if (PrimeniFilter(t))
                         {
                             filtrirani.Add(t);
                         }
                     }
-                }                
+                }
             }
 
             return filtrirani;
@@ -448,11 +453,11 @@ namespace NetworkService.ViewModel
             int pripada = 0;
             int prvi_oktet_ip = int.Parse(ip.Split('.')[0]);
 
-            if(prvi_oktet_ip >= 1   && prvi_oktet_ip <= 127) pripada = 0;
-            if(prvi_oktet_ip >= 128 && prvi_oktet_ip <= 191) pripada = 1;
-            if(prvi_oktet_ip >= 192 && prvi_oktet_ip <= 223) pripada = 2;
-            if(prvi_oktet_ip >= 224 && prvi_oktet_ip <= 239) pripada = 3;
-            if(prvi_oktet_ip >= 240 && prvi_oktet_ip <= 255) pripada = 4;
+            if (prvi_oktet_ip >= 1 && prvi_oktet_ip <= 127) pripada = 0;
+            if (prvi_oktet_ip >= 128 && prvi_oktet_ip <= 191) pripada = 1;
+            if (prvi_oktet_ip >= 192 && prvi_oktet_ip <= 223) pripada = 2;
+            if (prvi_oktet_ip >= 224 && prvi_oktet_ip <= 239) pripada = 3;
+            if (prvi_oktet_ip >= 240 && prvi_oktet_ip <= 255) pripada = 4;
 
             return pripada;
         }
@@ -461,18 +466,18 @@ namespace NetworkService.ViewModel
         #region FILTRIRANJE PODATAKA
         bool PrimeniFilter(Entitet trenutni)
         {
-            if(VeceCekirano && (trenutni.Id > TrenutniId))
+            if (VeceCekirano && (trenutni.Id > TrenutniId))
             {
                 return true;
             }
-            else if(ManjeCekirano && (trenutni.Id < TrenutniId))
+            else if (ManjeCekirano && (trenutni.Id < TrenutniId))
             {
                 return true;
             }
-            else if(JednakoCekirano && (trenutni.Id == TrenutniId))
+            else if (JednakoCekirano && (trenutni.Id == TrenutniId))
             {
                 return true;
-            }    
+            }
             else
             {
                 return false;
