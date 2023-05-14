@@ -96,7 +96,21 @@
         </Border>
 
         <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
-
+            <DataGrid ItemsSource="{Binding ListaEntiteta}" AutoGenerateColumns="False" IsReadOnly="True" FontWeight="Bold" FontSize="18" Margin="10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="ID" Binding="{Binding Id}" Width="100" />
+                    <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="Naziv" Binding="{Binding Naziv}" Width="250" />
+                    <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="IP Adresa" Binding="{Binding IP}" Width="200" />
+                    <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="Zauzeće u %" Binding="{Binding Zauzece}" Width="150" />
+                    <DataGridTemplateColumn Header="Grafička predstava entiteta" Width="*" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Slika}" Width="40" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
         </Border>
     </Grid>
 </UserControl>

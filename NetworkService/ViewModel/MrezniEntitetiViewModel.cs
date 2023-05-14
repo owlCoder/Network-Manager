@@ -37,7 +37,7 @@ namespace NetworkService.ViewModel
 
         // Ako nije primenjen nijedan filter - prikazuje se originalna lista entiteta
         // U suprotnom prikazuju se filtrirani entiteti iz Liste FiltriraniEntiteti
-        public static ObservableCollection<Entitet> ListaEntiteta { get; set; }
+        private static ObservableCollection<Entitet> listaEntiteta { get; set; }
         #endregion
 
         #region KONSTRUKTOR KLASE MrezniEntitetiViewModel
@@ -51,6 +51,7 @@ namespace NetworkService.ViewModel
             IstorijaFiltera = new ObservableCollection<Filter>();
             OdabraniIndeksIstorijeFiltera = 0;
             FiltrirajKomanda = new MyICommand(OnFilterPress);
+            listaEntiteta = MainWindowViewModel.Entiteti; // na prvi prikaz prikazuju se svi entiteti
         }
         #endregion
 
@@ -60,6 +61,23 @@ namespace NetworkService.ViewModel
             get
             {
                 return adresneKlase;
+            }
+        }
+
+        public ObservableCollection<Entitet> ListaEntiteta
+        {
+            get
+            {
+                return listaEntiteta;
+            }
+
+            set
+            {
+                if(listaEntiteta != null)
+                {
+                    listaEntiteta = value;
+                    OnPropertyChanged("ListaEntiteta");
+                }
             }
         }
 

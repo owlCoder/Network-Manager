@@ -64,7 +64,7 @@ namespace NetworkService.ViewModel
                 Id = 1,
                 Naziv = "Entitet 1",
                 IP = "192.168.0.1",
-                Slika = "",
+                Slika = "/Assets/uredjaj.png",
                 Zauzece = 15
             }) ;
 
@@ -73,7 +73,7 @@ namespace NetworkService.ViewModel
                 Id = 2,
                 Naziv = "Entitet 2",
                 IP = "233.168.0.1",
-                Slika = "",
+                Slika = "/Assets/uredjaj.png",
                 Zauzece = 15
             });
 
@@ -82,7 +82,7 @@ namespace NetworkService.ViewModel
                 Id = 3,
                 Naziv = "Entitet 3",
                 IP = "14.168.0.1",
-                Slika = "",
+                Slika = "/Assets/uredjaj.png",
                 Zauzece = 15
             });
         }
