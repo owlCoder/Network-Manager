@@ -57,6 +57,8 @@ namespace NetworkService.ViewModel
             CurrentViewModel = pocetnaViewModel;
 
             Messenger.Default.Register<Entitet>(this, AddToList);
+            Messenger.Default.Register<int>(this, RemoveFromList);
+            Messenger.Default.Register<ObservableCollection<Entitet>>(this, GetList);
 
             // test entiteti
             Entiteti.Add(new Entitet()
@@ -170,6 +172,16 @@ namespace NetworkService.ViewModel
         private void AddToList(Entitet novi)
         {
             Entiteti.Insert(0, novi);
+        }
+
+        private void RemoveFromList(int index) 
+        {
+            Entiteti.RemoveAt(index); 
+        }
+
+        private void GetList(ObservableCollection<Entitet> e)
+        {
+            e = Entiteti;
         }
 
         private void CloseWindow(Window MainWindow)

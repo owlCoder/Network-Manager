@@ -1,4 +1,5 @@
-﻿using NetworkService.Helpers;
+﻿using MVVMLight.Messaging;
+using NetworkService.Helpers;
 using NetworkService.Model;
 using System;
 using System.Collections.Generic;
@@ -304,6 +305,17 @@ namespace NetworkService.ViewModel
                 if(odabraniFilter != value)
                 {
                     odabraniFilter = value;
+
+                    // primeniti filter na polja
+                    OdabranaKlasaIndeks = odabraniFilter.IndeksUListiAdresneKlase;
+                    VeceCekirano = odabraniFilter.VeceCekirano;
+                    ManjeCekirano = odabraniFilter.ManjeCekirano;
+                    JednakoCekirano = odabraniFilter.JednakoCekirano;
+                    TrenutniId = odabraniFilter.TrazeniId;
+
+                    // primeni filter
+                    OnFilterPress();
+
                     OnPropertyChanged("OdabraniFilter");
                 }
             }
@@ -314,7 +326,7 @@ namespace NetworkService.ViewModel
         public void OnDodajPress()
         {
             OdabraniEntitet = null;
-            ListaEntiteta = MainWindowViewModel.Entiteti;
+            Messenger.Default.Send(ListaEntiteta);
 
             // CG1 - Na osnovu odabrane adresne klase kreira random entitet
 
@@ -345,7 +357,7 @@ namespace NetworkService.ViewModel
 
             ip = ip_prvi_oktet + "." + ip_drugi_oktet + "." + ip_treci_oktet + "." + ip_cetvrti_oktet;
 
-            ListaEntiteta.Add(
+            Messenger.Default.Send(
                 new Entitet()
                 {
                     Id = max_id,
@@ -353,15 +365,14 @@ namespace NetworkService.ViewModel
                     IP = ip,
                     Slika = "/Assets/uredjaj.png",
                     Zauzece = new Random().Next(0, 100)
-                }
-                );
+                });
         }
 
         public void OnBrisanjePress()
         {
-            MainWindowViewModel.Entiteti.Remove(OdabraniEntitet);
+            Messenger.Default.Send(ListaEntiteta.IndexOf(OdabraniEntitet));
             OdabraniEntitet = null;
-            ListaEntiteta = MainWindowViewModel.Entiteti;
+            Messenger.Default.Send(ListaEntiteta);
         }
         #endregion
 
@@ -403,7 +414,8 @@ namespace NetworkService.ViewModel
         ObservableCollection<Entitet> Filtracija()
         {
             ObservableCollection<Entitet> filtrirani = new ObservableCollection<Entitet>();
-            ObservableCollection<Entitet> svi = MainWindowViewModel.Entiteti;
+            ObservableCollection<Entitet> svi = new ObservableCollection<Entitet>();
+            Messenger.Default.Send(svi);
 
             // Nije odabran nijedan entitet
             OdabraniEntitet = null;
