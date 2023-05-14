@@ -130,7 +130,7 @@ namespace NetworkService.Model
             string formatirano = MrezniEntitetiViewModel.AdresneKlase[IndeksUListiAdresneKlase] + " | ";
 
             if (VeceCekirano) formatirano += "ID > " + TrazeniId;
-            if (ManjeCekirano) formatirano += "ID <" + TrazeniId;
+            if (ManjeCekirano) formatirano += "ID < " + TrazeniId;
             if (JednakoCekirano) formatirano += "ID = " + TrazeniId;
 
             return formatirano;
