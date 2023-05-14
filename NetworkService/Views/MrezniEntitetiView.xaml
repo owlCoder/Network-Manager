@@ -45,12 +45,12 @@
                         <RadioButton Content="=" Foreground="White" IsChecked="{Binding JednakoCekirano}" />
                     </Viewbox>
 
-                    <TextBox Height="25" Width="120" FontSize="20" FontWeight="Bold" Style="{StaticResource stilTextBox}" 
+                    <TextBox Height="25" Width="110" FontSize="20" FontWeight="Bold" Style="{StaticResource stilTextBox}" 
                              MaxLength="5" Text="{Binding TrenutniId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                         <Validation.ErrorTemplate>
                             <ControlTemplate>
                                 <DockPanel>
-                                    <TextBlock Foreground="Crimson" DockPanel.Dock="Bottom" FontWeight="Bold" FontSize="16" Margin="0, 3, 0, 0">Nevalidan ID!</TextBlock>
+                                    <TextBlock Foreground="Red" DockPanel.Dock="Bottom" FontWeight="Bold" FontSize="16" Margin="0, 3, 0, 0">Nevalidan ID!</TextBlock>
                                     <AdornedElementPlaceholder x:Name="ErrorAdorner"></AdornedElementPlaceholder>
                                 </DockPanel>
                             </ControlTemplate>
@@ -63,19 +63,25 @@
                     </TextBox>
 
                     <Button Grid.Column="0" 
-                                x:Name="pocetna" 
-                                Width="200" 
-                                Command="{Binding NavCommand}" 
+                                x:Name="filter" 
+                                Width="110" 
+                                Command="{Binding OnFilterPress}" 
                                 Template="{StaticResource NoMouseOverButtonTemplate}" 
                                 Style="{StaticResource DockBtnStyle}" 
-                                BorderThickness="0" 
-                                Background="Transparent"
+                                BorderThickness="0.5"
+                            Height="37"
+                                Background="{StaticResource UIQuatriraryColor}"
                                 HorizontalAlignment="Left"
                                 Margin="10,0,-10,0"
-                                CommandParameter="pocetna">
-                        <StackPanel Background="Transparent" Orientation="Horizontal" VerticalAlignment="Center" Width="190">
-                            <Image Source="/Assets/home.png" Stretch="Uniform" Width="40" />
-                            <TextBlock Margin="5,0,0,0" FontSize="18" Foreground="{StaticResource UIWhiteColor}" FontWeight="SemiBold" VerticalAlignment="Center">Početna</TextBlock>
+                                CommandParameter="filter">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="7"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Background="Transparent" Orientation="Horizontal" VerticalAlignment="Center" Width="200">
+                            <Image Source="/Assets/search.png" Stretch="Uniform" Width="30" Margin="5, 0, 0, 0" />
+                            <TextBlock Margin="5,0,0,0" FontSize="18" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center">FILTER </TextBlock>
                         </StackPanel>
                     </Button>
                 </StackPanel>

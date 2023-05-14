@@ -9,6 +9,7 @@
         <SolidColorBrush x:Key="UISecondaryColor" Color="#70739e" />
         <SolidColorBrush x:Key="UITertiaryColor" Color="#587099" />
         <SolidColorBrush x:Key="UIAccentColor" Color="#3F5576" />
+        <SolidColorBrush x:Key="UIQuatriraryColor" Color="#D3EAE7" />
         <SolidColorBrush x:Key="UIWhiteColor" Color="White" />
 
         <Color x:Key="GradientColorOne" R="176" G="141" B="0" A="100" />
@@ -138,7 +139,7 @@
                   Grid.Column="0"
                   CornerRadius="0" 
                   Margin="1" 
-                  Background="{StaticResource UIAccentColor}" 
+                  Background="{StaticResource UIWhiteColor}" 
                   BorderBrush="{StaticResource UIAccentColor}"
                   BorderThickness="0,0,1,0" />
                 <Path 
@@ -166,7 +167,7 @@
             <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
             <Setter Property="MinWidth" Value="120"/>
             <Setter Property="MinHeight" Value="20"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource UIPrimaryColor}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -192,8 +193,8 @@
                             VerticalAlignment="Center" 
                             Margin="3,3,23,3"
                             Focusable="True" 
+                            Foreground="{StaticResource UIWhiteColor}"
                             Background="{StaticResource UIAccentColor}"
-                            Foreground="Green"
                             Visibility="Hidden"
                             IsReadOnly="{TemplateBinding IsReadOnly}"/>
                             <Popup 
@@ -211,7 +212,6 @@
                                     <Border 
                                 x:Name="DropDownBorder"
                                 Background="{StaticResource UIPrimaryColor}"
-
                                 BorderThickness="1"
                                 BorderBrush="#888888"/>
                                     <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
@@ -225,7 +225,7 @@
                                 <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Foreground" Value="#888888"/>
+                                <Setter Property="Foreground" Value="#fff"/>
                             </Trigger>
                             <Trigger Property="IsGrouping" Value="true">
                                 <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
@@ -250,7 +250,7 @@
         <!-- SimpleStyles: ComboBoxItem -->
         <Style x:Key="{x:Type ComboBoxItem}" TargetType="{x:Type ComboBoxItem}">
             <Setter Property="SnapsToDevicePixels" Value="true"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource UIWhiteColor}"/>
             <Setter Property="OverridesDefaultStyle" Value="true"/>
             <Setter Property="Template">
                 <Setter.Value>

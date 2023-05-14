@@ -1,4 +1,5 @@
 ﻿using NetworkService.Helpers;
+using NetworkService.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,6 +23,11 @@ namespace NetworkService.ViewModel
 
         private int trenutniId;
 
+        public static ObservableCollection<Filter> IstorijaFiltera { get; set; }
+
+        private Filter odabraniFilter = new Filter();
+
+        #region KONSTRUKTOR KLASE MrezniEntitetiViewModel
         public MrezniEntitetiViewModel() 
         {
             odabranaKlasaIndeks = 0;
@@ -29,7 +35,9 @@ namespace NetworkService.ViewModel
             manjeCekirano = false;
             jednakoCekirano = false;
             trenutniId = 0;
+            IstorijaFiltera = new ObservableCollection<Filter>();
         }
+        #endregion
 
         #region PROPERTY KLASE MrezniEntitetiViewModel
         public ObservableCollection<string> AdresneKlase
@@ -155,6 +163,25 @@ namespace NetworkService.ViewModel
                 {
                     trenutniId = value;
                     OnPropertyChanged("TrenutniId");
+                }
+            }
+        }
+        #endregion
+
+        #region PROPERTY ZA TRENUTNO ODABRANI FILTER
+        public Filter OdabraniFilter
+        {
+            get
+            {
+                return odabraniFilter;
+            }
+
+            set
+            {
+                if(odabraniFilter != value)
+                {
+                    odabraniFilter = value;
+                    OnPropertyChanged("OdabraniFilter");
                 }
             }
         }
