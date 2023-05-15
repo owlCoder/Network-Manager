@@ -4,6 +4,7 @@ using NetworkService.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -143,6 +144,9 @@ namespace NetworkService.ViewModel
                                 // zauzece je u opsegu pa se upisuje u entitet
                                 za_izmenu.Zauzece = zauzece;
                             }
+
+                            // upis merenja u txt datoteku
+                            File.AppendAllText("log.txt", ((id + 1) + "-" + zauzece).ToString() + "\n");
                         }
                     }, null);
                 }
