@@ -12,11 +12,11 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
             <RowDefinition Height="3*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" Grid.Column="0" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
+        <Border Grid.Row="1" Grid.Column="0" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -89,7 +89,7 @@
         </Border>
 
 
-        <Border Grid.Row="0" Grid.Column="1" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
+        <Border Grid.Row="1" Grid.Column="1" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -150,7 +150,7 @@
             </Grid>
         </Border>
 
-        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
             <DataGrid ItemsSource="{Binding ListaEntiteta}" CanUserSortColumns="False" CanUserResizeColumns="False" SelectedItem="{Binding OdabraniEntitet}" SelectionMode="Single" SelectionUnit="FullRow"  AutoGenerateColumns="False" IsReadOnly="True" FontWeight="Bold" FontSize="18" Margin="10">
                 <DataGrid.Columns>
                     <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="ID" Binding="{Binding Id}" Width="100" />
