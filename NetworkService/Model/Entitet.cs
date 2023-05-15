@@ -136,6 +136,11 @@ namespace NetworkService.Model
         }
         #endregion
 
-        // TO DO VALIDATE SELF
+        #region METODA ZA MODELOVANI ISPIS ENTITETA
+        public override string ToString()
+        {
+            return "Entitet " + Id + ": " + Naziv + " (" + IP + ")";
+        }
+        #endregion
     }
 }

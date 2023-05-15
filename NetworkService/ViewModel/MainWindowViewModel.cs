@@ -51,17 +51,7 @@ namespace NetworkService.ViewModel
 
             Entiteti = new ObservableCollection<Entitet>();
 
-            pocetnaViewModel = new PocetnaViewModel();
-            mrezniEntitetiViewModel = new MrezniEntitetiViewModel();
-            pocetnaViewModel = new PocetnaViewModel();
-            rasporedMrezeViewModel = new RasporedMrezeViewModel();
-            CurrentViewModel = pocetnaViewModel;
-
-            Messenger.Default.Register<Entitet>(this, AddToList);
-            Messenger.Default.Register<int>(this, RemoveFromList);
-            Messenger.Default.Register<ObservableCollection<Entitet>>(this, GetList);
-
-            // test entiteti
+            #region TEST ENTITETI
             Entiteti.Add(new Entitet()
             {
                 Id = 1,
@@ -69,7 +59,7 @@ namespace NetworkService.ViewModel
                 IP = "192.168.0.1",
                 Slika = "/Assets/uredjaj.png",
                 Zauzece = 15
-            }) ;
+            });
 
             Entiteti.Add(new Entitet()
             {
@@ -77,7 +67,7 @@ namespace NetworkService.ViewModel
                 Naziv = "Entitet 2",
                 IP = "233.168.0.1",
                 Slika = "/Assets/uredjaj.png",
-                Zauzece = 15
+                Zauzece = 65
             });
 
             Entiteti.Add(new Entitet()
@@ -88,6 +78,17 @@ namespace NetworkService.ViewModel
                 Slika = "/Assets/uredjaj.png",
                 Zauzece = 15
             });
+            #endregion
+
+            pocetnaViewModel = new PocetnaViewModel();
+            mrezniEntitetiViewModel = new MrezniEntitetiViewModel();
+            statistikaMrezeViewModel = new StatistikaMrezeViewModel();
+            rasporedMrezeViewModel = new RasporedMrezeViewModel();
+            CurrentViewModel = pocetnaViewModel;
+
+            Messenger.Default.Register<Entitet>(this, AddToList);
+            Messenger.Default.Register<int>(this, RemoveFromList);
+            Messenger.Default.Register<ObservableCollection<Entitet>>(this, GetList);
         }
         #endregion
 
