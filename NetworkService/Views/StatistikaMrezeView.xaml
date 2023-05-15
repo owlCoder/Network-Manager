@@ -69,7 +69,47 @@
         </Border>
 
         <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
-            <Canvas Margin="12" Background="White"></Canvas>
+            <Canvas Margin="12" Background="White">
+                <Ellipse
+                    Width="100"
+                    Height="100"
+                    Fill="Crimson"
+                    Canvas.Left="40"
+                    Canvas.Top="200" />
+
+                <Ellipse
+                    Width="100"
+                    Height="100"
+                    Fill="Crimson"
+                    Canvas.Left="230"
+                    Canvas.Top="200" />
+                <Viewbox Width="100" Height="100">
+                    <Grid Width="20" Height="20">
+                        <Ellipse Stroke="Black"/>
+                        <TextBlock HorizontalAlignment="Center" Text="i" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </Viewbox>
+                <Ellipse
+                    Width="100"
+                    Height="100"
+                    Fill="Crimson"
+                    Canvas.Left="430"
+                    Canvas.Top="200" />
+
+                <Ellipse
+                    Width="100"
+                    Height="100"
+                    Fill="Crimson"
+                    Canvas.Left="630"
+                    Canvas.Top="200" />
+
+                <Ellipse
+                    Width="100"
+                    Height="100"
+                    Fill="Crimson"
+                    Canvas.Left="830"
+                    Canvas.Top="200" />
+            </Canvas>
         </Border>
     </Grid>
 </UserControl>
