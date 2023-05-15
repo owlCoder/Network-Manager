@@ -138,7 +138,7 @@ namespace NetworkService.ViewModel
 
                             Entitet za_izmenu = Entiteti.FirstOrDefault(p => p.Id == id + 1);
 
-                            if(zauzece >= 45 && zauzece <= 75)
+                            if(za_izmenu != null && zauzece >= 45 && zauzece <= 75)
                             {
                                 // zauzece je u opsegu pa se upisuje u entitet
                                 za_izmenu.Zauzece = zauzece;
