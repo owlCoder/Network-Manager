@@ -119,18 +119,30 @@ namespace NetworkService.ViewModel
                              * duzinu liste koja sadrzi sve objekte pod monitoringom, odnosno
                              * njihov ukupan broj (NE BROJATI OD NULE, VEC POSLATI UKUPAN BROJ)
                              * */
-                            Byte[] data = System.Text.Encoding.ASCII.GetBytes("0");
+                            Byte[] data = Encoding.ASCII.GetBytes(Entiteti.Count.ToString());
                             stream.Write(data, 0, data.Length);
                         }
                         else
                         {
                             //U suprotnom, server je poslao promenu stanja nekog objekta u sistemu
-                            Console.WriteLine(incomming); //Na primer: "Entitet_1:272"
+                            // Console.WriteLine(incomming); //Na primer: "Entitet_1:272"
 
                             //################ IMPLEMENTACIJA ####################
                             // Obraditi poruku kako bi se dobile informacije o izmeni
                             // Azuriranje potrebnih stvari u aplikaciji
+                            int len = incomming.Length;
+                            string substring = incomming.Substring(8, len - 8);
+                            string[] splitovano = substring.Split(':');
+                            int id = int.Parse(splitovano[0]); // id entiteta koji se menja
+                            int zauzece = int.Parse(splitovano[1]); // zauzece koje se menja
 
+                            Entitet za_izmenu = Entiteti.FirstOrDefault(p => p.Id == id + 1);
+
+                            if(zauzece >= 45 && zauzece <= 75)
+                            {
+                                // zauzece je u opsegu pa se upisuje u entitet
+                                za_izmenu.Zauzece = zauzece;
+                            }
                         }
                     }, null);
                 }
