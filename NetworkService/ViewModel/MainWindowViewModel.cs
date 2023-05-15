@@ -146,7 +146,7 @@ namespace NetworkService.ViewModel
                             }
 
                             // upis merenja u txt datoteku
-                            File.AppendAllText("log.txt", ((id + 1) + "-" + zauzece).ToString() + "\n");
+                            File.AppendAllText("log.txt", ((id + 1) + "-" + zauzece).ToString() + "-" + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + "\n");
                         }
                     }, null);
                 }
