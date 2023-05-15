@@ -156,7 +156,20 @@
                     <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="ID" Binding="{Binding Id}" Width="100" />
                     <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="Naziv" Binding="{Binding Naziv}" Width="250" />
                     <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="IP Adresa" Binding="{Binding IP}" Width="200" />
-                    <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="Zauzeće u %" Binding="{Binding Zauzece}" Width="150" />
+                    <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="Zauzeće u %" Binding="{Binding Zauzece}" Width="150">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Boja}" Value="false">
+                                        <Setter Property="Foreground" Value="DarkGreen" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Boja}" Value="true">
+                                        <Setter Property="Foreground" Value="Crimson" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
                     <DataGridTemplateColumn Header="Grafička predstava entiteta" Width="*" IsReadOnly="True">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

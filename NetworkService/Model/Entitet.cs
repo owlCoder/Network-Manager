@@ -1,4 +1,5 @@
 ﻿using NetworkService.Helpers;
+using System.Windows.Media;
 
 namespace NetworkService.Model
 {
@@ -10,6 +11,7 @@ namespace NetworkService.Model
         private string ip;
         private string slika;
         private int zauzece;
+        private bool boja;
         #endregion
 
         #region KONSTRUKTOR KLASE Entitet
@@ -101,6 +103,34 @@ namespace NetworkService.Model
                 {
                     zauzece = value;
                     OnPropertyChanged("Zauzece");
+                }
+
+                if(zauzece < 45 || zauzece > 75)
+                {
+                    Boja = true;
+                }
+                else
+                {
+                    Boja = false;
+                }
+
+                OnPropertyChanged("Boja");
+            }
+        }
+
+        public bool Boja
+        {
+            get
+            {
+                return boja;
+            }
+
+            set
+            {
+                if(boja  != value)
+                {
+                    boja = value;
+                    OnPropertyChanged("Boja");
                 }
             }
         }

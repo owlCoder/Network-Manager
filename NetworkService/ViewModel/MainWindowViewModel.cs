@@ -139,11 +139,10 @@ namespace NetworkService.ViewModel
 
                             Entitet za_izmenu = Entiteti.FirstOrDefault(p => p.Id == id + 1);
 
-                            if(za_izmenu != null && zauzece >= 45 && zauzece <= 75)
-                            {
-                                // zauzece je u opsegu pa se upisuje u entitet
+                            // if(za_izmenu != null && zauzece >= 45 && zauzece <= 75)
+                            //{
                                 za_izmenu.Zauzece = zauzece;
-                            }
+                            // }
 
                             // upis merenja u txt datoteku
                             File.AppendAllText("log.txt", ((id + 1) + "-" + zauzece).ToString() + "-" + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + "\n");
