@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Assets\File.cs" />
     <Compile Include="Helpers\BindableBas.cs" />
     <Compile Include="Helpers\MyICommand.cs" />
     <Compile Include="Helpers\ValidationBase.cs" />

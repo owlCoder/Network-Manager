@@ -4,8 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Sockets;
+using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.lO;
 
 namespace NetworkService.ViewModel
 {
@@ -29,11 +33,14 @@ namespace NetworkService.ViewModel
             OnPropertyChanged("OdabraniEntitet");
         
             // poslednjih 5 merenja
-            Merenje_1 = new Merenje() { Izmereno = 0, VanOpsega = true };
+            Merenje_1 = new Merenje() { Izmereno = OdabraniEntitet.Zauzece };
             Merenje_2 = new Merenje() { Izmereno = 0, VanOpsega = true };
             Merenje_3 = new Merenje() { Izmereno = 0, VanOpsega = true };
             Merenje_4 = new Merenje() { Izmereno = 0, VanOpsega = true };
             Merenje_5 = new Merenje() { Izmereno = 0, VanOpsega = true };
+
+            // da se prvo poveze na simulator
+            ReadFromLogFile(); // u kontinuitetu menjaj vrednosti merenja za odabrani id
         }
         #endregion
 
@@ -70,6 +77,24 @@ namespace NetworkService.ViewModel
                 if (odabraniId != value)
                 {
                     odabraniId = value;
+
+                    if(Merenje_1 != null)
+                    {
+                        Merenje_1.Izmereno = 0;
+                        Merenje_2.Izmereno = 0;
+                        Merenje_3.Izmereno = 0;
+                        Merenje_4.Izmereno = 0;
+                        Merenje_5.Izmereno = 0;
+
+                        AzuriranjeMerenja();
+
+                        OnPropertyChanged("Merenje_1");
+                        OnPropertyChanged("Merenje_2");
+                        OnPropertyChanged("Merenje_3");
+                        OnPropertyChanged("Merenje_4");
+                        OnPropertyChanged("Merenje_5");
+                    }
+                    
                     OnPropertyChanged("OdabraniId");
                 }
             }
@@ -156,6 +181,54 @@ namespace NetworkService.ViewModel
                 {
                     merenje_5 = value;
                     OnPropertyChanged("Merenje_5");
+                }
+            }
+        }
+        #endregion
+
+
+        #region POZADINSKA NIT KOJA CITA IZ FAJLA POSLEDNJIH 5 MERENJA
+        private void ReadFromLogFile()
+        {
+
+            var listeningThread = new Thread(AzuriranjeMerenja);
+
+            listeningThread.IsBackground = true;
+            listeningThread.Start();
+        }
+
+        private void AzuriranjeMerenja()
+        {
+            // na osnovu trenutnog id citati iz fajla dok se ne nadje merenje
+            if (!File.Exists("log.txt"))
+                return;
+
+            string[] procitano = File.ReadAllLines("log.txt");
+            Array.Reverse(procitano); // citamo unazad log datoteku
+            int izmereno = 1;
+
+            foreach (string red in procitano)
+            {
+                if(izmereno > 5) // simulacija steka
+                    izmereno = 0;
+
+                string[] kolona = red.Split('-');
+
+                if (int.Parse(kolona[0]) == OdabraniId)
+                {
+                    int merenje_log = int.Parse(kolona[1]); // izmerena vrednost
+
+                    switch (izmereno)
+                    {
+                        case 1: Merenje_1.Izmereno = merenje_log; OnPropertyChanged("Merenje_1"); break;
+                        case 2: Merenje_2.Izmereno = merenje_log; OnPropertyChanged("Merenje_2"); break;
+                        case 3: Merenje_3.Izmereno = merenje_log; OnPropertyChanged("Merenje_3"); break;
+                        case 4: Merenje_4.Izmereno = merenje_log; OnPropertyChanged("Merenje_4"); break;
+                        case 5: Merenje_5.Izmereno = merenje_log; OnPropertyChanged("Merenje_5"); break;
+                        default: Merenje_1.Izmereno = merenje_log; OnPropertyChanged("Merenje_1"); break;
+                    }
+
+                    izmereno++;
                 }
             }
         }

@@ -56,7 +56,7 @@ namespace NetworkService.ViewModel
             Messenger.Default.Register<ObservableCollection<Entitet>>(this, GetList);
 
             #region TEST ENTITETI 10 PRIMERAKA
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 3; i++)
             {
                 mrezniEntitetiViewModel.OnDodajPress();
             }
@@ -127,7 +127,9 @@ namespace NetworkService.ViewModel
                             // }
 
                             // upis merenja u txt datoteku
-                            File.AppendAllText("log.txt", ((id + 1) + "-" + zauzece).ToString() + "-" + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + "\n");
+                            string za_upis = ((id + 1) + "-" + zauzece).ToString() + "-" + DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+                            File.AppendAllText("log.txt", za_upis + "\n");
+                            Delimit_File(za_upis);
                         }
                     }, null);
                 }
@@ -180,6 +182,13 @@ namespace NetworkService.ViewModel
         {
             e = Entiteti;
         }
+
+        #region delimiter datoteke
+        void Delimit_File(string str)
+        {
+            PocetnaViewModel.DELIMITER_CONST.Add(str);
+        }
+        #endregion
 
         private void CloseWindow(Window MainWindow)
         {

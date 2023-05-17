@@ -86,7 +86,7 @@
                                 </Style>
                             </Ellipse.Style>
                         </Ellipse>
-                        <TextBlock HorizontalAlignment="Center" FontSize="9" Text="{Binding Merenje_2.Izmereno}" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" FontSize="9" Text="{Binding Merenje_1.Izmereno}" TextAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                 </Viewbox>
 
