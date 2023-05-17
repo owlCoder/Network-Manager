@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeteringSimulator", "MeteringSimulator\MeteringSimulator.csproj", "{134D87AD-F428-469F-A98E-5F007EDD241B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{6AE2C93C-D3CE-4614-9394-158338AD45C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AE2C93C-D3CE-4614-9394-158338AD45C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AE2C93C-D3CE-4614-9394-158338AD45C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{134D87AD-F428-469F-A98E-5F007EDD241B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{134D87AD-F428-469F-A98E-5F007EDD241B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{134D87AD-F428-469F-A98E-5F007EDD241B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{134D87AD-F428-469F-A98E-5F007EDD241B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

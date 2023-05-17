@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.lO;
+using System.Windows.Controls.Primitives;
 
 namespace NetworkService.ViewModel
 {
@@ -40,7 +41,7 @@ namespace NetworkService.ViewModel
             Merenje_5 = new Merenje() { Izmereno = 0, VanOpsega = true };
 
             // da se prvo poveze na simulator
-            ReadFromLogFile(); // u kontinuitetu menjaj vrednosti merenja za odabrani id
+            // ReadFromLogFile(); // u kontinuitetu menjaj vrednosti merenja za odabrani id
         }
         #endregion
 
@@ -76,26 +77,25 @@ namespace NetworkService.ViewModel
             {
                 if (odabraniId != value)
                 {
-                    odabraniId = value;
-
-                    if(Merenje_1 != null)
-                    {
-                        Merenje_1.Izmereno = 0;
-                        Merenje_2.Izmereno = 0;
-                        Merenje_3.Izmereno = 0;
-                        Merenje_4.Izmereno = 0;
-                        Merenje_5.Izmereno = 0;
-
-                        AzuriranjeMerenja();
-
-                        OnPropertyChanged("Merenje_1");
-                        OnPropertyChanged("Merenje_2");
-                        OnPropertyChanged("Merenje_3");
-                        OnPropertyChanged("Merenje_4");
-                        OnPropertyChanged("Merenje_5");
-                    }
-                    
+                    odabraniId = value;                    
                     OnPropertyChanged("OdabraniId");
+                }
+
+                if (Merenje_1 != null)
+                {
+                    Merenje_1.Izmereno = 0;
+                    Merenje_2.Izmereno = 0;
+                    Merenje_3.Izmereno = 0;
+                    Merenje_4.Izmereno = 0;
+                    Merenje_5.Izmereno = 0;
+
+                    AzuriranjeMerenja();
+
+                    OnPropertyChanged("Merenje_1");
+                    OnPropertyChanged("Merenje_2");
+                    OnPropertyChanged("Merenje_3");
+                    OnPropertyChanged("Merenje_4");
+                    OnPropertyChanged("Merenje_5");
                 }
             }
         }
@@ -188,16 +188,8 @@ namespace NetworkService.ViewModel
 
 
         #region POZADINSKA NIT KOJA CITA IZ FAJLA POSLEDNJIH 5 MERENJA
-        private void ReadFromLogFile()
-        {
 
-            var listeningThread = new Thread(AzuriranjeMerenja);
-
-            listeningThread.IsBackground = true;
-            listeningThread.Start();
-        }
-
-        private void AzuriranjeMerenja()
+        public void AzuriranjeMerenja()
         {
             // na osnovu trenutnog id citati iz fajla dok se ne nadje merenje
             if (!File.Exists("log.txt"))

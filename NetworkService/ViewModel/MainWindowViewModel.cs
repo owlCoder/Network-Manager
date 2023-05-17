@@ -70,6 +70,8 @@ namespace NetworkService.ViewModel
             {
                 File.Delete("log.txt");
             }
+
+            statistikaMrezeViewModel.AzuriranjeMerenja();
         }
         #endregion
 
