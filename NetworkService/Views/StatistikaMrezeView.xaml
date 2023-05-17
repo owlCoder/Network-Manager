@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NetworkService.Views"
                          mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="1000">
+             d:DesignHeight="450" d:DesignWidth="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -70,38 +70,103 @@
 
         <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
             <Canvas Margin="12" Background="White">
-                <Viewbox Width="100" Height="100" Canvas.Left="50" Canvas.Top="200">
+                <Viewbox Width="{Binding Merenje_1.Izmereno}" Height="{Binding Merenje_1.Izmereno}" Canvas.Left="50" Canvas.Top="200">
                     <Grid Width="20" Height="20">
-                        <Ellipse Fill="Crimson" />
-                        <TextBlock HorizontalAlignment="Center" Text="12" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <Ellipse>
+                            <Ellipse.Style>
+                                <Style TargetType="Ellipse">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Merenje_1.VanOpsega}" Value="false">
+                                            <Setter Property="Fill" Value="DarkCyan" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Merenje_1.VanOpsega}" Value="true">
+                                            <Setter Property="Fill" Value="Crimson" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Ellipse.Style>
+                        </Ellipse>
+                        <TextBlock HorizontalAlignment="Center" FontSize="9" Text="{Binding Merenje_2.Izmereno}" TextAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                 </Viewbox>
 
-                <Viewbox Width="100" Height="100" Canvas.Left="300" Canvas.Top="200">
+                <Viewbox Width="{Binding Merenje_2.Izmereno}" Height="{Binding Merenje_2.Izmereno}" Canvas.Left="300" Canvas.Top="200">
                     <Grid Width="20" Height="20">
-                        <Ellipse Fill="Crimson" />
-                        <TextBlock HorizontalAlignment="Center" Text="43" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <Ellipse>
+                            <Ellipse.Style>
+                                <Style TargetType="Ellipse">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Merenje_2.VanOpsega}" Value="false">
+                                            <Setter Property="Fill" Value="DarkCyan" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Merenje_2.VanOpsega}" Value="true">
+                                            <Setter Property="Fill" Value="Crimson" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Ellipse.Style>
+                        </Ellipse>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding Merenje_2.Izmereno}" TextAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                 </Viewbox>
 
-                <Viewbox Width="100" Height="100" Canvas.Left="570" Canvas.Top="200">
+                <Viewbox Width="{Binding Merenje_3.Izmereno}" Height="{Binding Merenje_3.Izmereno}" Canvas.Left="570" Canvas.Top="200">
                     <Grid Width="20" Height="20">
-                        <Ellipse Fill="Crimson" />
-                        <TextBlock HorizontalAlignment="Center" Text="33" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <Ellipse>
+                            <Ellipse.Style>
+                                <Style TargetType="Ellipse">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Merenje_3.VanOpsega}" Value="false">
+                                            <Setter Property="Fill" Value="DarkCyan" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Merenje_3.VanOpsega}" Value="true">
+                                            <Setter Property="Fill" Value="Crimson" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Ellipse.Style>
+                        </Ellipse>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding Merenje_3.Izmereno}" TextAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                 </Viewbox>
 
-                <Viewbox Width="100" Height="100" Canvas.Left="820" Canvas.Top="200">
+                <Viewbox Width="{Binding Merenje_4.Izmereno}" Height="{Binding Merenje_4.Izmereno}" Canvas.Left="820" Canvas.Top="200">
                     <Grid Width="20" Height="20">
-                        <Ellipse Fill="Crimson" />
-                        <TextBlock HorizontalAlignment="Center" Text="12" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <Ellipse>
+                            <Ellipse.Style>
+                                <Style TargetType="Ellipse">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Merenje_4.VanOpsega}" Value="false">
+                                            <Setter Property="Fill" Value="DarkCyan" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Merenje_4.VanOpsega}" Value="true">
+                                            <Setter Property="Fill" Value="Crimson" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Ellipse.Style>
+                        </Ellipse>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding Merenje_4.Izmereno}" TextAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                 </Viewbox>
 
-                <Viewbox Width="100" Height="100" Canvas.Left="1050" Canvas.Top="200">
+                <Viewbox Width="{Binding Merenje_5.Izmereno}" Height="{Binding Merenje_5.Izmereno}" Canvas.Left="1050" Canvas.Top="200">
                     <Grid Width="20" Height="20">
-                        <Ellipse Fill="Crimson" />
-                        <TextBlock HorizontalAlignment="Center" Text="1" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <Ellipse>
+                            <Ellipse.Style>
+                                <Style TargetType="Ellipse">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Merenje_5.VanOpsega}" Value="false">
+                                            <Setter Property="Fill" Value="DarkCyan" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Merenje_5.VanOpsega}" Value="true">
+                                            <Setter Property="Fill" Value="Crimson" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Ellipse.Style>
+                        </Ellipse>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding Merenje_5.Izmereno}" TextAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                 </Viewbox>
             </Canvas>
