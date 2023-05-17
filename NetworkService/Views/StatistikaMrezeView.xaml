@@ -86,6 +86,15 @@
                          Canvas.Left="20"
                          Canvas.Top="410"
                     />
+                
+                <!-- guidelines 
+                <Line
+                        X1="20" Y1="20"
+                        X2="20" Y2="470"
+                        StrokeThickness="2"
+                        Stroke="LightGray"
+                        Canvas.Left="150">
+                </Line>-->
                 <!-- Kraj koordinatnog sistema -->
 
                 <Viewbox Width="{Binding Merenje_1.Izmereno}" Height="200" Canvas.Left="50" Canvas.Top="200">
