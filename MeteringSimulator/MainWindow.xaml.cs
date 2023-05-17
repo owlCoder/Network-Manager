@@ -75,7 +75,7 @@ namespace MeteringSimulator
         private void startReporting()
         {
             //Na radnom vreme posalji izmenu vrednosti nekog random objekta i nastavi da to radis u rekurziji
-            int waitTime = r.Next(100, 500);
+            int waitTime = r.Next(1000, 2500);
             Task.Delay(waitTime).ContinueWith(_ =>
             {
                 this.Dispatcher.Invoke(() =>

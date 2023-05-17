@@ -70,7 +70,25 @@
 
         <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
             <Canvas Margin="12" Background="White">
-                <Viewbox Width="{Binding Merenje_1.Izmereno}" Height="{Binding Merenje_1.Izmereno}" Canvas.Left="50" Canvas.Top="200">
+                <Line
+                        X1="20" Y1="20"
+                        X2="20" Y2="470"
+                        StrokeThickness="2"
+                        Stroke="Black"
+                        Canvas.Left="10">      
+                </Line>
+                
+                <Line
+                         X1="10" Y1="60"
+                         X2="1150" Y2="60"
+                         Stroke="Black"
+                         StrokeThickness="2"
+                         Canvas.Left="20"
+                         Canvas.Top="410"
+                    />
+                <!-- Kraj koordinatnog sistema -->
+
+                <Viewbox Width="{Binding Merenje_1.Izmereno}" Height="200" Canvas.Left="50" Canvas.Top="200">
                     <Grid Width="20" Height="20">
                         <Ellipse>
                             <Ellipse.Style>
@@ -85,12 +103,14 @@
                                     </Style.Triggers>
                                 </Style>
                             </Ellipse.Style>
+                            <Ellipse.RenderTransform>
+                                <TranslateTransform X="0" Y="0" />
+                            </Ellipse.RenderTransform>
                         </Ellipse>
-                        <TextBlock HorizontalAlignment="Center" FontSize="9" Text="{Binding Merenje_1.Izmereno}" TextAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                 </Viewbox>
 
-                <Viewbox Width="{Binding Merenje_2.Izmereno}" Height="{Binding Merenje_2.Izmereno}" Canvas.Left="300" Canvas.Top="200">
+                <Viewbox Width="{Binding Merenje_2.Izmereno}" Height="200" Canvas.Left="300" Canvas.Top="200">
                     <Grid Width="20" Height="20">
                         <Ellipse>
                             <Ellipse.Style>
@@ -105,12 +125,14 @@
                                     </Style.Triggers>
                                 </Style>
                             </Ellipse.Style>
+                            <Ellipse.RenderTransform>
+                                <TranslateTransform X="0" Y="0" />
+                            </Ellipse.RenderTransform>
                         </Ellipse>
-                        <TextBlock HorizontalAlignment="Center" Text="{Binding Merenje_2.Izmereno}" TextAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                 </Viewbox>
 
-                <Viewbox Width="{Binding Merenje_3.Izmereno}" Height="{Binding Merenje_3.Izmereno}" Canvas.Left="570" Canvas.Top="200">
+                <Viewbox Width="{Binding Merenje_3.Izmereno}" Height="200" Canvas.Left="570" Canvas.Top="200">
                     <Grid Width="20" Height="20">
                         <Ellipse>
                             <Ellipse.Style>
@@ -125,12 +147,14 @@
                                     </Style.Triggers>
                                 </Style>
                             </Ellipse.Style>
+                            <Ellipse.RenderTransform>
+                                <TranslateTransform X="0" Y="0" />
+                            </Ellipse.RenderTransform>
                         </Ellipse>
-                        <TextBlock HorizontalAlignment="Center" Text="{Binding Merenje_3.Izmereno}" TextAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                 </Viewbox>
 
-                <Viewbox Width="{Binding Merenje_4.Izmereno}" Height="{Binding Merenje_4.Izmereno}" Canvas.Left="820" Canvas.Top="200">
+                <Viewbox Width="{Binding Merenje_4.Izmereno}" Height="200" Canvas.Left="820" Canvas.Top="200">
                     <Grid Width="20" Height="20">
                         <Ellipse>
                             <Ellipse.Style>
@@ -145,12 +169,14 @@
                                     </Style.Triggers>
                                 </Style>
                             </Ellipse.Style>
+                            <Ellipse.RenderTransform>
+                                <TranslateTransform X="0" Y="0" />
+                            </Ellipse.RenderTransform>
                         </Ellipse>
-                        <TextBlock HorizontalAlignment="Center" Text="{Binding Merenje_4.Izmereno}" TextAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                 </Viewbox>
 
-                <Viewbox Width="{Binding Merenje_5.Izmereno}" Height="{Binding Merenje_5.Izmereno}" Canvas.Left="1050" Canvas.Top="200">
+                <Viewbox Width="{Binding Merenje_5.Izmereno}" Height="200" Canvas.Left="1050" Canvas.Top="200">
                     <Grid Width="20" Height="20">
                         <Ellipse>
                             <Ellipse.Style>
@@ -165,8 +191,10 @@
                                     </Style.Triggers>
                                 </Style>
                             </Ellipse.Style>
+                            <Ellipse.RenderTransform>
+                                <TranslateTransform X="0" Y="0" />
+                            </Ellipse.RenderTransform>
                         </Ellipse>
-                        <TextBlock HorizontalAlignment="Center" Text="{Binding Merenje_5.Izmereno}" TextAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                 </Viewbox>
             </Canvas>

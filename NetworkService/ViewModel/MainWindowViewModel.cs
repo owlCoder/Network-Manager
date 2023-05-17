@@ -56,7 +56,7 @@ namespace NetworkService.ViewModel
             Messenger.Default.Register<ObservableCollection<Entitet>>(this, GetList);
 
             #region TEST ENTITETI 10 PRIMERAKA
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 1; i++)
             {
                 mrezniEntitetiViewModel.OnDodajPress();
             }
@@ -189,6 +189,9 @@ namespace NetworkService.ViewModel
         void Delimit_File(string str)
         {
             PocetnaViewModel.DELIMITER_CONST.Add(str);
+            int old_id = statistikaMrezeViewModel.OdabraniId;
+            statistikaMrezeViewModel.OdabraniId = 1;
+            statistikaMrezeViewModel.OdabraniId = old_id;
         }
         #endregion
 
