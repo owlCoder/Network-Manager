@@ -35,10 +35,6 @@ namespace NetworkService.ViewModel
      
         #region LISTA I BROJ MREZNIH ENTITETA
         public static ObservableCollection<Entitet> Entiteti { get; set; }
-
-        private int count = 1; // Inicijalna vrednost broja objekata u sistemu
-                               // ######### ZAMENITI stvarnim brojem elemenata
-                               //           zavisno od broja entiteta u listi
         #endregion
 
         #region KONSTRUKTOR KLASE 
@@ -187,7 +183,7 @@ namespace NetworkService.ViewModel
 
         private void AddToList(Entitet novi)
         {
-            Entiteti.Insert(0, novi);
+            Entiteti.Add(novi);
         }
 
         private void RemoveFromList(int index) 

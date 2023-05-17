@@ -15,6 +15,8 @@ namespace NetworkService.ViewModel
         public static ObservableCollection<Entitet> Entiteti { get; set; }
 
         private Entitet odabraniEntitet;
+
+        Merenje merenje_1, merenje_2, merenje_3, merenje_4, merenje_5;
         #endregion
 
         #region KONSTRUKTOR KLASE StatistikaMrezeViewModel
@@ -23,6 +25,8 @@ namespace NetworkService.ViewModel
             Entiteti = MainWindowViewModel.Entiteti; // svi entiteti se modeluju
             OdabraniEntitet = Entiteti[0];
             OnPropertyChanged("OdabraniEntitet");
+
+            // lista poslednjih 5 merenja
         }
         #endregion
 

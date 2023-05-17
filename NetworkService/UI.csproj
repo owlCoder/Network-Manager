@@ -66,6 +66,7 @@
     <Compile Include="Helpers\ValidationBase.cs" />
     <Compile Include="Model\Entitet.cs" />
     <Compile Include="Model\Filter.cs" />
+    <Compile Include="Model\Merenje.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MrezniEntitetiViewModel.cs" />
     <Compile Include="ViewModel\PocetnaViewModel.cs" />
