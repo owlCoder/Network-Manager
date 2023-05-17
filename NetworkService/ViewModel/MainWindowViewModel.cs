@@ -2,7 +2,6 @@
 using NetworkService.Helpers;
 using NetworkService.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -10,7 +9,6 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace NetworkService.ViewModel
@@ -32,7 +30,7 @@ namespace NetworkService.ViewModel
         #region TRENUTNO PRIKAZAN VIEW MODEL
         private BindableBase currentViewModel;
         #endregion
-     
+
         #region LISTA I BROJ MREZNIH ENTITETA
         public static ObservableCollection<Entitet> Entiteti { get; set; }
         #endregion
@@ -125,7 +123,7 @@ namespace NetworkService.ViewModel
 
                             // if(za_izmenu != null && zauzece >= 45 && zauzece <= 75)
                             //{
-                                za_izmenu.Zauzece = zauzece;
+                            za_izmenu.Zauzece = zauzece;
                             // }
 
                             // upis merenja u txt datoteku
@@ -175,9 +173,9 @@ namespace NetworkService.ViewModel
             Entiteti.Add(novi);
         }
 
-        private void RemoveFromList(int index) 
+        private void RemoveFromList(int index)
         {
-            Entiteti.RemoveAt(index); 
+            Entiteti.RemoveAt(index);
         }
 
         private void GetList(ObservableCollection<Entitet> e)

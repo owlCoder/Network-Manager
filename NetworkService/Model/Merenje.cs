@@ -1,9 +1,4 @@
 ﻿using NetworkService.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NetworkService.Model
 {
@@ -15,8 +10,8 @@ namespace NetworkService.Model
         private bool vanOpsega;
         #endregion
 
-        public Merenje() 
-        { 
+        public Merenje()
+        {
             // Prazan konstruktor
         }
 
@@ -24,18 +19,18 @@ namespace NetworkService.Model
         public int Izmereno
         {
             get
-            { 
-                return izmereno; 
-            } 
-            set 
-            { 
+            {
+                return izmereno;
+            }
+            set
+            {
                 if (izmereno != value)
                 {
                     izmereno = value;
                     OnPropertyChanged("Izmereno");
                 }
 
-                if(izmereno < 45 || izmereno > 75)
+                if (izmereno < 45 || izmereno > 75)
                 {
                     vanOpsega = true;
                     OnPropertyChanged("VanOpsega");
@@ -57,7 +52,7 @@ namespace NetworkService.Model
 
             set
             {
-                if(vanOpsega != value)
+                if (vanOpsega != value)
                 {
                     vanOpsega = value;
                     OnPropertyChanged("VanOpsega");

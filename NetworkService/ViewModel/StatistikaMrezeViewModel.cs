@@ -1,16 +1,8 @@
 ﻿using NetworkService.Helpers;
 using NetworkService.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net.Sockets;
-using System.Net;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.lO;
-using System.Windows.Controls.Primitives;
 
 namespace NetworkService.ViewModel
 {
@@ -32,7 +24,7 @@ namespace NetworkService.ViewModel
             Entiteti = MainWindowViewModel.Entiteti; // svi entiteti se modeluju
             OdabraniEntitet = Entiteti[0];
             OnPropertyChanged("OdabraniEntitet");
-        
+
             // poslednjih 5 merenja
             Merenje_1 = new Merenje() { Izmereno = OdabraniEntitet.Zauzece };
             Merenje_2 = new Merenje() { Izmereno = 0, VanOpsega = true };
@@ -55,7 +47,7 @@ namespace NetworkService.ViewModel
 
             set
             {
-                if(odabraniEntitet != value) 
+                if (odabraniEntitet != value)
                 {
                     odabraniEntitet = value;
                     OnPropertyChanged("OdabraniEntitet");
@@ -77,7 +69,7 @@ namespace NetworkService.ViewModel
             {
                 if (odabraniId != value)
                 {
-                    odabraniId = value;                    
+                    odabraniId = value;
                     OnPropertyChanged("OdabraniId");
                 }
 
@@ -109,7 +101,7 @@ namespace NetworkService.ViewModel
 
             set
             {
-                if(merenje_1 != value)
+                if (merenje_1 != value)
                 {
                     merenje_1 = value;
                     OnPropertyChanged("Merenje_1");
@@ -201,7 +193,7 @@ namespace NetworkService.ViewModel
 
             foreach (string red in procitano)
             {
-                if(izmereno > 5) // simulacija steka
+                if (izmereno > 5) // simulacija steka
                     izmereno = 0;
 
                 string[] kolona = red.Split('-');

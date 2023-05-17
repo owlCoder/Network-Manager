@@ -1,5 +1,4 @@
 ﻿using NetworkService.Helpers;
-using System.Windows.Media;
 
 namespace NetworkService.Model
 {
@@ -31,7 +30,7 @@ namespace NetworkService.Model
 
             set
             {
-                if(id != value)
+                if (id != value)
                 {
                     id = value;
                     OnPropertyChanged("Id");
@@ -40,15 +39,15 @@ namespace NetworkService.Model
         }
 
         public string Naziv
-        { 
-            get 
-            { 
-                return naziv; 
+        {
+            get
+            {
+                return naziv;
             }
 
             set
             {
-                if(naziv != value)
+                if (naziv != value)
                 {
                     naziv = value;
                     OnPropertyChanged("Naziv");
@@ -65,11 +64,11 @@ namespace NetworkService.Model
 
             set
             {
-                if(ip != value)
+                if (ip != value)
                 {
                     ip = value;
                     OnPropertyChanged("IP");
-                }    
+                }
             }
         }
 
@@ -105,7 +104,7 @@ namespace NetworkService.Model
                     OnPropertyChanged("Zauzece");
                 }
 
-                if(zauzece < 45 || zauzece > 75)
+                if (zauzece < 45 || zauzece > 75)
                 {
                     Boja = true;
                 }
@@ -127,7 +126,7 @@ namespace NetworkService.Model
 
             set
             {
-                if(boja  != value)
+                if (boja != value)
                 {
                     boja = value;
                     OnPropertyChanged("Boja");

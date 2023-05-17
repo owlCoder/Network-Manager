@@ -1,10 +1,5 @@
 ﻿using NetworkService.Helpers;
 using NetworkService.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NetworkService.Model
 {
@@ -19,7 +14,7 @@ namespace NetworkService.Model
         #endregion
 
         #region KONSTRUKTOR KLASE Filter
-        public Filter() 
+        public Filter()
         {
             // Prazan konstruktor
         }
@@ -35,7 +30,7 @@ namespace NetworkService.Model
 
             set
             {
-                if(indeksUListiAdresneKlase != value)
+                if (indeksUListiAdresneKlase != value)
                 {
                     indeksUListiAdresneKlase = value;
                     OnPropertyChanged("IndeksUListiAdresneKlase");
@@ -52,7 +47,7 @@ namespace NetworkService.Model
 
             set
             {
-                if(veceCekirano != value)
+                if (veceCekirano != value)
                 {
                     veceCekirano = value;
                     OnPropertyChanged("VeceCekirano");
@@ -67,7 +62,7 @@ namespace NetworkService.Model
                 return manjeCekirano;
             }
 
-          set
+            set
             {
                 if (manjeCekirano != value)
                 {
@@ -103,7 +98,7 @@ namespace NetworkService.Model
 
             set
             {
-                if(trazeniId  != value)
+                if (trazeniId != value)
                 {
                     trazeniId = value;
                     OnPropertyChanged("TrazeniId");
