@@ -362,7 +362,7 @@ namespace NetworkService.ViewModel
                 new Entitet()
                 {
                     Id = max_id,
-                    Naziv = "Entitet " + max_id,
+                    Naziv = "Entitet " + (max_id < 10 ? ("0" + max_id).ToString() : max_id.ToString()),
                     IP = ip,
                     Slika = "/Assets/uredjaj.png",
                     Zauzece = new Random().Next(0, 100),

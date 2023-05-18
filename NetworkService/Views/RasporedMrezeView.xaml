@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:local="clr-namespace:NetworkService.Views"
              xmlns:model="clr-namespace:NetworkService.Model"
              mc:Ignorable="d" 
@@ -18,15 +19,216 @@
         <Border Grid.Row="1" Grid.Column="0" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="0.3*" />
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Content="RASPORED ENTITETA U MREŽI" FontSize="20" FontWeight="Bold" Foreground="{StaticResource UIWhiteColor}" />
-                
+
+                <DockPanel Grid.Column="0" Grid.Row="1" Margin="5">
+                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Canvas Background="White" AllowDrop="True">
+                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    </Canvas>
+                </DockPanel>
+
+                <DockPanel Grid.Column="1" Grid.Row="1" Margin="5">
+                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Canvas Background="White" AllowDrop="True">
+                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    </Canvas>
+                </DockPanel>
+
+                <DockPanel Grid.Column="2" Grid.Row="1" Margin="5">
+                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Canvas Background="White" AllowDrop="True">
+                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    </Canvas>
+                </DockPanel>
+
+                <DockPanel Grid.Column="3" Grid.Row="1" Margin="5">
+                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Canvas Background="White" AllowDrop="True">
+                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    </Canvas>
+                </DockPanel>
+
+                <DockPanel Grid.Column="4" Grid.Row="1" Margin="5">
+                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Canvas Background="White" AllowDrop="True">
+                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    </Canvas>
+                </DockPanel>
+
+                <!-- drugi red -->
+                <DockPanel Grid.Column="0" Grid.Row="2" Margin="5">
+                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Canvas Background="White" AllowDrop="True">
+                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    </Canvas>
+                </DockPanel>
+
+                <DockPanel Grid.Column="1" Grid.Row="2" Margin="5">
+                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Canvas Background="White" AllowDrop="True">
+                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    </Canvas>
+                </DockPanel>
+
+                <DockPanel Grid.Column="2" Grid.Row="2" Margin="5">
+                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Canvas Background="White" AllowDrop="True">
+                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    </Canvas>
+                </DockPanel>
+
+                <DockPanel Grid.Column="3" Grid.Row="2" Margin="5">
+                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Canvas Background="White" AllowDrop="True">
+                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    </Canvas>
+                </DockPanel>
+
+                <DockPanel Grid.Column="4" Grid.Row="2" Margin="5">
+                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Canvas Background="White" AllowDrop="True">
+                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    </Canvas>
+                </DockPanel>
+
+                <!-- treci red -->
+                <DockPanel Grid.Column="0" Grid.Row="3" Margin="5">
+                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Canvas Background="White" AllowDrop="True">
+                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    </Canvas>
+                </DockPanel>
+
+                <DockPanel Grid.Column="1" Grid.Row="3" Margin="5">
+                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Canvas Background="White" AllowDrop="True">
+                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    </Canvas>
+                </DockPanel>
+
+                <DockPanel Grid.Column="2" Grid.Row="3" Margin="5">
+                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Canvas Background="White" AllowDrop="True">
+                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    </Canvas>
+                </DockPanel>
+
+                <DockPanel Grid.Column="3" Grid.Row="3" Margin="5">
+                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="7"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Canvas Background="White" AllowDrop="True">
+                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    </Canvas>
+                </DockPanel>
+
+                <DockPanel Grid.Column="4" Grid.Row="3" Margin="5">
+                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Canvas Background="White" AllowDrop="True">
+                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    </Canvas>
+                </DockPanel>
+
             </Grid>
         </Border>
 
@@ -48,7 +250,7 @@
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Content="DOSTUPNI ENTITETI" FontSize="20" FontWeight="Bold" Foreground="{StaticResource UIWhiteColor}" />
 
                 <!-- tree view -->
-                <TreeView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="Transparent" BorderThickness="0" Grid.ColumnSpan="4" Margin="5, 50, 5, 5" ItemsSource="{Binding Klasifikovani}">
+                <TreeView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Grid.ColumnSpan="4" Margin="5, 50, 5, 5" ItemsSource="{Binding Klasifikovani}">
                     <TreeView.Resources>
                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{StaticResource GradientColorOne}" />
                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
@@ -57,7 +259,7 @@
 
                         <HierarchicalDataTemplate DataType="{x:Type model:KlasifikovaniEntiteti}" ItemsSource="{Binding ListaEntiteta}">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding AdresnaKlasa}" FontSize="16" FontWeight="SemiBold" Foreground="White"/>
+                                <TextBlock Text="{Binding AdresnaKlasa}" FontSize="20" FontWeight="SemiBold" Foreground="White"/>
                             </StackPanel>
                         </HierarchicalDataTemplate>
                         <DataTemplate DataType="{x:Type model:Entitet}">
@@ -86,14 +288,22 @@
                             </StackPanel>
                         </DataTemplate>
                     </TreeView.Resources>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding MouseLevoDugme}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="SelectedItemChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectedItemPromena}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </TreeView>
-
+                
                 <Button Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="3"
                                 x:Name="rasporedi" 
                                 Width="290" 
                                 Command="{Binding NasumicnoRasporedi}" 
                                 BorderThickness="0.5"
-                            Height="37"
+                                Height="37"
                                 Background="{StaticResource UIQuatriraryColor}"
                                 HorizontalAlignment="Left"
                                 Margin="20,0,-10,0">
