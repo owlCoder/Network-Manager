@@ -11,6 +11,7 @@ namespace NetworkService.Model
         private string slika;
         private int zauzece;
         private bool boja;
+        private string klasa;
         #endregion
 
         #region KONSTRUKTOR KLASE Entitet
@@ -130,6 +131,23 @@ namespace NetworkService.Model
                 {
                     boja = value;
                     OnPropertyChanged("Boja");
+                }
+            }
+        }
+
+        public string Klasa
+        {
+            get
+            {
+                return klasa;
+            }
+
+            set
+            {
+                if(klasa != value)
+                {
+                    klasa = value;
+                    OnPropertyChanged("Klasa");
                 }
             }
         }

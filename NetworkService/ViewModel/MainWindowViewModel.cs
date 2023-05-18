@@ -54,7 +54,7 @@ namespace NetworkService.ViewModel
             Messenger.Default.Register<ObservableCollection<Entitet>>(this, GetList);
 
             #region TEST ENTITETI 10 PRIMERAKA
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 10; i++)
             {
                 mrezniEntitetiViewModel.OnDodajPress();
             }

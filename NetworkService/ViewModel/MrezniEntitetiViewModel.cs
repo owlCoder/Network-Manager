@@ -337,17 +337,17 @@ namespace NetworkService.ViewModel
             int odabrana_adresna_klasa = OdabraniIndeksDodavanjeEntiteta;
             const int ip_min = 0, ip_max = 255;
             int ip_prvi_oktet, ip_drugi_oktet, ip_treci_oktet, ip_cetvrti_oktet;
-            string ip;
+            string ip, klasa;
 
             // generisanje na osnovu odabrane adresne klase
             switch (odabrana_adresna_klasa)
             {
-                case 0: ip_prvi_oktet = new Random().Next(1, 127); break;
-                case 1: ip_prvi_oktet = new Random().Next(128, 191); break;
-                case 2: ip_prvi_oktet = new Random().Next(192, 223); break;
-                case 3: ip_prvi_oktet = new Random().Next(224, 239); break;
-                case 4: ip_prvi_oktet = new Random().Next(240, 255); break;
-                default: ip_prvi_oktet = 0; break;
+                case 0: ip_prvi_oktet = new Random().Next(1, 127); klasa = "A"; break;
+                case 1: ip_prvi_oktet = new Random().Next(128, 191); klasa = "B";  break;
+                case 2: ip_prvi_oktet = new Random().Next(192, 223); klasa = "C";  break;
+                case 3: ip_prvi_oktet = new Random().Next(224, 239); klasa = "D";  break;
+                case 4: ip_prvi_oktet = new Random().Next(240, 255); klasa = "E";  break;
+                default: ip_prvi_oktet = 0; klasa = "A"; break;
             }
 
             ip_drugi_oktet = new Random().Next(ip_min, ip_max);
@@ -365,7 +365,8 @@ namespace NetworkService.ViewModel
                     Naziv = "Entitet " + max_id,
                     IP = ip,
                     Slika = "/Assets/uredjaj.png",
-                    Zauzece = new Random().Next(0, 100)
+                    Zauzece = new Random().Next(0, 100),
+                    Klasa = klasa
                 });
         }
 

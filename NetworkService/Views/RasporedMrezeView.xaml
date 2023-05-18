@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NetworkService.Views"
+             xmlns:model="clr-namespace:NetworkService.Model"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1200">
     <Grid>
@@ -25,7 +26,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Content="RASPORED ENTITETA U MREŽI" FontSize="20" FontWeight="Bold" Foreground="{StaticResource UIWhiteColor}" />
-
+                
             </Grid>
         </Border>
 
@@ -46,6 +47,45 @@
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Content="DOSTUPNI ENTITETI" FontSize="20" FontWeight="Bold" Foreground="{StaticResource UIWhiteColor}" />
 
                 <!-- tree view -->
+                <TreeView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="Transparent" BorderThickness="0" Grid.ColumnSpan="4" Margin="5, 50, 5, 5" ItemsSource="{Binding Klasifikovani}">
+                    <TreeView.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{StaticResource GradientColorOne}" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="Black" />
+
+                        <HierarchicalDataTemplate DataType="{x:Type model:KlasifikovaniEntiteti}" ItemsSource="{Binding ListaEntiteta}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding AdresnaKlasa}" FontSize="16" FontWeight="SemiBold" Foreground="White"/>
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                        <DataTemplate DataType="{x:Type model:Entitet}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="16" FontWeight="SemiBold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Run Text="{Binding Naziv}" />
+                                    <Run Text="      " />
+                                </TextBlock>
+                                <Image Source="{Binding Slika}" Width="40" />
+                                <TextBlock Margin="10, 0, 0, 0" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Boja}" Value="false">
+                                                    <Setter Property="Foreground" Value="Green" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Boja}" Value="true">
+                                                    <Setter Property="Foreground" Value="Red" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                    <Run Text="{Binding Zauzece}" />
+                                    <Run Text="%  " />
+                                </TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </TreeView.Resources>
+                </TreeView>
             </Grid>
         </Border>
     </Grid>
