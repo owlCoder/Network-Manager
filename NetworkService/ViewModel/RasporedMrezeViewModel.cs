@@ -12,6 +12,14 @@ namespace NetworkService.ViewModel
 
         public BindingList<KlasifikovaniEntiteti> Klasifikovani { get; set; }
 
+        // komande za drag & drop
+        // to do treba ih inicijalizovati!
+        public MyICommand DragOverKomanda { get; private set; }
+        public MyICommand DropKomanda { get; private set; }
+        public MyICommand MouseLevoDugme { get; private set; }
+        public MyICommand SelectedItemPromena { get; private set; }
+        public MyICommand OslobodiKomanda { get; private set; }
+
         public RasporedMrezeViewModel()
         {
             Entiteti = MainWindowViewModel.Entiteti;

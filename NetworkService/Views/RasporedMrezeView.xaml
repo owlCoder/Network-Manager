@@ -33,7 +33,7 @@
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Content="RASPORED ENTITETA U MREŽI" FontSize="20" FontWeight="Bold" Foreground="{StaticResource UIWhiteColor}" />
 
                 <DockPanel Grid.Column="0" Grid.Row="1" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
@@ -54,7 +54,7 @@
                 </DockPanel>
 
                 <DockPanel Grid.Column="1" Grid.Row="1" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
@@ -75,7 +75,7 @@
                 </DockPanel>
 
                 <DockPanel Grid.Column="2" Grid.Row="1" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
@@ -96,7 +96,7 @@
                 </DockPanel>
 
                 <DockPanel Grid.Column="3" Grid.Row="1" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
@@ -109,7 +109,7 @@
                 </DockPanel>
 
                 <DockPanel Grid.Column="4" Grid.Row="1" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
@@ -131,7 +131,7 @@
 
                 <!-- drugi red -->
                 <DockPanel Grid.Column="0" Grid.Row="2" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
@@ -152,7 +152,7 @@
                 </DockPanel>
 
                 <DockPanel Grid.Column="1" Grid.Row="2" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
@@ -173,7 +173,7 @@
                 </DockPanel>
 
                 <DockPanel Grid.Column="2" Grid.Row="2" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
@@ -194,7 +194,7 @@
                 </DockPanel>
 
                 <DockPanel Grid.Column="3" Grid.Row="2" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
@@ -207,7 +207,7 @@
                 </DockPanel>
 
                 <DockPanel Grid.Column="4" Grid.Row="2" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
@@ -229,7 +229,7 @@
 
                 <!-- treci red -->
                 <DockPanel Grid.Column="0" Grid.Row="3" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
@@ -250,7 +250,7 @@
                 </DockPanel>
 
                 <DockPanel Grid.Column="1" Grid.Row="3" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
@@ -271,7 +271,7 @@
                 </DockPanel>
 
                 <DockPanel Grid.Column="2" Grid.Row="3" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
@@ -292,7 +292,7 @@
                 </DockPanel>
 
                 <DockPanel Grid.Column="3" Grid.Row="3" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="7"/>
@@ -305,7 +305,7 @@
                 </DockPanel>
 
                 <DockPanel Grid.Column="4" Grid.Row="3" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
@@ -393,7 +393,7 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </TreeView>
-                
+
                 <Button Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="3"
                                 x:Name="rasporedi" 
                                 Width="290" 
