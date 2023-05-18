@@ -24,7 +24,7 @@ namespace NetworkService.ViewModel
         public PocetnaViewModel pocetnaViewModel;
         public MrezniEntitetiViewModel mrezniEntitetiViewModel;
         public StatistikaMrezeViewModel statistikaMrezeViewModel;
-        public RasporedMrezeViewModel rasporedMrezeViewModel;
+        public static RasporedMrezeViewModel rasporedMrezeViewModel;
         #endregion
 
         #region TRENUTNO PRIKAZAN VIEW MODEL
@@ -54,7 +54,7 @@ namespace NetworkService.ViewModel
             Messenger.Default.Register<ObservableCollection<Entitet>>(this, GetList);
 
             #region TEST ENTITETI 10 PRIMERAKA
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
                 mrezniEntitetiViewModel.OnDodajPress();
             }

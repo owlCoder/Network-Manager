@@ -3,6 +3,7 @@ using NetworkService.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 
 namespace NetworkService.ViewModel
 {
@@ -16,18 +17,27 @@ namespace NetworkService.ViewModel
         {
             Entiteti = MainWindowViewModel.Entiteti;
 
+            Preraspodela();
+        }
+
+        #region PROPERTY KLASE RasporedMrezeViewModel
+        #endregion
+
+        #region METODA PRERASPODELE
+        public void Preraspodela()
+        {
             Klasifikovani = new BindingList<KlasifikovaniEntiteti>();
             Klasifikovani.Clear();
 
-            KlasifikovaniEntiteti klasa_a = new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa A"};
-            KlasifikovaniEntiteti klasa_b = new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa B"};
-            KlasifikovaniEntiteti klasa_c = new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa C"};
-            KlasifikovaniEntiteti klasa_d = new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa D"};
-            KlasifikovaniEntiteti klasa_e = new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa E"};
+            KlasifikovaniEntiteti klasa_a = new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa A" };
+            KlasifikovaniEntiteti klasa_b = new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa B" };
+            KlasifikovaniEntiteti klasa_c = new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa C" };
+            KlasifikovaniEntiteti klasa_d = new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa D" };
+            KlasifikovaniEntiteti klasa_e = new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa E" };
 
-            foreach(var item in Entiteti)
+            foreach (var item in Entiteti)
             {
-                if(item.Klasa.Equals("A"))
+                if (item.Klasa.Equals("A"))
                 {
                     klasa_a.ListaEntiteta.Add(item);
                 }
@@ -47,16 +57,14 @@ namespace NetworkService.ViewModel
                 {
                     klasa_e.ListaEntiteta.Add(item);
                 }
-
-                Klasifikovani.Add(klasa_a);
-               // Klasifikovani.Add(klasa_b);
-               // Klasifikovani.Add(klasa_c);
-              //  Klasifikovani.Add(klasa_d);
-              //  Klasifikovani.Add(klasa_e);
             }
-        }
 
-        #region PROPERTY KLASE RasporedMrezeViewModel
+            Klasifikovani.Add(klasa_a);
+            Klasifikovani.Add(klasa_b);
+            Klasifikovani.Add(klasa_c);
+            Klasifikovani.Add(klasa_d);
+            Klasifikovani.Add(klasa_e);
+        }
         #endregion
     }
 }

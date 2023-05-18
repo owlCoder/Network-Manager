@@ -368,6 +368,8 @@ namespace NetworkService.ViewModel
                     Zauzece = new Random().Next(0, 100),
                     Klasa = klasa
                 });
+            
+            MainWindowViewModel.rasporedMrezeViewModel.Preraspodela();
         }
 
         public void OnBrisanjePress()

@@ -31,9 +31,6 @@ namespace NetworkService.ViewModel
             Merenje_3 = new Merenje() { Izmereno = 0, VanOpsega = true };
             Merenje_4 = new Merenje() { Izmereno = 0, VanOpsega = true };
             Merenje_5 = new Merenje() { Izmereno = 0, VanOpsega = true };
-
-            // da se prvo poveze na simulator
-            // ReadFromLogFile(); // u kontinuitetu menjaj vrednosti merenja za odabrani id
         }
         #endregion
 
