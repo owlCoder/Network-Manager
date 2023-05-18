@@ -366,7 +366,9 @@ namespace NetworkService.ViewModel
                     IP = ip,
                     Slika = "/Assets/uredjaj.png",
                     Zauzece = new Random().Next(0, 100),
-                    Klasa = klasa
+                    Klasa = klasa,
+                    Canvas_pozicija = -1,
+                    Povezan_sa_entitet_id = -1
                 });
 
             MainWindowViewModel.rasporedMrezeViewModel.Preraspodela();
