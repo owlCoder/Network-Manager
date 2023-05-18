@@ -343,10 +343,10 @@ namespace NetworkService.ViewModel
             switch (odabrana_adresna_klasa)
             {
                 case 0: ip_prvi_oktet = new Random().Next(1, 127); klasa = "A"; break;
-                case 1: ip_prvi_oktet = new Random().Next(128, 191); klasa = "B";  break;
-                case 2: ip_prvi_oktet = new Random().Next(192, 223); klasa = "C";  break;
-                case 3: ip_prvi_oktet = new Random().Next(224, 239); klasa = "D";  break;
-                case 4: ip_prvi_oktet = new Random().Next(240, 255); klasa = "E";  break;
+                case 1: ip_prvi_oktet = new Random().Next(128, 191); klasa = "B"; break;
+                case 2: ip_prvi_oktet = new Random().Next(192, 223); klasa = "C"; break;
+                case 3: ip_prvi_oktet = new Random().Next(224, 239); klasa = "D"; break;
+                case 4: ip_prvi_oktet = new Random().Next(240, 255); klasa = "E"; break;
                 default: ip_prvi_oktet = 0; klasa = "A"; break;
             }
 
@@ -368,7 +368,7 @@ namespace NetworkService.ViewModel
                     Zauzece = new Random().Next(0, 100),
                     Klasa = klasa
                 });
-            
+
             MainWindowViewModel.rasporedMrezeViewModel.Preraspodela();
         }
 

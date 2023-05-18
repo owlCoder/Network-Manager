@@ -2,13 +2,12 @@
 using NetworkService.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
 
 namespace NetworkService.ViewModel
 {
     public class RasporedMrezeViewModel : BindableBase
     {
+        public MyICommand NasumicnoRasporedi { get; private set; }
         public static ObservableCollection<Entitet> Entiteti { get; set; }
 
         public BindingList<KlasifikovaniEntiteti> Klasifikovani { get; set; }
@@ -16,11 +15,15 @@ namespace NetworkService.ViewModel
         public RasporedMrezeViewModel()
         {
             Entiteti = MainWindowViewModel.Entiteti;
-
+            NasumicnoRasporedi = new MyICommand(Rasporedi);
             Preraspodela();
         }
 
         #region PROPERTY KLASE RasporedMrezeViewModel
+        private void Rasporedi()
+        {
+
+        }
         #endregion
 
         #region METODA PRERASPODELE
@@ -37,23 +40,23 @@ namespace NetworkService.ViewModel
 
             foreach (var item in Entiteti)
             {
-                if (item.Klasa.Equals("A"))
+                if (item.Klasa.Equals("A") && item.Canvas_pozicija == -1) // dodajemo samo entitete koji nisu vec na canvasu
                 {
                     klasa_a.ListaEntiteta.Add(item);
                 }
-                else if (item.Klasa.Equals("B"))
+                else if (item.Klasa.Equals("B") && item.Canvas_pozicija == -1) // dodajemo samo entitete koji nisu vec na canvasu
                 {
                     klasa_b.ListaEntiteta.Add(item);
                 }
-                else if (item.Klasa.Equals("C"))
+                else if (item.Klasa.Equals("C") && item.Canvas_pozicija == -1) // dodajemo samo entitete koji nisu vec na canvasu
                 {
                     klasa_c.ListaEntiteta.Add(item);
                 }
-                else if (item.Klasa.Equals("D"))
+                else if (item.Klasa.Equals("D") && item.Canvas_pozicija == -1) // dodajemo samo entitete koji nisu vec na canvasu
                 {
                     klasa_d.ListaEntiteta.Add(item);
                 }
-                else
+                else if (item.Klasa.Equals("E") && item.Canvas_pozicija == -1) // dodajemo samo entitete koji nisu vec na canvasu
                 {
                     klasa_e.ListaEntiteta.Add(item);
                 }

@@ -12,6 +12,8 @@ namespace NetworkService.Model
         private int zauzece;
         private bool boja;
         private string klasa;
+        private int canvas_pozicija;
+        private int povezan_sa_entitet_id;
         #endregion
 
         #region KONSTRUKTOR KLASE Entitet
@@ -144,10 +146,44 @@ namespace NetworkService.Model
 
             set
             {
-                if(klasa != value)
+                if (klasa != value)
                 {
                     klasa = value;
                     OnPropertyChanged("Klasa");
+                }
+            }
+        }
+
+        public int Canvas_pozicija
+        {
+            get
+            {
+                return canvas_pozicija;
+            }
+
+            set
+            {
+                if (canvas_pozicija != value)
+                {
+                    canvas_pozicija = value;
+                    OnPropertyChanged("Canvas_pozicija");
+                }
+            }
+        }
+
+        public int Povezan_sa_entitet_id
+        {
+            get
+            {
+                return povezan_sa_entitet_id;
+            }
+
+            set
+            {
+                if (povezan_sa_entitet_id != value)
+                {
+                    povezan_sa_entitet_id = value;
+                    OnPropertyChanged("Povezan_sa_entitet_id");
                 }
             }
         }

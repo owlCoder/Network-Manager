@@ -43,6 +43,7 @@
                     <RowDefinition Height="0.8*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="0.3*" />
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Content="DOSTUPNI ENTITETI" FontSize="20" FontWeight="Bold" Foreground="{StaticResource UIWhiteColor}" />
 
@@ -86,6 +87,26 @@
                         </DataTemplate>
                     </TreeView.Resources>
                 </TreeView>
+
+                <Button Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="3"
+                                x:Name="rasporedi" 
+                                Width="290" 
+                                Command="{Binding NasumicnoRasporedi}" 
+                                BorderThickness="0.5"
+                            Height="37"
+                                Background="{StaticResource UIQuatriraryColor}"
+                                HorizontalAlignment="Left"
+                                Margin="20,0,-10,0">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="7"/>
+                        </Style>
+                    </Button.Resources>
+                    <StackPanel Background="Transparent" Orientation="Horizontal" VerticalAlignment="Center" Width="220">
+                        <Image Source="/Assets/random.png" Stretch="Uniform" Width="30" Margin="5, 0, 0, 0" />
+                        <TextBlock Margin="5,0,0,0" FontSize="18" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center">NASUMIČAN RASPORED</TextBlock>
+                    </StackPanel>
+                </Button>
             </Grid>
         </Border>
     </Grid>

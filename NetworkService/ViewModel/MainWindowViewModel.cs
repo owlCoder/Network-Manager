@@ -47,6 +47,7 @@ namespace NetworkService.ViewModel
 
             pocetnaViewModel = new PocetnaViewModel();
             mrezniEntitetiViewModel = new MrezniEntitetiViewModel();
+            rasporedMrezeViewModel = new RasporedMrezeViewModel();
             CurrentViewModel = pocetnaViewModel;
 
             Messenger.Default.Register<Entitet>(this, AddToList);
@@ -61,7 +62,6 @@ namespace NetworkService.ViewModel
             #endregion
 
             statistikaMrezeViewModel = new StatistikaMrezeViewModel();
-            rasporedMrezeViewModel = new RasporedMrezeViewModel();
 
             // brisanje starog log fajla ako postoji
             if (File.Exists("log.txt"))

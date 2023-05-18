@@ -179,5 +179,8 @@
     <Resource Include="Assets\minus.png" />
     <Resource Include="Assets\plus.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\random.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
