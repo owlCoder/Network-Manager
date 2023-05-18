@@ -54,11 +54,41 @@ namespace NetworkService.ViewModel
             Messenger.Default.Register<int>(this, RemoveFromList);
             Messenger.Default.Register<ObservableCollection<Entitet>>(this, GetList);
 
-            #region TEST ENTITETI 10 PRIMERAKA
-            for (int i = 0; i < 5; i++)
+            #region TEST ENTITETI 15 PRIMERAKA
+            for (int i = 0; i < 3; i++)
             {
                 mrezniEntitetiViewModel.OnDodajPress();
             }
+
+            mrezniEntitetiViewModel.OdabraniIndeksDodavanjeEntiteta = new Random().Next(0, 4);
+
+            for (int i = 0; i < 3; i++)
+            {
+                mrezniEntitetiViewModel.OnDodajPress();
+            }
+
+            mrezniEntitetiViewModel.OdabraniIndeksDodavanjeEntiteta = new Random().Next(0, 4);
+            
+            for (int i = 0; i < 3; i++)
+            {
+                mrezniEntitetiViewModel.OnDodajPress();
+            }
+
+            mrezniEntitetiViewModel.OdabraniIndeksDodavanjeEntiteta = new Random().Next(0, 4);
+
+            for (int i = 0; i < 3; i++)
+            {
+                mrezniEntitetiViewModel.OnDodajPress();
+            }
+
+            mrezniEntitetiViewModel.OdabraniIndeksDodavanjeEntiteta = new Random().Next(0, 4);
+
+            for (int i = 0; i < 3; i++)
+            {
+                mrezniEntitetiViewModel.OnDodajPress();
+            }
+
+            mrezniEntitetiViewModel.OdabraniIndeksDodavanjeEntiteta = 0;
             #endregion
 
             statistikaMrezeViewModel = new StatistikaMrezeViewModel();
