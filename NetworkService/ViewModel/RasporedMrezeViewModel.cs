@@ -92,12 +92,12 @@ namespace NetworkService.ViewModel
 
             // vrati u tree view
             item.Canvas_pozicija = -1; // vise nije na canvasu
-            Entiteti.Add(item);
+            //Entiteti.Add(item);
         }
 
         private void DropMetoda(Canvas kanvas)
         {
-            TextBlock ispis = ((TextBlock)((Canvas)kanvas).Children[0]);
+            TextBlock ispis = ((TextBlock)(kanvas).Children[0]);
 
             if (draggedItem != null)
             {
