@@ -152,6 +152,10 @@
 
         <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
             <DataGrid ItemsSource="{Binding ListaEntiteta}" CanUserSortColumns="False" CanUserResizeColumns="False" SelectedItem="{Binding OdabraniEntitet}" SelectionMode="Single" SelectionUnit="FullRow"  AutoGenerateColumns="False" IsReadOnly="True" FontWeight="Bold" FontSize="18" Margin="10">
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#D3EAE7" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#D3EAE7" />
+                </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="ID" Binding="{Binding Id}" Width="100" />
                     <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="Naziv" Binding="{Binding Naziv}" Width="250" />

@@ -89,6 +89,9 @@ namespace NetworkService.ViewModel
             }
 
             mrezniEntitetiViewModel.OdabraniIndeksDodavanjeEntiteta = 0;
+
+            // omoguciti restartovanje simulatora
+            MrezniEntitetiViewModel.TestMode = false;
             #endregion
 
             statistikaMrezeViewModel = new StatistikaMrezeViewModel();
@@ -151,10 +154,10 @@ namespace NetworkService.ViewModel
 
                             Entitet za_izmenu = Entiteti.FirstOrDefault(p => p.Id == id + 1);
 
-                            // if(za_izmenu != null && zauzece >= 45 && zauzece <= 75)
-                            //{
-                            za_izmenu.Zauzece = zauzece;
-                            // }
+                             if(za_izmenu != null) // obrisan objekat a simulator se jos nije restartovao - odbaciti
+                             {
+                                za_izmenu.Zauzece = zauzece;
+                             }
 
                             // upis merenja u txt datoteku
                             string za_upis = ((id + 1) + "-" + zauzece).ToString() + "-" + DateTime.Now.ToString("dd/MM/yyyy HH:mm");

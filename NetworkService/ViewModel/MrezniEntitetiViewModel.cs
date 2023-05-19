@@ -3,6 +3,8 @@ using NetworkService.Helpers;
 using NetworkService.Model;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading;
 
@@ -48,6 +50,8 @@ namespace NetworkService.ViewModel
 
         private Filter odabraniFilter = new Filter();
 
+        public static bool TestMode = true;
+
         // Ako nije primenjen nijedan filter - prikazuje se originalna lista entiteta
         // U suprotnom prikazuju se filtrirani entiteti iz Liste FiltriraniEntiteti
         private static ObservableCollection<Entitet> listaEntiteta { get; set; }
@@ -70,7 +74,10 @@ namespace NetworkService.ViewModel
             listaEntiteta = MainWindowViewModel.Entiteti; // na prvi prikaz prikazuju se svi entiteti
             MoguceBrisanje = false;
             OdabraniEntitet = null; // nije odabran nijedan entitet
+
+           // Simulator = 
         }
+
         #endregion
 
         #region PROPERTY KLASE MrezniEntitetiViewModel

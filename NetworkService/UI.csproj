@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\build\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -187,6 +187,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\random.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MeteringSimulator\MeteringSimulator.csproj">
+      <Project>{134d87ad-f428-469f-a98e-5f007edd241b}</Project>
+      <Name>MeteringSimulator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

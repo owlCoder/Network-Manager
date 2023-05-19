@@ -12,9 +12,10 @@ namespace MeteringSimulator
     public partial class MainWindow : Window
     {
         private static double value = -1;
-        private static int objectNum = 0;
+        private static int objectNum = 0, prev_obj_count = 0, timeout = 1;
         private int numObjects = -1;
         private Random r = new Random();
+        private bool prviPut = true;
 
         public MainWindow()
         {
@@ -51,6 +52,17 @@ namespace MeteringSimulator
                 //Parsiranje odgovora u int vrednost
                 numObjects = Int32.Parse(response);
 
+                // ako se promeni broj entiteta restartuj simulator
+                if(!prviPut && numObjects != prev_obj_count) 
+                {
+                    RestartButton_Click(null, null);
+                }
+                else
+                {
+                    prviPut = false;
+                    prev_obj_count = numObjects;
+                }
+
                 //Zatvaranje konekcije
                 stream.Close();
                 client.Close();
@@ -64,7 +76,18 @@ namespace MeteringSimulator
         private void startReporting()
         {
             //Na radnom vreme posalji izmenu vrednosti nekog random objekta i nastavi da to radis u rekurziji
-            int waitTime = r.Next(1000, 2500);
+            int waitTime = r.Next(100, 500);
+
+            // svaki peti put se pita za broj objekata
+            if(timeout == 5)
+            {
+                timeout = 0;
+                askForCount(); // proveri da li se broj objekata promenio
+
+            }
+
+            timeout += 1;
+
             Task.Delay(waitTime).ContinueWith(_ =>
             {
                 this.Dispatcher.Invoke(() =>
@@ -72,7 +95,7 @@ namespace MeteringSimulator
                     //Slanje izmene stanja nekog objekta
                     sendReport();
                     //Upis u text box, radi lakse provere
-                    textBox.Text = "Entity_" + objectNum + " changed state to: " + value.ToString() + "\n" + textBox.Text;
+                    textBox.Text = "Entity_" + (objectNum + 1) + " changed state to: " + value.ToString() + "\n" + textBox.Text;
                     //Pocni proces ispocetka
                     startReporting();
                 });
@@ -114,5 +137,12 @@ namespace MeteringSimulator
             System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
             Application.Current.Shutdown();
         }
+
+        //public static void Reset()
+        //{
+        //    string str = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AppDomain.CurrentDomain.RelativeSearchPath ?? "");
+        //    Process.Start(str + "MeteringSimulator.exe");
+        //    Application.Current.Shutdown();
+        //}
     }
 }
