@@ -9,6 +9,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using NetworkService.Views;
 using System.IO;
+using System.Net.NetworkInformation;
+using System.Linq;
 
 namespace NetworkService.ViewModel
 {
@@ -25,7 +27,7 @@ namespace NetworkService.ViewModel
         public MyICommand<Canvas> DropKomanda { get; private set; }
         public MyICommand MouseLevoDugme { get; private set; }
         public MyICommand<TreeView> TreeViewOdabran { get; private set; }
-        public MyICommand OslobodiKomanda { get; private set; }
+        public MyICommand<Canvas> OslobodiKomanda { get; private set; }
 
         // za drag&drop
         private Entitet draggedItem = null;
@@ -43,6 +45,56 @@ namespace NetworkService.ViewModel
             DropKomanda = new MyICommand<Canvas>(DropMetoda);
             MouseLevoDugme = new MyICommand(TreeView_MouseLeftButtonUp);
             TreeViewOdabran = new MyICommand<TreeView>(Promena_SelectedItemChanged);
+            OslobodiKomanda = new MyICommand<Canvas>(Oslobodi_Dugme);
+        }
+
+        private void Oslobodi_Dugme(Canvas kanvasRoditelj)
+        {
+            if (kanvasRoditelj.Resources["taken"] != null)
+            {
+                VratiElement(kanvasRoditelj);
+
+                kanvasRoditelj.Background = Brushes.White;
+                ((TextBlock)kanvasRoditelj.Children[0]).Text = string.Empty;
+                kanvasRoditelj.Resources.Remove("taken");
+            }
+        }
+
+        private void VratiElement(Canvas kanvasRoditelj)
+        {
+            string naziv_entiteta = ((TextBlock)kanvasRoditelj.Children[0]).Text;
+
+            Entitet item = Entiteti.FirstOrDefault(p => p.Naziv.Equals(naziv_entiteta));
+
+            if(item == null)
+            {
+                return;
+            }
+
+            if (item.Klasa.Equals("A"))
+            {
+                Klasifikovani[0].ListaEntiteta.Remove(item);
+            }
+            else if (item.Klasa.Equals("B"))
+            {
+                Klasifikovani[1].ListaEntiteta.Remove(item);
+            }
+            else if (item.Klasa.Equals("C"))
+            {
+                Klasifikovani[2].ListaEntiteta.Remove(item);
+            }
+            else if (item.Klasa.Equals("D"))
+            {
+                Klasifikovani[3].ListaEntiteta.Remove(item);
+            }
+            else if (item.Klasa.Equals("E"))
+            {
+                Klasifikovani[4].ListaEntiteta.Remove(item);
+            }
+
+            // vrati u tree view
+            item.Canvas_pozicija = -1; // vise nije na canvasu
+            Entiteti.Add(item);
         }
 
         private void DropMetoda(Canvas kanvas)
@@ -60,7 +112,8 @@ namespace NetworkService.ViewModel
                     img.EndInit();
                     kanvas.Background = new ImageBrush(img);
                     ispis.Text = draggedItem.Naziv;
-                    //ispis.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF1338BE"));
+                    ispis.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#000000"));
+                    // kanvas.Background = (SolidColorBrush)(Brushes.Transparent);
                     draggedItem.Canvas_pozicija = GetCanvasId(kanvas.Name);
                     kanvas.Resources.Add("taken", true);
                     ukloniElement(draggedItem);
