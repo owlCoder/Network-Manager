@@ -149,7 +149,7 @@ namespace NetworkService.ViewModel
             {
                 dragging = true;
                 draggedItem = (Entitet)tv.SelectedItem;
-                selected = pronadjiElement(draggedItem);
+                selected = PronadjiElement(draggedItem);
                 DragDrop.DoDragDrop(prozor, draggedItem, DragDropEffects.Move | DragDropEffects.Copy);
             }
         }
@@ -161,7 +161,7 @@ namespace NetworkService.ViewModel
             draggedItem = null;
         }
 
-        private int pronadjiElement(Entitet draggedItem)
+        private int PronadjiElement(Entitet draggedItem)
         {
             int index = 0;
             if (draggedItem.Klasa.Equals("A"))
