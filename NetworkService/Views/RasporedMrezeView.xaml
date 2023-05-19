@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              xmlns:local="clr-namespace:NetworkService.Views"
              xmlns:model="clr-namespace:NetworkService.Model"
              xmlns:helpers="clr-namespace:NetworkService.Helpers"
@@ -122,15 +123,15 @@
                         </Button.Resources>
                     </Button>
                     <Canvas Background="White" AllowDrop="True" x:Name="c4">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding CanvasElement, ElementName=c4}"/>
+                                <ei:CallMethodAction TargetObject="{Binding}" MethodName="PrevuciNaCanvas"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
                                 <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
+                        <TextBlock FontSize="12" Margin="5" Text=""/>
                     </Canvas>
                 </DockPanel>
 

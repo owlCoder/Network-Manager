@@ -55,7 +55,7 @@ namespace NetworkService.ViewModel
             // komande za drag&drop
             MouseLevoDugme = new MyICommand(TreeView_MouseLeftButtonUp);
             SelectedItemPromena = new MyICommand<Entitet>(Promena_SelectedItemChanged);
-            DragOverKomanda = new MyICommand<Canvas>(PrevuciNaCanvas);
+           // DragOverKomanda = new MyICommand<Canvas>(PrevuciNaCanvas);
             DropKomanda = new MyICommand<Canvas>(UkloniSaCanvas);
 
             Entiteti = MainWindowViewModel.Entiteti;
@@ -68,20 +68,19 @@ namespace NetworkService.ViewModel
             throw new NotImplementedException();
         }
 
-        private void PrevuciNaCanvas(Canvas obj)
+        private void PrevuciNaCanvas(object sender, DragEventArgs e)
         {
-            Canvas kanvas = ((Canvas)obj);
-            // RasporedMrezeView.UserControl.OnDragOver(e);
-
+            Canvas kanvas = ((Canvas)sender);
+           // RasporedMrezeView.UserControl.DataContext.;
             if (kanvas.Resources["taken"] != null)
             {
-                //e.Effects = DragDropEffects.None;
+                e.Effects = DragDropEffects.None;
             }
             else
             {
-                //e.Effects = DragDropEffects.Copy;
+                e.Effects = DragDropEffects.Copy;
             }
-           // e.Handled = true;
+            e.Handled = true;
         }
 
         #region PROPERTY KLASE RasporedMrezeViewModel
