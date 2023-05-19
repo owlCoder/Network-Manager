@@ -18,10 +18,9 @@ namespace NetworkService.ViewModel
     {
         public static ObservableCollection<Entitet> Entiteti { get; set; }
 
-        public BindingList<KlasifikovaniEntiteti> Klasifikovani { get; set; }
+        public static BindingList<KlasifikovaniEntiteti> Klasifikovani { get; set; }
 
         // komande za drag & drop
-        // to do treba ih inicijalizovati!
         public MyICommand<Canvas> DragOverKomanda { get; private set; }
         public MyICommand<Canvas> DropKomanda { get; private set; }
         public MyICommand MouseLevoDugme { get; private set; }
@@ -29,7 +28,7 @@ namespace NetworkService.ViewModel
         public MyICommand<Canvas> OslobodiKomanda { get; private set; }
         public MyICommand<Grid> NasumicnoRasporedi { get; private set; }
 
-        // za drag&drop
+        // za drag & drop
         private Entitet draggedItem = null;
         private bool dragging = false;
         private int selected;
