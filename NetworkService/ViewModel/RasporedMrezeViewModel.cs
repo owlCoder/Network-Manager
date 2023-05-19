@@ -16,7 +16,6 @@ namespace NetworkService.ViewModel
 {
     public class RasporedMrezeViewModel : BindableBase
     {
-        public MyICommand NasumicnoRasporedi { get; private set; }
         public static ObservableCollection<Entitet> Entiteti { get; set; }
 
         public BindingList<KlasifikovaniEntiteti> Klasifikovani { get; set; }
@@ -28,6 +27,7 @@ namespace NetworkService.ViewModel
         public MyICommand MouseLevoDugme { get; private set; }
         public MyICommand<TreeView> TreeViewOdabran { get; private set; }
         public MyICommand<Canvas> OslobodiKomanda { get; private set; }
+        public MyICommand<Grid> NasumicnoRasporedi { get; private set; }
 
         // za drag&drop
         private Entitet draggedItem = null;
@@ -37,7 +37,7 @@ namespace NetworkService.ViewModel
         public RasporedMrezeViewModel()
         {
             Entiteti = MainWindowViewModel.Entiteti;
-            NasumicnoRasporedi = new MyICommand(Rasporedi);
+            NasumicnoRasporedi = new MyICommand<Grid>(Rasporedi);
             Preraspodela();
 
             // komande
@@ -100,7 +100,7 @@ namespace NetworkService.ViewModel
         private void DropMetoda(Canvas kanvas)
         {
             TextBlock ispis = ((TextBlock)((Canvas)kanvas).Children[0]);
-            // base.OnDrop(e);
+
             if (draggedItem != null)
             {
                 if (kanvas.Resources["taken"] == null)
@@ -113,7 +113,6 @@ namespace NetworkService.ViewModel
                     kanvas.Background = new ImageBrush(img);
                     ispis.Text = draggedItem.Naziv;
                     ispis.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#000000"));
-                    // kanvas.Background = (SolidColorBrush)(Brushes.Transparent);
                     draggedItem.Canvas_pozicija = GetCanvasId(kanvas.Name);
                     kanvas.Resources.Add("taken", true);
                     ukloniElement(draggedItem);
@@ -121,7 +120,6 @@ namespace NetworkService.ViewModel
                 draggedItem = null;
                 dragging = false;
             }
-            // e.Handled = true;
         }
 
         private int GetCanvasId(string name)
@@ -217,22 +215,13 @@ namespace NetworkService.ViewModel
 
         private void DragOverMetoda(Canvas kanvas)
         {
-            // base.OnDragOver(e);
-            //if (kanvas.Resources["taken"] != null)
-            //{
-            //    DragDropEff = DragDropEffects.None;
-            //}
-            //else
-            //{
-            //    e.Effects = DragDropEffects.Copy;
-            //}
-            //e.Handled = true;
+            // TO DO
         }
 
         #region PROPERTY KLASE RasporedMrezeViewModel
-        private void Rasporedi()
+        private void Rasporedi(Grid desni_grid_canvas)
         {
-
+            // Rasporedi na preostala slobodna mesta
         }
         #endregion
 
