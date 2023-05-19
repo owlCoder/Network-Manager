@@ -6,8 +6,13 @@
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:local="clr-namespace:NetworkService.Views"
              xmlns:model="clr-namespace:NetworkService.Model"
+             xmlns:helpers="clr-namespace:NetworkService.Helpers"
              mc:Ignorable="d" 
+             Name="ReferencaProzora"
              d:DesignHeight="450" d:DesignWidth="1200">
+    <UserControl.Resources>
+        <helpers:PassThroughConverter x:Key="PassthroughConverter" />
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2.5*" />
@@ -116,11 +121,11 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
+                    <Canvas Background="White" AllowDrop="True" x:Name="c4">
                         <TextBlock FontSize="12" Margin="5" Text=""/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding CanvasElement, ElementName=c4}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
                                 <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
@@ -346,7 +351,7 @@
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Content="DOSTUPNI ENTITETI" FontSize="20" FontWeight="Bold" Foreground="{StaticResource UIWhiteColor}" />
 
                 <!-- tree view -->
-                <TreeView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Grid.ColumnSpan="4" Margin="5, 50, 5, 5" ItemsSource="{Binding Klasifikovani}">
+                <TreeView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="Transparent" x:Name="drvo" BorderThickness="0" BorderBrush="Transparent" Grid.ColumnSpan="4" Margin="5, 50, 5, 5" ItemsSource="{Binding Klasifikovani}">
                     <TreeView.Resources>
                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{StaticResource GradientColorOne}" />
                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
@@ -389,7 +394,7 @@
                             <i:InvokeCommandAction Command="{Binding MouseLevoDugme}"/>
                         </i:EventTrigger>
                         <i:EventTrigger EventName="SelectedItemChanged">
-                            <i:InvokeCommandAction Command="{Binding SelectedItemPromena}"/>
+                            <i:InvokeCommandAction Command="{Binding SelectedItemPromena}" CommandParameter="{Binding SelectedItem, ElementName=drvo}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </TreeView>
