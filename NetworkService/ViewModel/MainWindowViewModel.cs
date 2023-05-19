@@ -35,6 +35,10 @@ namespace NetworkService.ViewModel
         public static ObservableCollection<Entitet> Entiteti { get; set; }
         #endregion
 
+        #region INFO PORUKA
+        private string poruka;
+        #endregion
+
         #region KONSTRUKTOR KLASE 
         public MainWindowViewModel()
         {
@@ -89,9 +93,6 @@ namespace NetworkService.ViewModel
             }
 
             mrezniEntitetiViewModel.OdabraniIndeksDodavanjeEntiteta = 0;
-
-            // omoguciti restartovanje simulatora
-            MrezniEntitetiViewModel.TestMode = false;
             #endregion
 
             statistikaMrezeViewModel = new StatistikaMrezeViewModel();
@@ -103,6 +104,25 @@ namespace NetworkService.ViewModel
             }
 
             statistikaMrezeViewModel.AzuriranjeMerenja();
+        }
+        #endregion
+
+        #region PROPERTY ZA PORUKU
+        public string Poruka
+        {
+            get
+            {
+                return poruka;
+            }
+
+            set
+            {
+                if(poruka != value)
+                {
+                    poruka = value;
+                    OnPropertyChanged("Poruka");
+                }
+            }
         }
         #endregion
 

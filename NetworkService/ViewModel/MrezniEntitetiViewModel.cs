@@ -50,7 +50,6 @@ namespace NetworkService.ViewModel
 
         private Filter odabraniFilter = new Filter();
 
-        public static bool TestMode = true;
 
         // Ako nije primenjen nijedan filter - prikazuje se originalna lista entiteta
         // U suprotnom prikazuju se filtrirani entiteti iz Liste FiltriraniEntiteti
