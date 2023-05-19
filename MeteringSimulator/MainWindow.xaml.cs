@@ -4,7 +4,6 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Media;
 
 namespace MeteringSimulator
 {
@@ -57,7 +56,7 @@ namespace MeteringSimulator
                 numObjects = Int32.Parse(response);
 
                 // ako se promeni broj entiteta restartuj simulator
-                if(!prviPut && numObjects != prev_obj_count) 
+                if (!prviPut && numObjects != prev_obj_count)
                 {
                     RestartButton_Click(null, null);
                 }
@@ -83,7 +82,7 @@ namespace MeteringSimulator
             int waitTime = r.Next(1000, 5000);
 
             // svaki peti put se pita za broj objekata
-            if(timeout == 5)
+            if (timeout == 5)
             {
                 timeout = 0;
                 askForCount(); // proveri da li se broj objekata promenio

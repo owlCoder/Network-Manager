@@ -72,7 +72,7 @@ namespace NetworkService.ViewModel
             }
 
             mrezniEntitetiViewModel.OdabraniIndeksDodavanjeEntiteta = new Random().Next(0, 4);
-            
+
             for (int i = 0; i < 3; i++)
             {
                 mrezniEntitetiViewModel.OnDodajPress();
@@ -120,7 +120,7 @@ namespace NetworkService.ViewModel
 
             set
             {
-                if(poruka != value)
+                if (poruka != value)
                 {
                     poruka = value;
                     OnPropertyChanged("Poruka");
@@ -177,8 +177,8 @@ namespace NetworkService.ViewModel
 
                             Entitet za_izmenu = Entiteti.FirstOrDefault(p => p.Id == id + 1);
 
-                             if(za_izmenu != null) // obrisan objekat a simulator se jos nije restartovao - odbaciti
-                             {
+                            if (za_izmenu != null) // obrisan objekat a simulator se jos nije restartovao - odbaciti
+                            {
                                 int staro = za_izmenu.Zauzece;
                                 za_izmenu.Zauzece = zauzece;
 

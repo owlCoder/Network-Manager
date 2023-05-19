@@ -1,16 +1,15 @@
 ﻿using NetworkService.Helpers;
 using NetworkService.Model;
+using NetworkService.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 using System.Windows.Media;
-using NetworkService.Views;
-using System.IO;
-using System.Net.NetworkInformation;
-using System.Linq;
+using System.Windows.Media.Imaging;
 
 namespace NetworkService.ViewModel
 {
@@ -65,7 +64,7 @@ namespace NetworkService.ViewModel
 
             Entitet item = Entiteti.FirstOrDefault(p => p.Naziv.Equals(naziv_entiteta));
 
-            if(item == null)
+            if (item == null)
             {
                 return;
             }
@@ -137,7 +136,7 @@ namespace NetworkService.ViewModel
             if (name.Equals("c10")) id = 10;
             if (name.Equals("c11")) id = 11;
             if (name.Equals("c12")) id = 12;
-           
+
             return id;
         }
 
@@ -194,7 +193,7 @@ namespace NetworkService.ViewModel
             {
                 Klasifikovani[0].ListaEntiteta.RemoveAt(selected);
             }
-            else if (draggedItem.Klasa.Equals("B") && draggedItem.Canvas_pozicija != -1 && Klasifikovani[1].ListaEntiteta.Count > 0) 
+            else if (draggedItem.Klasa.Equals("B") && draggedItem.Canvas_pozicija != -1 && Klasifikovani[1].ListaEntiteta.Count > 0)
             {
                 Klasifikovani[1].ListaEntiteta.RemoveAt(selected);
             }
@@ -221,17 +220,17 @@ namespace NetworkService.ViewModel
         private void Rasporedi(Grid desni_grid_canvas)
         {
             // Rasporedi na preostala slobodna mesta
-            for(int i = 1; i <= 12; i++) 
+            for (int i = 1; i <= 12; i++)
             {
                 // uzmemo canvas
                 Canvas kanvas = ((Canvas)((DockPanel)(desni_grid_canvas.Children[i])).Children[1]);
-                TextBlock trenutni = (TextBlock)((kanvas).Children[0]);   
+                TextBlock trenutni = (TextBlock)((kanvas).Children[0]);
                 string naziv_entiteta = trenutni.Text.Trim();
 
-                if(naziv_entiteta.Equals(""))
+                if (naziv_entiteta.Equals(""))
                 {
                     // prazan je canvas
-                    if (Klasifikovani[0].ListaEntiteta.Count  > 0) 
+                    if (Klasifikovani[0].ListaEntiteta.Count > 0)
                     {
                         draggedItem = Klasifikovani[0].ListaEntiteta[0];
                         Klasifikovani[0].ListaEntiteta.RemoveAt(0);

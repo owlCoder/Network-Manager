@@ -3,8 +3,6 @@ using NetworkService.Helpers;
 using NetworkService.Model;
 using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows;
@@ -91,7 +89,7 @@ namespace NetworkService.ViewModel
 
             set
             {
-                if(poruka != value)
+                if (poruka != value)
                 {
                     poruka = value;
                     OnPropertyChanged("Poruka");
@@ -107,11 +105,11 @@ namespace NetworkService.ViewModel
 
             set
             {
-                if( uspesno != value )
+                if (uspesno != value)
                 {
                     uspesno = value;
-                    
-                    if(uspesno == Visibility.Visible)
+
+                    if (uspesno == Visibility.Visible)
                     {
                         Greska = Informacija = Visibility.Hidden;
                         OnPropertyChanged("Greska");
@@ -530,7 +528,7 @@ namespace NetworkService.ViewModel
 
             // poruka korisniku
             Informacija = Visibility.Visible;
-            Poruka = "ℹ Filter (" + istorija +") je uspešno primenjen! Filtirarani entiteti su vidljivi u tabeli!";
+            Poruka = "ℹ Filter (" + istorija + ") je uspešno primenjen! Filtirarani entiteti su vidljivi u tabeli!";
         }
         #endregion
 
