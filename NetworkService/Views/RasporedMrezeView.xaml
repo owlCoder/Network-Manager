@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:NetworkService.Views"
              xmlns:model="clr-namespace:NetworkService.Model"
              mc:Ignorable="d" 
+             Name="Prozor"
              d:DesignHeight="450" d:DesignWidth="1200">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -40,14 +41,14 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
+                    <Canvas Background="White" AllowDrop="True" x:Name="c1">
                         <TextBlock FontSize="12" Margin="5" Text=""/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c1}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c1}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -61,14 +62,14 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
+                    <Canvas Background="White" AllowDrop="True" x:Name="c2">
                         <TextBlock FontSize="12" Margin="5" Text=""/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c2}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c2}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -82,14 +83,14 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
+                    <Canvas Background="White" AllowDrop="True" x:Name="c3">
                         <TextBlock FontSize="12" Margin="5" Text=""/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c3}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c3}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -116,14 +117,14 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
+                    <Canvas Background="White" AllowDrop="True" x:Name="c4">
                         <TextBlock FontSize="12" Margin="5" Text=""/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c4}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c4}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -138,14 +139,14 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
+                    <Canvas Background="White" AllowDrop="True" x:Name="c5">
                         <TextBlock FontSize="12" Margin="5" Text=""/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c5}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c5}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -159,14 +160,14 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
+                    <Canvas Background="White" AllowDrop="True" x:Name="c6">
                         <TextBlock FontSize="12" Margin="5" Text=""/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c6}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c6}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -180,14 +181,14 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
+                    <Canvas Background="White" AllowDrop="True" x:Name="c7">
                         <TextBlock FontSize="12" Margin="5" Text=""/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c7}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c7}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -214,14 +215,14 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
+                    <Canvas Background="White" AllowDrop="True" x:Name="c8">
                         <TextBlock FontSize="12" Margin="5" Text=""/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c8}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c8}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -236,14 +237,14 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
+                    <Canvas Background="White" AllowDrop="True" x:Name="c9">
                         <TextBlock FontSize="12" Margin="5" Text=""/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c9}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}"  CommandParameter="{Binding ElementName=c9}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -257,14 +258,14 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
+                    <Canvas Background="White" AllowDrop="True" x:Name="c10">
                         <TextBlock FontSize="12" Margin="5" Text=""/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c10}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c10}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -278,14 +279,14 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
+                    <Canvas Background="White" AllowDrop="True" x:Name="c11">
                         <TextBlock FontSize="12" Margin="5" Text=""/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c11}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c11}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -312,14 +313,14 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
+                    <Canvas Background="White" AllowDrop="True" x:Name="c12">
                         <TextBlock FontSize="12" Margin="5" Text=""/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c12}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c12}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -346,7 +347,7 @@
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Content="DOSTUPNI ENTITETI" FontSize="20" FontWeight="Bold" Foreground="{StaticResource UIWhiteColor}" />
 
                 <!-- tree view -->
-                <TreeView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Grid.ColumnSpan="4" Margin="5, 50, 5, 5" ItemsSource="{Binding Klasifikovani}">
+                <TreeView x:Name="treeView" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Grid.ColumnSpan="4" Margin="5, 50, 5, 5" ItemsSource="{Binding Klasifikovani}">
                     <TreeView.Resources>
                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{StaticResource GradientColorOne}" />
                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
@@ -389,7 +390,7 @@
                             <i:InvokeCommandAction Command="{Binding MouseLevoDugme}"/>
                         </i:EventTrigger>
                         <i:EventTrigger EventName="SelectedItemChanged">
-                            <i:InvokeCommandAction Command="{Binding SelectedItemPromena}"/>
+                            <i:InvokeCommandAction Command="{Binding TreeViewOdabran}" CommandParameter="{Binding ElementName=treeView}"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </TreeView>

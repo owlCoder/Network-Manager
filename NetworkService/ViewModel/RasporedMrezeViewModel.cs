@@ -1,7 +1,14 @@
 ﻿using NetworkService.Helpers;
 using NetworkService.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
+using NetworkService.Views;
+using System.IO;
 
 namespace NetworkService.ViewModel
 {
@@ -14,17 +21,159 @@ namespace NetworkService.ViewModel
 
         // komande za drag & drop
         // to do treba ih inicijalizovati!
-        public MyICommand DragOverKomanda { get; private set; }
-        public MyICommand DropKomanda { get; private set; }
+        public MyICommand<Canvas> DragOverKomanda { get; private set; }
+        public MyICommand<Canvas> DropKomanda { get; private set; }
         public MyICommand MouseLevoDugme { get; private set; }
-        public MyICommand SelectedItemPromena { get; private set; }
+        public MyICommand<TreeView> TreeViewOdabran { get; private set; }
         public MyICommand OslobodiKomanda { get; private set; }
+
+        // za drag&drop
+        private Entitet draggedItem = null;
+        private bool dragging = false;
+        private int selected;
 
         public RasporedMrezeViewModel()
         {
             Entiteti = MainWindowViewModel.Entiteti;
             NasumicnoRasporedi = new MyICommand(Rasporedi);
             Preraspodela();
+
+            // komande
+            DragOverKomanda = new MyICommand<Canvas>(DragOverMetoda);
+            DropKomanda = new MyICommand<Canvas>(DropMetoda);
+            MouseLevoDugme = new MyICommand(TreeView_MouseLeftButtonUp);
+            TreeViewOdabran = new MyICommand<TreeView>(Promena_SelectedItemChanged);
+        }
+
+        private void DropMetoda(Canvas kanvas)
+        {
+            TextBlock ispis = ((TextBlock)((Canvas)kanvas).Children[0]);
+            // base.OnDrop(e);
+            if (draggedItem != null)
+            {
+                if (kanvas.Resources["taken"] == null)
+                {
+                    BitmapImage img = new BitmapImage();
+                    img.BeginInit();
+                    string putanja = Directory.GetCurrentDirectory() + draggedItem.Slika;
+                    img.UriSource = new Uri(putanja, UriKind.Absolute);
+                    img.EndInit();
+                    kanvas.Background = new ImageBrush(img);
+                    ispis.Text = draggedItem.Naziv;
+                    //ispis.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF1338BE"));
+                    draggedItem.Canvas_pozicija = GetCanvasId(kanvas.Name);
+                    kanvas.Resources.Add("taken", true);
+                    ukloniElement(draggedItem);
+                }
+                draggedItem = null;
+                dragging = false;
+            }
+            // e.Handled = true;
+        }
+
+        private int GetCanvasId(string name)
+        {
+            int id = 1;
+
+            if (name.Equals("c1")) id = 1;
+            if (name.Equals("c2")) id = 2;
+            if (name.Equals("c3")) id = 3;
+            if (name.Equals("c4")) id = 4;
+            if (name.Equals("c5")) id = 5;
+            if (name.Equals("c6")) id = 6;
+            if (name.Equals("c7")) id = 7;
+            if (name.Equals("c8")) id = 8;
+            if (name.Equals("c9")) id = 9;
+            if (name.Equals("c10")) id = 10;
+            if (name.Equals("c11")) id = 11;
+            if (name.Equals("c12")) id = 12;
+           
+            return id;
+        }
+
+        private void Promena_SelectedItemChanged(TreeView tv)
+        {
+            var prozor = RasporedMrezeView.UserControl;
+
+            if (!dragging && tv.SelectedItem.GetType() == typeof(Entitet))
+            {
+                dragging = true;
+                draggedItem = (Entitet)tv.SelectedItem;
+                selected = pronadjiElement(draggedItem);
+                DragDrop.DoDragDrop(prozor, draggedItem, DragDropEffects.Move | DragDropEffects.Copy);
+            }
+        }
+
+
+        private void TreeView_MouseLeftButtonUp()
+        {
+            dragging = false;
+            draggedItem = null;
+        }
+
+        private int pronadjiElement(Entitet draggedItem)
+        {
+            int index = 0;
+            if (draggedItem.Klasa.Equals("A"))
+            {
+                index = Klasifikovani[0].ListaEntiteta.IndexOf(draggedItem);
+            }
+            else if (draggedItem.Klasa.Equals("B"))
+            {
+                index = Klasifikovani[1].ListaEntiteta.IndexOf(draggedItem);
+            }
+            else if (draggedItem.Klasa.Equals("C"))
+            {
+                index = Klasifikovani[2].ListaEntiteta.IndexOf(draggedItem);
+            }
+            else if (draggedItem.Klasa.Equals("D"))
+            {
+                index = Klasifikovani[3].ListaEntiteta.IndexOf(draggedItem);
+            }
+            else if (draggedItem.Klasa.Equals("E"))
+            {
+                index = Klasifikovani[4].ListaEntiteta.IndexOf(draggedItem);
+            }
+
+            return index;
+        }
+
+        private void ukloniElement(Entitet draggedItem)
+        {
+            if (draggedItem.Klasa.Equals("A"))
+            {
+                Klasifikovani[0].ListaEntiteta.RemoveAt(selected);
+            }
+            else if (draggedItem.Klasa.Equals("B"))
+            {
+                Klasifikovani[1].ListaEntiteta.RemoveAt(selected);
+            }
+            else if (draggedItem.Klasa.Equals("C"))
+            {
+                Klasifikovani[2].ListaEntiteta.RemoveAt(selected);
+            }
+            else if (draggedItem.Klasa.Equals("D"))
+            {
+                Klasifikovani[3].ListaEntiteta.RemoveAt(selected);
+            }
+            else if (draggedItem.Klasa.Equals("E"))
+            {
+                Klasifikovani[4].ListaEntiteta.RemoveAt(selected);
+            }
+        }
+
+        private void DragOverMetoda(Canvas kanvas)
+        {
+            // base.OnDragOver(e);
+            //if (kanvas.Resources["taken"] != null)
+            //{
+            //    DragDropEff = DragDropEffects.None;
+            //}
+            //else
+            //{
+            //    e.Effects = DragDropEffects.Copy;
+            //}
+            //e.Handled = true;
         }
 
         #region PROPERTY KLASE RasporedMrezeViewModel

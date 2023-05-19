@@ -179,7 +179,9 @@
     <Resource Include="Assets\search.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\uredjaj.png" />
+    <Content Include="Assets\uredjaj.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\minus.png" />
