@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Net.Sockets;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace MeteringSimulator
 {
@@ -24,6 +26,8 @@ namespace MeteringSimulator
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Thread.Sleep(5000);
+
             //Proveri broj objekata pod monitoringom
             askForCount();
             //Pocni prijavljivanje novih vrednosti za objekte

@@ -93,9 +93,6 @@ namespace NetworkService.ViewModel
             }
 
             mrezniEntitetiViewModel.OdabraniIndeksDodavanjeEntiteta = 0;
-
-            mrezniEntitetiViewModel.Informacija = Visibility.Visible;
-            mrezniEntitetiViewModel.Poruka = "ℹ Dobrodošli, @Dispečer 3244! Možete započeti sa Vašim radom u aplikaciji za upravljanje serversko-mrežnim entitetima.";
             #endregion
 
             statistikaMrezeViewModel = new StatistikaMrezeViewModel();
@@ -107,6 +104,9 @@ namespace NetworkService.ViewModel
             }
 
             statistikaMrezeViewModel.AzuriranjeMerenja();
+
+            mrezniEntitetiViewModel.Informacija = Visibility.Visible;
+            mrezniEntitetiViewModel.Poruka = "ℹ Dobrodošli, @Dispečer 3244! Možete započeti sa Vašim radom u aplikaciji za upravljanje serversko-mrežnim entitetima.";
         }
         #endregion
 
