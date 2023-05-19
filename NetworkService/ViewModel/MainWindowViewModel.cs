@@ -179,8 +179,13 @@ namespace NetworkService.ViewModel
 
                              if(za_izmenu != null) // obrisan objekat a simulator se jos nije restartovao - odbaciti
                              {
+                                int staro = za_izmenu.Zauzece;
                                 za_izmenu.Zauzece = zauzece;
-                             }
+
+                                // ispis nove poruke
+                                mrezniEntitetiViewModel.Informacija = Visibility.Visible;
+                                mrezniEntitetiViewModel.Poruka = "ℹ Entitet (" + za_izmenu.IP + ", " + za_izmenu.Naziv + ", " + za_izmenu.IP + ") je prijavio novu vrednost u infrastrukturnom sistemu " + staro + " -> " + zauzece + "!";
+                            }
 
                             // upis merenja u txt datoteku
                             string za_upis = ((id + 1) + "-" + zauzece).ToString() + "-" + DateTime.Now.ToString("dd/MM/yyyy HH:mm");

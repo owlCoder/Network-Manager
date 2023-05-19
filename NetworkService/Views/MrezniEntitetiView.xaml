@@ -90,15 +90,15 @@
         </Border>
 
         <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Visibility="{Binding Informacija}" Margin="5" Background="{StaticResource UIQuatriraryColor}" CornerRadius="10">
-            <TextBlock Text="{Binding Poruka}" FontSize="16" Foreground="DarkCyan" FontWeight="SemiBold" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
+            <TextBlock Text="{Binding Poruka}" FontSize="16" Foreground="DarkCyan" FontWeight="Bold" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
         </Border>
 
         <Border Grid.Row="1" Grid.Column="0" Visibility="{Binding Greska}" Grid.ColumnSpan="2" Margin="5" Background="#FFCCCC " CornerRadius="10">
-            <TextBlock Text="{Binding Poruka}" FontSize="16" Foreground="#D55244" FontWeight="SemiBold" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
+            <TextBlock Text="{Binding Poruka}" FontSize="16" Foreground="#D55244" FontWeight="Bold" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
         </Border>
 
         <Border Grid.Row="1" Grid.Column="0" Visibility="{Binding Uspesno}" Grid.ColumnSpan="2" Margin="5" Background="#C1E1C1 " CornerRadius="10">
-            <TextBlock Text="{Binding Poruka}" FontSize="16" Foreground="DarkCyan" FontWeight="SemiBold" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
+            <TextBlock Text="{Binding Poruka}" FontSize="16" Foreground="#2F4C39" FontWeight="Bold" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
         </Border>
 
         <Border Grid.Row="2" Grid.Column="1" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">

@@ -528,7 +528,9 @@ namespace NetworkService.ViewModel
             // Primena filtera
             ListaEntiteta = Filtracija();
 
-            
+            // poruka korisniku
+            Informacija = Visibility.Visible;
+            Poruka = "ℹ Filter (" + istorija +") je uspešno primenjen! Filtirarani entiteti su vidljivi u tabeli!";
         }
         #endregion
 
