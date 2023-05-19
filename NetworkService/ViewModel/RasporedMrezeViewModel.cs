@@ -115,7 +115,7 @@ namespace NetworkService.ViewModel
                     ispis.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#000000"));
                     draggedItem.Canvas_pozicija = GetCanvasId(kanvas.Name);
                     kanvas.Resources.Add("taken", true);
-                    ukloniElement(draggedItem);
+                    UkloniElement(draggedItem);
                 }
                 draggedItem = null;
                 dragging = false;
@@ -146,7 +146,7 @@ namespace NetworkService.ViewModel
         {
             var prozor = RasporedMrezeView.UserControl;
 
-            if (!dragging && tv.SelectedItem.GetType() == typeof(Entitet))
+            if (!dragging && tv != null && tv.SelectedItem != null && tv.SelectedItem.GetType() == typeof(Entitet))
             {
                 dragging = true;
                 draggedItem = (Entitet)tv.SelectedItem;
@@ -189,25 +189,25 @@ namespace NetworkService.ViewModel
             return index;
         }
 
-        private void ukloniElement(Entitet draggedItem)
+        private void UkloniElement(Entitet draggedItem)
         {
-            if (draggedItem.Klasa.Equals("A"))
+            if (draggedItem.Klasa.Equals("A") && draggedItem.Canvas_pozicija != -1 && Klasifikovani[0].ListaEntiteta.Count > 0)
             {
                 Klasifikovani[0].ListaEntiteta.RemoveAt(selected);
             }
-            else if (draggedItem.Klasa.Equals("B"))
+            else if (draggedItem.Klasa.Equals("B") && draggedItem.Canvas_pozicija != -1 && Klasifikovani[1].ListaEntiteta.Count > 0) 
             {
                 Klasifikovani[1].ListaEntiteta.RemoveAt(selected);
             }
-            else if (draggedItem.Klasa.Equals("C"))
+            else if (draggedItem.Klasa.Equals("C") && draggedItem.Canvas_pozicija != -1 && Klasifikovani[2].ListaEntiteta.Count > 0)
             {
                 Klasifikovani[2].ListaEntiteta.RemoveAt(selected);
             }
-            else if (draggedItem.Klasa.Equals("D"))
+            else if (draggedItem.Klasa.Equals("D") && draggedItem.Canvas_pozicija != -1 && Klasifikovani[3].ListaEntiteta.Count > 0)
             {
                 Klasifikovani[3].ListaEntiteta.RemoveAt(selected);
             }
-            else if (draggedItem.Klasa.Equals("E"))
+            else if (draggedItem.Klasa.Equals("E") && draggedItem.Canvas_pozicija != -1 && Klasifikovani[4].ListaEntiteta.Count > 0)
             {
                 Klasifikovani[4].ListaEntiteta.RemoveAt(selected);
             }
@@ -222,6 +222,65 @@ namespace NetworkService.ViewModel
         private void Rasporedi(Grid desni_grid_canvas)
         {
             // Rasporedi na preostala slobodna mesta
+            for(int i = 1; i <= 12; i++) 
+            {
+                // uzmemo canvas
+                Canvas kanvas = ((Canvas)((DockPanel)(desni_grid_canvas.Children[i])).Children[1]);
+                TextBlock trenutni = (TextBlock)((kanvas).Children[0]);   
+                string naziv_entiteta = trenutni.Text.Trim();
+
+                if(naziv_entiteta.Equals(""))
+                {
+                    // prazan je canvas
+                    if (Klasifikovani[0].ListaEntiteta.Count  > 0) 
+                    {
+                        draggedItem = Klasifikovani[0].ListaEntiteta[0];
+                        Klasifikovani[0].ListaEntiteta.RemoveAt(0);
+                    }
+                    else if (Klasifikovani[1].ListaEntiteta.Count > 0)
+                    {
+                        draggedItem = Klasifikovani[1].ListaEntiteta[0];
+                        Klasifikovani[1].ListaEntiteta.RemoveAt(0);
+                    }
+                    else if (Klasifikovani[2].ListaEntiteta.Count > 0)
+                    {
+                        draggedItem = Klasifikovani[2].ListaEntiteta[0];
+                        Klasifikovani[2].ListaEntiteta.RemoveAt(0);
+                    }
+                    else if (Klasifikovani[3].ListaEntiteta.Count > 0)
+                    {
+                        draggedItem = Klasifikovani[3].ListaEntiteta[0];
+                        Klasifikovani[3].ListaEntiteta.RemoveAt(0);
+                    }
+                    else if (Klasifikovani[4].ListaEntiteta.Count > 0)
+                    {
+                        draggedItem = Klasifikovani[4].ListaEntiteta[0];
+                        Klasifikovani[4].ListaEntiteta.RemoveAt(0);
+                    }
+
+                    if (draggedItem != null)
+                    {
+                        draggedItem.Canvas_pozicija = i; // pozicija na canvasu
+
+                        if (kanvas.Resources["taken"] == null)
+                        {
+                            BitmapImage img = new BitmapImage();
+                            img.BeginInit();
+                            string putanja = Directory.GetCurrentDirectory() + draggedItem.Slika;
+                            img.UriSource = new Uri(putanja, UriKind.Absolute);
+                            img.EndInit();
+                            kanvas.Background = new ImageBrush(img);
+                            trenutni.Text = draggedItem.Naziv;
+                            trenutni.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#000000"));
+                            draggedItem.Canvas_pozicija = GetCanvasId(kanvas.Name);
+                            kanvas.Resources.Add("taken", true);
+                            UkloniElement(draggedItem);
+                        }
+                        draggedItem = null;
+                        dragging = false;
+                    }
+                }
+            }
         }
         #endregion
 
