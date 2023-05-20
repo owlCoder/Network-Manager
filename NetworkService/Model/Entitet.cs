@@ -1,4 +1,5 @@
 ﻿using NetworkService.Helpers;
+using System.Collections.Generic;
 
 namespace NetworkService.Model
 {
@@ -13,7 +14,7 @@ namespace NetworkService.Model
         private bool boja;
         private string klasa;
         private int canvas_pozicija;
-        private int povezan_sa_entitet_id;
+        private List<int> povezan_sa_entitet_id;
         #endregion
 
         #region KONSTRUKTOR KLASE Entitet
@@ -171,7 +172,7 @@ namespace NetworkService.Model
             }
         }
 
-        public int Povezan_sa_entitet_id
+        public List<int> Povezan_sa_entitet_id
         {
             get
             {

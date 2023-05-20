@@ -1,4 +1,5 @@
-﻿using NetworkService.Helpers;
+﻿using MVVMLight.Messaging;
+using NetworkService.Helpers;
 using NetworkService.Model;
 using NetworkService.Views;
 using System;
@@ -15,10 +16,10 @@ namespace NetworkService.ViewModel
 {
     public class RasporedMrezeViewModel : BindableBase
     {
-        public static ObservableCollection<Entitet> Entiteti { get; set; }
+        public static BindingList<KlasifikovaniEntiteti> EntitetiCanvas { get; set; }
+        public static BindingList<KlasifikovaniEntiteti> EntitetiTreeView { get; set; }
 
-        public static BindingList<KlasifikovaniEntiteti> Klasifikovani { get; set; }
-
+        #region KOMANDE ZA DRAG & DROP
         // komande za drag & drop
         public MyICommand<Canvas> DragOverKomanda { get; private set; }
         public MyICommand<Canvas> DropKomanda { get; private set; }
@@ -26,6 +27,7 @@ namespace NetworkService.ViewModel
         public MyICommand<TreeView> TreeViewOdabran { get; private set; }
         public MyICommand<Canvas> OslobodiKomanda { get; private set; }
         public MyICommand<Grid> NasumicnoRasporedi { get; private set; }
+        #endregion
 
         // za drag & drop
         private Entitet draggedItem = null;
@@ -34,9 +36,7 @@ namespace NetworkService.ViewModel
 
         public RasporedMrezeViewModel()
         {
-            Entiteti = MainWindowViewModel.Entiteti;
             NasumicnoRasporedi = new MyICommand<Grid>(Rasporedi);
-            Preraspodela();
 
             // komande
             DragOverKomanda = new MyICommand<Canvas>(DragOverMetoda);
@@ -44,10 +44,32 @@ namespace NetworkService.ViewModel
             MouseLevoDugme = new MyICommand(TreeView_MouseLeftButtonUp);
             TreeViewOdabran = new MyICommand<TreeView>(Promena_SelectedItemChanged);
             OslobodiKomanda = new MyICommand<Canvas>(Oslobodi_Dugme);
+
+            // liste za entitete za tree view i canvas
+            InicijalizacijaListi();
+
+            // za prijem novih entiteta
+            Messenger.Default.Register<PassForwardDummy>(this, DodajUTreeViewListu);
+        }
+
+        private void DodajUTreeViewListu(PassForwardDummy pf)
+        {
+            Entitet novi = pf.Entitet;
+            int klasa = 0;
+
+            if (novi.Klasa.Equals("A")) klasa = 0;
+            if (novi.Klasa.Equals("B")) klasa = 1;
+            if (novi.Klasa.Equals("C")) klasa = 2;
+            if (novi.Klasa.Equals("D")) klasa = 3;
+            if (novi.Klasa.Equals("E")) klasa = 4;
+
+            EntitetiTreeView[klasa].ListaEntiteta.Add(novi);
         }
 
         private void Oslobodi_Dugme(Canvas kanvasRoditelj)
         {
+            var le = EntitetiTreeView;
+
             if (kanvasRoditelj.Resources["taken"] != null)
             {
                 VratiElement(kanvasRoditelj);
@@ -62,37 +84,41 @@ namespace NetworkService.ViewModel
         {
             string naziv_entiteta = ((TextBlock)kanvasRoditelj.Children[0]).Text;
 
-            Entitet item = Entiteti.FirstOrDefault(p => p.Naziv.Equals(naziv_entiteta));
+            Entitet item = null;
+            KlasifikovaniEntiteti klasa_u_kojoj_se_nalazi = null;
+            int brojac_klase = 0;
 
-            if (item == null)
+            // prolazimo kroz sve adresne klase
+            foreach(KlasifikovaniEntiteti ke in EntitetiCanvas)
+            {
+                // i trazimo u listi entiteta odredjene klase onaj entitet koji je na canvasu
+                foreach(Entitet e in ke.ListaEntiteta)
+                {
+                    if(e.Naziv.Equals(naziv_entiteta))
+                    {
+                        // pronasli smo entitet, zapamti
+                        klasa_u_kojoj_se_nalazi = ke;
+                        item = e; 
+                        break;
+                    }
+                }
+
+                brojac_klase += 1; // prelazimo u sledecu adresnu klasu (A = 0, B = 1, ..., E = 4)
+            }
+
+            if (item == null || klasa_u_kojoj_se_nalazi == null)
             {
                 return;
             }
 
-            if (item.Klasa.Equals("A"))
-            {
-                Klasifikovani[0].ListaEntiteta.Remove(item);
-            }
-            else if (item.Klasa.Equals("B"))
-            {
-                Klasifikovani[1].ListaEntiteta.Remove(item);
-            }
-            else if (item.Klasa.Equals("C"))
-            {
-                Klasifikovani[2].ListaEntiteta.Remove(item);
-            }
-            else if (item.Klasa.Equals("D"))
-            {
-                Klasifikovani[3].ListaEntiteta.Remove(item);
-            }
-            else if (item.Klasa.Equals("E"))
-            {
-                Klasifikovani[4].ListaEntiteta.Remove(item);
-            }
+            // u pronadjenoj klasi, za pronadjeni entitet - ukloniti referencu
+            klasa_u_kojoj_se_nalazi.ListaEntiteta.Remove(item);
 
-            // vrati u tree view
-            item.Canvas_pozicija = -1; // vise nije na canvasu
-            //Entiteti.Add(item);
+            // dodajemo u tree view u odredjenu klasu adresa kojoj entitet i pripada
+            EntitetiTreeView[brojac_klase].ListaEntiteta.Add(item);
+
+            // ukloniti sve linije kao i sve linije sa kojima je entitet povezan na canvasu
+            // TO DO
         }
 
         private void DropMetoda(Canvas kanvas)
@@ -165,23 +191,23 @@ namespace NetworkService.ViewModel
             int index = 0;
             if (draggedItem.Klasa.Equals("A"))
             {
-                index = Klasifikovani[0].ListaEntiteta.IndexOf(draggedItem);
+                index = EntitetiTreeView[0].ListaEntiteta.IndexOf(draggedItem);
             }
             else if (draggedItem.Klasa.Equals("B"))
             {
-                index = Klasifikovani[1].ListaEntiteta.IndexOf(draggedItem);
+                index = EntitetiTreeView[1].ListaEntiteta.IndexOf(draggedItem);
             }
             else if (draggedItem.Klasa.Equals("C"))
             {
-                index = Klasifikovani[2].ListaEntiteta.IndexOf(draggedItem);
+                index = EntitetiTreeView[2].ListaEntiteta.IndexOf(draggedItem);
             }
             else if (draggedItem.Klasa.Equals("D"))
             {
-                index = Klasifikovani[3].ListaEntiteta.IndexOf(draggedItem);
+                index = EntitetiTreeView[3].ListaEntiteta.IndexOf(draggedItem);
             }
             else if (draggedItem.Klasa.Equals("E"))
             {
-                index = Klasifikovani[4].ListaEntiteta.IndexOf(draggedItem);
+                index = EntitetiTreeView[4].ListaEntiteta.IndexOf(draggedItem);
             }
 
             return index;
@@ -189,25 +215,25 @@ namespace NetworkService.ViewModel
 
         private void UkloniElement(Entitet draggedItem)
         {
-            if (draggedItem.Klasa.Equals("A") && draggedItem.Canvas_pozicija != -1 && Klasifikovani[0].ListaEntiteta.Count > 0)
+            if (draggedItem.Klasa.Equals("A") && draggedItem.Canvas_pozicija != -1 && EntitetiCanvas[0].ListaEntiteta.Count > 0)
             {
-                Klasifikovani[0].ListaEntiteta.RemoveAt(selected);
+                EntitetiCanvas[0].ListaEntiteta.RemoveAt(selected);
             }
-            else if (draggedItem.Klasa.Equals("B") && draggedItem.Canvas_pozicija != -1 && Klasifikovani[1].ListaEntiteta.Count > 0)
+            else if (draggedItem.Klasa.Equals("B") && draggedItem.Canvas_pozicija != -1 && EntitetiCanvas[1].ListaEntiteta.Count > 0)
             {
-                Klasifikovani[1].ListaEntiteta.RemoveAt(selected);
+                EntitetiCanvas[1].ListaEntiteta.RemoveAt(selected);
             }
-            else if (draggedItem.Klasa.Equals("C") && draggedItem.Canvas_pozicija != -1 && Klasifikovani[2].ListaEntiteta.Count > 0)
+            else if (draggedItem.Klasa.Equals("C") && draggedItem.Canvas_pozicija != -1 && EntitetiCanvas[2].ListaEntiteta.Count > 0)
             {
-                Klasifikovani[2].ListaEntiteta.RemoveAt(selected);
+                EntitetiCanvas[2].ListaEntiteta.RemoveAt(selected);
             }
-            else if (draggedItem.Klasa.Equals("D") && draggedItem.Canvas_pozicija != -1 && Klasifikovani[3].ListaEntiteta.Count > 0)
+            else if (draggedItem.Klasa.Equals("D") && draggedItem.Canvas_pozicija != -1 && EntitetiCanvas[3].ListaEntiteta.Count > 0)
             {
-                Klasifikovani[3].ListaEntiteta.RemoveAt(selected);
+                EntitetiCanvas[3].ListaEntiteta.RemoveAt(selected);
             }
-            else if (draggedItem.Klasa.Equals("E") && draggedItem.Canvas_pozicija != -1 && Klasifikovani[4].ListaEntiteta.Count > 0)
+            else if (draggedItem.Klasa.Equals("E") && draggedItem.Canvas_pozicija != -1 && EntitetiCanvas[4].ListaEntiteta.Count > 0)
             {
-                Klasifikovani[4].ListaEntiteta.RemoveAt(selected);
+                EntitetiCanvas[4].ListaEntiteta.RemoveAt(selected);
             }
         }
 
@@ -230,30 +256,30 @@ namespace NetworkService.ViewModel
                 if (naziv_entiteta.Equals(""))
                 {
                     // prazan je canvas
-                    if (Klasifikovani[0].ListaEntiteta.Count > 0)
+                    if (EntitetiCanvas[0].ListaEntiteta.Count > 0)
                     {
-                        draggedItem = Klasifikovani[0].ListaEntiteta[0];
-                        Klasifikovani[0].ListaEntiteta.RemoveAt(0);
+                        draggedItem = EntitetiCanvas[0].ListaEntiteta[0];
+                        EntitetiCanvas[0].ListaEntiteta.RemoveAt(0);
                     }
-                    else if (Klasifikovani[1].ListaEntiteta.Count > 0)
+                    else if (EntitetiCanvas[1].ListaEntiteta.Count > 0)
                     {
-                        draggedItem = Klasifikovani[1].ListaEntiteta[0];
-                        Klasifikovani[1].ListaEntiteta.RemoveAt(0);
+                        draggedItem = EntitetiCanvas[1].ListaEntiteta[0];
+                        EntitetiCanvas[1].ListaEntiteta.RemoveAt(0);
                     }
-                    else if (Klasifikovani[2].ListaEntiteta.Count > 0)
+                    else if (EntitetiCanvas[2].ListaEntiteta.Count > 0)
                     {
-                        draggedItem = Klasifikovani[2].ListaEntiteta[0];
-                        Klasifikovani[2].ListaEntiteta.RemoveAt(0);
+                        draggedItem = EntitetiCanvas[2].ListaEntiteta[0];
+                        EntitetiCanvas[2].ListaEntiteta.RemoveAt(0);
                     }
-                    else if (Klasifikovani[3].ListaEntiteta.Count > 0)
+                    else if (EntitetiCanvas[3].ListaEntiteta.Count > 0)
                     {
-                        draggedItem = Klasifikovani[3].ListaEntiteta[0];
-                        Klasifikovani[3].ListaEntiteta.RemoveAt(0);
+                        draggedItem = EntitetiCanvas[3].ListaEntiteta[0];
+                        EntitetiCanvas[3].ListaEntiteta.RemoveAt(0);
                     }
-                    else if (Klasifikovani[4].ListaEntiteta.Count > 0)
+                    else if (EntitetiCanvas[4].ListaEntiteta.Count > 0)
                     {
-                        draggedItem = Klasifikovani[4].ListaEntiteta[0];
-                        Klasifikovani[4].ListaEntiteta.RemoveAt(0);
+                        draggedItem = EntitetiCanvas[4].ListaEntiteta[0];
+                        EntitetiCanvas[4].ListaEntiteta.RemoveAt(0);
                     }
 
                     if (draggedItem != null)
@@ -282,47 +308,26 @@ namespace NetworkService.ViewModel
         }
         #endregion
 
-        #region METODA PRERASPODELE
-        public void Preraspodela()
+        #region METODA INICIJALIZACIJE
+        public void InicijalizacijaListi()
         {
-            Klasifikovani = new BindingList<KlasifikovaniEntiteti>();
-            Klasifikovani.Clear();
-
-            KlasifikovaniEntiteti klasa_a = new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa A" };
-            KlasifikovaniEntiteti klasa_b = new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa B" };
-            KlasifikovaniEntiteti klasa_c = new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa C" };
-            KlasifikovaniEntiteti klasa_d = new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa D" };
-            KlasifikovaniEntiteti klasa_e = new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa E" };
-
-            foreach (var item in Entiteti)
+            EntitetiCanvas = new BindingList<KlasifikovaniEntiteti>()
             {
-                if (item.Klasa.Equals("A") && item.Canvas_pozicija == -1) // dodajemo samo entitete koji nisu vec na canvasu
-                {
-                    klasa_a.ListaEntiteta.Add(item);
-                }
-                else if (item.Klasa.Equals("B") && item.Canvas_pozicija == -1) // dodajemo samo entitete koji nisu vec na canvasu
-                {
-                    klasa_b.ListaEntiteta.Add(item);
-                }
-                else if (item.Klasa.Equals("C") && item.Canvas_pozicija == -1) // dodajemo samo entitete koji nisu vec na canvasu
-                {
-                    klasa_c.ListaEntiteta.Add(item);
-                }
-                else if (item.Klasa.Equals("D") && item.Canvas_pozicija == -1) // dodajemo samo entitete koji nisu vec na canvasu
-                {
-                    klasa_d.ListaEntiteta.Add(item);
-                }
-                else if (item.Klasa.Equals("E") && item.Canvas_pozicija == -1) // dodajemo samo entitete koji nisu vec na canvasu
-                {
-                    klasa_e.ListaEntiteta.Add(item);
-                }
-            }
+                new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa A" },
+                new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa B" },
+                new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa C" },
+                new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa D" },
+                new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa E" }
+            };
 
-            Klasifikovani.Add(klasa_a);
-            Klasifikovani.Add(klasa_b);
-            Klasifikovani.Add(klasa_c);
-            Klasifikovani.Add(klasa_d);
-            Klasifikovani.Add(klasa_e);
+            EntitetiTreeView = new BindingList<KlasifikovaniEntiteti>()
+            {
+                new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa A" },
+                new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa B" },
+                new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa C" },
+                new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa D" },
+                new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa E" }
+            };
         }
         #endregion
     }

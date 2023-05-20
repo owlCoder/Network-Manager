@@ -232,6 +232,7 @@ namespace NetworkService.ViewModel
         private void AddToList(Entitet novi)
         {
             Entiteti.Add(novi);
+            Messenger.Default.Send(new PassForwardDummy() { Entitet = novi});
         }
 
         private void RemoveFromList(int index)

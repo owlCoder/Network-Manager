@@ -75,6 +75,7 @@
     <Compile Include="Model\Filter.cs" />
     <Compile Include="Model\KlasifikovaniEntiteti.cs" />
     <Compile Include="Model\Merenje.cs" />
+    <Compile Include="Model\PassForwardDummy.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MrezniEntitetiViewModel.cs" />
     <Compile Include="ViewModel\PocetnaViewModel.cs" />
