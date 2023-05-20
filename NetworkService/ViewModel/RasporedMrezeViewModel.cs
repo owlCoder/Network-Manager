@@ -50,6 +50,42 @@ namespace NetworkService.ViewModel
 
             // za prijem novih entiteta
             Messenger.Default.Register<PassForwardDummy>(this, DodajUTreeViewListu);
+            
+            // za uklanjanje entiteta ako se ukloni iz liste svih
+            Messenger.Default.Register<PassDeleteDummy>(this, UkloniElementCanvasTreeView);
+        }
+
+        private void UkloniElementCanvasTreeView(PassDeleteDummy pd)
+        {
+            Entitet za_brisanje = pd.Entitet;
+            int klasa = 0;
+
+            if (za_brisanje.Klasa.Equals("A")) klasa = 0;
+            if (za_brisanje.Klasa.Equals("B")) klasa = 1;
+            if (za_brisanje.Klasa.Equals("C")) klasa = 2;
+            if (za_brisanje.Klasa.Equals("D")) klasa = 3;
+            if (za_brisanje.Klasa.Equals("E")) klasa = 4;
+
+            // ako se element nalazi na canvasu, ukloniti ga iz liste i sa canvasa
+            if (EntitetiCanvas[klasa].ListaEntiteta.Contains(za_brisanje))
+            {
+                EntitetiCanvas[klasa].ListaEntiteta.Remove(za_brisanje);
+
+                // TO DO - UKLONITI SA CANVASA
+
+
+                // Ponisti poziciju na canvasu
+
+
+                // Ukloniti sve linije sa canvasa
+                // vrv lista.clear ili tako nesto
+            }
+
+            // ako se nalazi u tree view - ukloniti ga
+            if (EntitetiTreeView[klasa].ListaEntiteta.Contains(za_brisanje))
+            {
+                EntitetiTreeView[klasa].ListaEntiteta.Remove(za_brisanje);
+            }
         }
 
         private void DodajUTreeViewListu(PassForwardDummy pf)
@@ -68,8 +104,6 @@ namespace NetworkService.ViewModel
 
         private void Oslobodi_Dugme(Canvas kanvasRoditelj)
         {
-            var le = EntitetiTreeView;
-
             if (kanvasRoditelj.Resources["taken"] != null)
             {
                 VratiElement(kanvasRoditelj);
@@ -98,15 +132,16 @@ namespace NetworkService.ViewModel
                     {
                         // pronasli smo entitet, zapamti
                         klasa_u_kojoj_se_nalazi = ke;
-                        item = e; 
-                        break;
+                        item = e;
+                        goto Izlaz;
                     }
                 }
 
                 brojac_klase += 1; // prelazimo u sledecu adresnu klasu (A = 0, B = 1, ..., E = 4)
             }
 
-            if (item == null || klasa_u_kojoj_se_nalazi == null)
+        Izlaz:
+            if (item == null || klasa_u_kojoj_se_nalazi == null || brojac_klase > 4)
             {
                 return;
             }
@@ -215,25 +250,30 @@ namespace NetworkService.ViewModel
 
         private void UkloniElement(Entitet draggedItem)
         {
-            if (draggedItem.Klasa.Equals("A") && draggedItem.Canvas_pozicija != -1 && EntitetiCanvas[0].ListaEntiteta.Count > 0)
+            if (draggedItem.Klasa.Equals("A"))
             {
-                EntitetiCanvas[0].ListaEntiteta.RemoveAt(selected);
+                EntitetiTreeView[0].ListaEntiteta.RemoveAt(selected);
+                EntitetiCanvas[0].ListaEntiteta.Add(draggedItem);
             }
-            else if (draggedItem.Klasa.Equals("B") && draggedItem.Canvas_pozicija != -1 && EntitetiCanvas[1].ListaEntiteta.Count > 0)
+            else if (draggedItem.Klasa.Equals("B"))
             {
-                EntitetiCanvas[1].ListaEntiteta.RemoveAt(selected);
+                EntitetiTreeView[1].ListaEntiteta.RemoveAt(selected);
+                EntitetiCanvas[1].ListaEntiteta.Add(draggedItem);
             }
-            else if (draggedItem.Klasa.Equals("C") && draggedItem.Canvas_pozicija != -1 && EntitetiCanvas[2].ListaEntiteta.Count > 0)
+            else if (draggedItem.Klasa.Equals("C"))
             {
-                EntitetiCanvas[2].ListaEntiteta.RemoveAt(selected);
+                EntitetiTreeView[2].ListaEntiteta.RemoveAt(selected);
+                EntitetiCanvas[2].ListaEntiteta.Add(draggedItem);
             }
-            else if (draggedItem.Klasa.Equals("D") && draggedItem.Canvas_pozicija != -1 && EntitetiCanvas[3].ListaEntiteta.Count > 0)
+            else if (draggedItem.Klasa.Equals("D"))
             {
-                EntitetiCanvas[3].ListaEntiteta.RemoveAt(selected);
+                EntitetiTreeView[3].ListaEntiteta.RemoveAt(selected);
+                EntitetiCanvas[3].ListaEntiteta.Add(draggedItem);
             }
-            else if (draggedItem.Klasa.Equals("E") && draggedItem.Canvas_pozicija != -1 && EntitetiCanvas[4].ListaEntiteta.Count > 0)
+            else if (draggedItem.Klasa.Equals("E"))
             {
-                EntitetiCanvas[4].ListaEntiteta.RemoveAt(selected);
+                EntitetiTreeView[4].ListaEntiteta.RemoveAt(selected);
+                EntitetiCanvas[4].ListaEntiteta.Add(draggedItem);
             }
         }
 

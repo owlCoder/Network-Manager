@@ -18,7 +18,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Border Grid.Row="1" Grid.Column="0" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
-            <Grid Margin="10" x:Name="desniGridSaCanvas">
+            <Grid Margin="10" x:Name="desniGridSaCanvas" Background="{StaticResource UIWhiteColor}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
