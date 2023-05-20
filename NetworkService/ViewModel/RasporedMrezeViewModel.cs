@@ -5,6 +5,7 @@ using NetworkService.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -29,10 +30,17 @@ namespace NetworkService.ViewModel
         public MyICommand<Grid> NasumicnoRasporedi { get; private set; }
         #endregion
 
+        #region KOMANDE ZA D&D SA CANVASA NA CANVAS
+        public MyICommand<Canvas> PreviewMouseUpKomanda { get; private set; }
+        public MyICommand<Canvas> PreviewMouseMoveKomanda { get; private set; }
+        public MyICommand<Canvas> PreviewMouseDownKomanda { get; private set; }
+        #endregion
+
         // za drag & drop
         private Entitet draggedItem = null;
         private bool dragging = false;
         private int selected;
+        private Canvas pocetni = null;
 
         public RasporedMrezeViewModel()
         {
@@ -45,6 +53,11 @@ namespace NetworkService.ViewModel
             TreeViewOdabran = new MyICommand<TreeView>(Promena_SelectedItemChanged);
             OslobodiKomanda = new MyICommand<Canvas>(Oslobodi_Dugme);
 
+            // komande za d&d
+            PreviewMouseUpKomanda = new MyICommand<Canvas>(PreviewMouseUp);
+            PreviewMouseMoveKomanda = new MyICommand<Canvas>(PreviewMouseMove);
+            PreviewMouseDownKomanda = new MyICommand<Canvas>(PreviewMouseDown);
+
             // liste za entitete za tree view i canvas
             InicijalizacijaListi();
 
@@ -53,6 +66,75 @@ namespace NetworkService.ViewModel
             
             // za uklanjanje entiteta ako se ukloni iz liste svih
             Messenger.Default.Register<PassDeleteDummy>(this, UkloniElementCanvasTreeView);
+        }
+
+        private void PreviewMouseDown(Canvas canvas)
+        {
+            // prvo pronadjemo koji je to element na canvasu
+            string naziv_entiteta = ((TextBlock)canvas.Children[0]).Text;
+            Entitet ent = null;
+
+            foreach(KlasifikovaniEntiteti ke in EntitetiCanvas)
+            {
+                foreach(Entitet e in ke.ListaEntiteta)
+                {
+                    if(e.Naziv.Equals(naziv_entiteta))
+                    {
+                        ent = e;
+                        goto Izlaz;
+                    }
+                }
+            }
+
+        Izlaz:
+            draggedItem = ent;
+            pocetni = canvas;
+        }
+
+        private void PreviewMouseMove(Canvas canvas)
+        {
+            if (draggedItem == null)
+                return;
+        }
+
+        private void PreviewMouseUp(Canvas canvas)
+        {
+            // Samo ako imamo pocetni canvas i odabrani element i canvas na koji prebacujemo nije vec zauzet
+            if (draggedItem != null && pocetni != null && canvas.Resources["taken"] == null)
+            {
+                // prebaci na novi canvas
+                TextBlock ispis = ((TextBlock)(canvas).Children[0]);
+
+                if (draggedItem != null)
+                {
+                    if (canvas.Resources["taken"] == null)
+                    {
+                        BitmapImage img = new BitmapImage();
+                        img.BeginInit();
+                        string putanja = Directory.GetCurrentDirectory() + draggedItem.Slika;
+                        img.UriSource = new Uri(putanja, UriKind.Absolute);
+                        img.EndInit();
+                        canvas.Background = new ImageBrush(img);
+                        ispis.Text = draggedItem.Naziv;
+                        ispis.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#000000"));
+                        draggedItem.Canvas_pozicija = GetCanvasId(canvas.Name);
+                        canvas.Resources.Add("taken", true);
+                    }
+                    draggedItem = null;
+                    dragging = false;
+                }
+
+                // oslobodi pocetni canvas
+                if (pocetni.Resources["taken"] != null)
+                {
+                    pocetni.Background = Brushes.White;
+                    ((TextBlock)pocetni.Children[0]).Text = string.Empty;
+                    pocetni.Resources.Remove("taken");
+                }
+
+                draggedItem = null;
+                pocetni = null;
+            }
         }
 
         private void UkloniElementCanvasTreeView(PassDeleteDummy pd)

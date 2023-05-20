@@ -47,6 +47,15 @@
                             <i:EventTrigger EventName="DragOver">
                                 <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c1}"/>
                             </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c1}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c1}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c1}" />
+                            </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
                                 <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c1}"/>
                             </i:EventTrigger>
@@ -71,6 +80,15 @@
                             <i:EventTrigger EventName="Drop">
                                 <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c2}"/>
                             </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c2}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c2}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c2}" />
+                            </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
@@ -92,20 +110,16 @@
                             <i:EventTrigger EventName="Drop">
                                 <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c3}"/>
                             </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c3}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c3}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c3}" />
+                            </i:EventTrigger>
                         </i:Interaction.Triggers>
-                    </Canvas>
-                </DockPanel>
-
-                <DockPanel Grid.Column="3" Grid.Row="1" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="4"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
                     </Canvas>
                 </DockPanel>
 
@@ -125,6 +139,15 @@
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
                                 <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c4}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c4}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c4}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c4}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -148,6 +171,15 @@
                             <i:EventTrigger EventName="Drop">
                                 <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c5}"/>
                             </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c5}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c5}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c5}" />
+                            </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
@@ -168,6 +200,15 @@
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
                                 <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c6}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c6}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c6}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c6}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -190,20 +231,16 @@
                             <i:EventTrigger EventName="Drop">
                                 <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c7}"/>
                             </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c7}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c7}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c7}" />
+                            </i:EventTrigger>
                         </i:Interaction.Triggers>
-                    </Canvas>
-                </DockPanel>
-
-                <DockPanel Grid.Column="3" Grid.Row="2" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="4"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
                     </Canvas>
                 </DockPanel>
 
@@ -223,6 +260,15 @@
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
                                 <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c8}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c8}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c8}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c8}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -246,6 +292,15 @@
                             <i:EventTrigger EventName="Drop">
                                 <i:InvokeCommandAction Command="{Binding DropKomanda}"  CommandParameter="{Binding ElementName=c9}"/>
                             </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c9}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c9}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c9}" />
+                            </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
@@ -266,6 +321,15 @@
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
                                 <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c10}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c10}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c10}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c10}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -288,20 +352,16 @@
                             <i:EventTrigger EventName="Drop">
                                 <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c11}"/>
                             </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c11}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c11}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c11}" />
+                            </i:EventTrigger>
                         </i:Interaction.Triggers>
-                    </Canvas>
-                </DockPanel>
-
-                <DockPanel Grid.Column="3" Grid.Row="3" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="7"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
                     </Canvas>
                 </DockPanel>
 
@@ -321,6 +381,15 @@
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
                                 <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c12}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c12}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c12}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c12}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
