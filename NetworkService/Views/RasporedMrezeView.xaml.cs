@@ -15,7 +15,7 @@ namespace NetworkService.Views
 
             UserControl = this;
 
-            //DataContext = new RasporedMrezeViewModel(MainWindowViewModel.Entiteti);
+            DataContext = new RasporedMrezeViewModel(desniGridSaCanvas);
         }
     }
 }

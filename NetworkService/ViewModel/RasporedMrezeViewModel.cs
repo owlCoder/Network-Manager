@@ -3,6 +3,7 @@ using NetworkService.Helpers;
 using NetworkService.Model;
 using NetworkService.Views;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -86,7 +87,7 @@ namespace NetworkService.ViewModel
         }
 
         // Kako bi se pamtilo stanje na canvasu - potrebno je koristiti konstruktor sa parametrima
-        public RasporedMrezeViewModel(ObservableCollection<Entitet> entiteti)
+        public RasporedMrezeViewModel(Grid desniGridCanvas)
         {
             #region PODESAVANJE KOMANDI
             NasumicnoRasporedi = new MyICommand<Grid>(Rasporedi);
@@ -109,11 +110,48 @@ namespace NetworkService.ViewModel
             Poruka = "ℹ Dobrodošli, @Dispečer 3244! Možete započeti sa Vašim radom u aplikaciji.";
 
             // restauracija canvasa
-            foreach(KlasifikovaniEntiteti ke in EntitetiCanvas)
+            // indeksiranje
+            // dock paneli krecu od indeksa 1
+            // indeks 1 u dock panelu je canvas
+            List<Canvas> kanvasi = new List<Canvas>();
+
+            for(int i = 1; i < 13; i++)
             {
-                foreach(Entitet e in ke.ListaEntiteta)
+                DockPanel panel = (DockPanel)(desniGridCanvas.Children[i]);
+                Canvas canvas = (Canvas)(panel.Children[1]);
+                kanvasi.Add(canvas);
+            }
+
+            foreach(KlasifikovaniEntiteti ke in EntitetiCanvas.ToList())
+            {
+                foreach(Entitet e in ke.ListaEntiteta.ToList())
                 {
-                    Trace.WriteLine(e.Naziv + " - " + e.Canvas_pozicija);
+                    if(e.Canvas_pozicija != -1)
+                    {
+                        draggedItem = MainWindowViewModel.Entiteti.FirstOrDefault(p => p.Id == e.Id);
+                        Canvas kanvas = kanvasi[e.Canvas_pozicija - 1];
+
+                        TextBlock ispis = ((TextBlock)(kanvas).Children[0]);
+
+                        if (draggedItem != null)
+                        {
+                            if (kanvas.Resources["taken"] == null)
+                            {
+                                BitmapImage img = new BitmapImage();
+                                img.BeginInit();
+                                string putanja = Directory.GetCurrentDirectory() + "/Assets/uredjaj.png";
+                                img.UriSource = new Uri(putanja, UriKind.Absolute);
+                                img.EndInit();
+                                kanvas.Background = new ImageBrush(img);
+                                ispis.Text = draggedItem.Naziv;
+                                ispis.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#000000"));
+                                draggedItem.Canvas_pozicija = GetCanvasId(kanvas.Name);
+                                kanvas.Resources.Add("taken", true);
+                            }
+                            draggedItem = null;
+                            dragging = false;
+                        }
+                    }
                 }
             }
 
