@@ -71,6 +71,7 @@
     <Compile Include="Helpers\BindableBase.cs" />
     <Compile Include="Helpers\MyICommand.cs" />
     <Compile Include="Helpers\ValidationBase.cs" />
+    <Compile Include="Model\DataChangeMessage.cs" />
     <Compile Include="Model\Entitet.cs" />
     <Compile Include="Model\Filter.cs" />
     <Compile Include="Model\KlasifikovaniEntiteti.cs" />
@@ -182,6 +183,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\uredjaj.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\uredjaj_error.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

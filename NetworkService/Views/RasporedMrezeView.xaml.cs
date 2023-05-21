@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using NetworkService.ViewModel;
+using System.Windows.Controls;
 
 namespace NetworkService.Views
 {
@@ -13,6 +14,8 @@ namespace NetworkService.Views
             InitializeComponent();
 
             UserControl = this;
+
+            //DataContext = new RasporedMrezeViewModel(MainWindowViewModel.Entiteti);
         }
     }
 }

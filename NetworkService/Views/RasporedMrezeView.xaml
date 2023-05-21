@@ -16,8 +16,9 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
+            <RowDefinition Height="0.1*" />
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" Grid.Column="0" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
+        <Border Grid.Row="0" Grid.Column="0" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
             <Grid Margin="10" x:Name="desniGridSaCanvas" Background="{StaticResource UIWhiteColor}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -42,7 +43,6 @@
                         </Button.Resources>
                     </Button>
                     <Canvas Background="White" AllowDrop="True" x:Name="c1">
-                        <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
                         <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
@@ -399,8 +399,20 @@
             </Grid>
         </Border>
 
+        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Visibility="{Binding Informacija}" Margin="5" Background="{StaticResource UIQuatriraryColor}" CornerRadius="10">
+            <TextBlock Text="{Binding Poruka}" FontSize="16" Foreground="DarkCyan" FontWeight="Bold" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
+        </Border>
+        
+        <Border Grid.Row="1" Grid.Column="0" Visibility="{Binding Uspesno}" Grid.ColumnSpan="1" Margin="5" Background="#C1E1C1 " CornerRadius="10">
+            <TextBlock Text="{Binding Poruka}" FontSize="16" Foreground="#2F4C39" FontWeight="Bold" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
+        </Border>
 
-        <Border Grid.Row="1" Grid.Column="1" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
+        <Border Grid.Row="1" Grid.Column="0" Visibility="{Binding Greska}" Grid.ColumnSpan="1" Margin="5" Background="#FFCCCC " CornerRadius="10">
+            <TextBlock Text="{Binding Poruka}" FontSize="16" Foreground="#D55244" FontWeight="Bold" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
+        </Border>
+
+
+        <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />

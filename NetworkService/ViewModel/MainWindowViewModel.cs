@@ -24,7 +24,7 @@ namespace NetworkService.ViewModel
         public PocetnaViewModel pocetnaViewModel;
         public MrezniEntitetiViewModel mrezniEntitetiViewModel;
         public StatistikaMrezeViewModel statistikaMrezeViewModel;
-        public static RasporedMrezeViewModel rasporedMrezeViewModel;
+        public RasporedMrezeViewModel rasporedMrezeViewModel;
         #endregion
 
         #region TRENUTNO PRIKAZAN VIEW MODEL
@@ -92,6 +92,8 @@ namespace NetworkService.ViewModel
                 mrezniEntitetiViewModel.OnDodajPress();
             }
 
+            //mrezniEntitetiViewModel.OnDodajPress();
+
             mrezniEntitetiViewModel.OdabraniIndeksDodavanjeEntiteta = 0;
             #endregion
 
@@ -107,6 +109,9 @@ namespace NetworkService.ViewModel
 
             mrezniEntitetiViewModel.Informacija = Visibility.Visible;
             mrezniEntitetiViewModel.Poruka = "ℹ Dobrodošli, @Dispečer 3244! Možete započeti sa Vašim radom u aplikaciji za upravljanje serversko-mrežnim entitetima.";
+
+            rasporedMrezeViewModel.Informacija = Visibility.Visible;
+            rasporedMrezeViewModel.Poruka = "ℹ Dobrodošli, @Dispečer 3244! Možete započeti sa Vašim radom u aplikaciji.";
         }
         #endregion
 

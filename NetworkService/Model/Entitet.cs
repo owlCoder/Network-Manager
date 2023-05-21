@@ -1,5 +1,9 @@
-﻿using NetworkService.Helpers;
+﻿using MVVMLight.Messaging;
+using NetworkService.Helpers;
+using NetworkService.ViewModel;
+using System.Collections;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace NetworkService.Model
 {
@@ -111,13 +115,42 @@ namespace NetworkService.Model
                 if (zauzece < 45 || zauzece > 75)
                 {
                     Boja = true;
+                    Slika = "/Assets/uredjaj_error.png";
+
+                    // samo ako je na canvasu ispisuje se poruka
+                    if (Canvas_pozicija != -1)
+                    {
+                        DataChangeMessage message = new DataChangeMessage()
+                        {
+                            Visibility_Uspesno = Visibility.Hidden,
+                            Visibility_Greska = Visibility.Visible,
+                            Poruka = "⚠ Entitet (" + IP + ", " + Naziv + ", " + IP + ") je prijavio KRITIČNU VREDNOST " + Zauzece + "%!"
+                        };
+
+                        Messenger.Default.Send(message);
+                    }
                 }
                 else
                 {
                     Boja = false;
+                    Slika = "/Assets/uredjaj.png";
+
+                    // samo ako je na canvasu ispisuje se poruka
+                    if (Canvas_pozicija != -1)
+                    {
+                        DataChangeMessage message = new DataChangeMessage()
+                        {
+                            Visibility_Uspesno = Visibility.Visible,
+                            Visibility_Greska = Visibility.Hidden,
+                            Poruka = "✅ Entitet (" + IP + ", " + Naziv + ", " + IP + ") je prijavio REGULARNU VREDNOSST " + Zauzece + "%."
+                    };
+
+                        Messenger.Default.Send(message);
+                    }
                 }
 
                 OnPropertyChanged("Boja");
+                OnPropertyChanged("Slika");
             }
         }
 

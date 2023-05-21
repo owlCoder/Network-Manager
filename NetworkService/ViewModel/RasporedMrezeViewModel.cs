@@ -5,6 +5,7 @@ using NetworkService.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
@@ -42,6 +43,9 @@ namespace NetworkService.ViewModel
         private int selected;
         private Canvas pocetni = null;
 
+        private Visibility uspesno, greska, informacija;
+        private string poruka;
+
         public RasporedMrezeViewModel()
         {
             NasumicnoRasporedi = new MyICommand<Grid>(Rasporedi);
@@ -58,6 +62,10 @@ namespace NetworkService.ViewModel
             PreviewMouseMoveKomanda = new MyICommand<Canvas>(PreviewMouseMove);
             PreviewMouseDownKomanda = new MyICommand<Canvas>(PreviewMouseDown);
 
+            Uspesno = Greska = Visibility.Hidden;
+            Informacija = Visibility.Visible;
+            Poruka = "ℹ Dobrodošli, @Dispečer 3244! Možete započeti sa Vašim radom u aplikaciji za upravljanje serversko-mrežnim entitetima.";
+
             // liste za entitete za tree view i canvas
             InicijalizacijaListi();
 
@@ -66,6 +74,49 @@ namespace NetworkService.ViewModel
             
             // za uklanjanje entiteta ako se ukloni iz liste svih
             Messenger.Default.Register<PassDeleteDummy>(this, UkloniElementCanvasTreeView);
+
+            Messenger.Default.Register<DataChangeMessage>(this, Notifikacija);
+        }
+
+        private void Notifikacija(DataChangeMessage message)
+        {
+            Greska = message.Visibility_Greska;
+            Uspesno = message.Visibility_Uspesno;
+            Poruka = message.Poruka;
+        }
+
+        // Kako bi se pamtilo stanje na canvasu - potrebno je koristiti konstruktor sa parametrima
+        public RasporedMrezeViewModel(ObservableCollection<Entitet> entiteti)
+        {
+            #region PODESAVANJE KOMANDI
+            NasumicnoRasporedi = new MyICommand<Grid>(Rasporedi);
+
+            // komande
+            DragOverKomanda = new MyICommand<Canvas>(DragOverMetoda);
+            DropKomanda = new MyICommand<Canvas>(DropMetoda);
+            MouseLevoDugme = new MyICommand(TreeView_MouseLeftButtonUp);
+            TreeViewOdabran = new MyICommand<TreeView>(Promena_SelectedItemChanged);
+            OslobodiKomanda = new MyICommand<Canvas>(Oslobodi_Dugme);
+
+            // komande za d&d
+            PreviewMouseUpKomanda = new MyICommand<Canvas>(PreviewMouseUp);
+            PreviewMouseMoveKomanda = new MyICommand<Canvas>(PreviewMouseMove);
+            PreviewMouseDownKomanda = new MyICommand<Canvas>(PreviewMouseDown);
+            #endregion
+            
+            Uspesno = Greska = Visibility.Hidden;
+            Informacija = Visibility.Visible;
+            Poruka = "ℹ Dobrodošli, @Dispečer 3244! Možete započeti sa Vašim radom u aplikaciji.";
+
+            // restauracija canvasa
+            foreach(KlasifikovaniEntiteti ke in EntitetiCanvas)
+            {
+                foreach(Entitet e in ke.ListaEntiteta)
+                {
+                    Trace.WriteLine(e.Naziv + " - " + e.Canvas_pozicija);
+                }
+            }
+
         }
 
         private void PreviewMouseDown(Canvas canvas)
@@ -111,7 +162,7 @@ namespace NetworkService.ViewModel
                     {
                         BitmapImage img = new BitmapImage();
                         img.BeginInit();
-                        string putanja = Directory.GetCurrentDirectory() + draggedItem.Slika;
+                        string putanja = Directory.GetCurrentDirectory() + "/Assets/uredjaj.png";
                         img.UriSource = new Uri(putanja, UriKind.Absolute);
                         img.EndInit();
                         canvas.Background = new ImageBrush(img);
@@ -229,6 +280,10 @@ namespace NetworkService.ViewModel
             }
 
             // u pronadjenoj klasi, za pronadjeni entitet - ukloniti referencu
+            item.Canvas_pozicija = -1;
+
+            // TO DO: ponisti i sve koordinate!
+
             klasa_u_kojoj_se_nalazi.ListaEntiteta.Remove(item);
 
             // dodajemo u tree view u odredjenu klasu adresa kojoj entitet i pripada
@@ -248,7 +303,7 @@ namespace NetworkService.ViewModel
                 {
                     BitmapImage img = new BitmapImage();
                     img.BeginInit();
-                    string putanja = Directory.GetCurrentDirectory() + draggedItem.Slika;
+                    string putanja = Directory.GetCurrentDirectory() + "/Assets/uredjaj.png";
                     img.UriSource = new Uri(putanja, UriKind.Absolute);
                     img.EndInit();
                     kanvas.Background = new ImageBrush(img);
@@ -450,6 +505,99 @@ namespace NetworkService.ViewModel
                 new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa D" },
                 new KlasifikovaniEntiteti() { AdresnaKlasa = "Adresna Klasa E" }
             };
+        }
+        #endregion
+
+        #region PROPERTY ZA PORUKE
+        public string Poruka
+        {
+            get
+            {
+                return poruka;
+            }
+
+            set
+            {
+                if (poruka != value)
+                {
+                    poruka = value;
+                    OnPropertyChanged("Poruka");
+                }
+            }
+        }
+        public Visibility Uspesno
+        {
+            get
+            {
+                return uspesno;
+            }
+
+            set
+            {
+                if (uspesno != value)
+                {
+                    uspesno = value;
+
+                    if (uspesno == Visibility.Visible)
+                    {
+                        Greska = Informacija = Visibility.Hidden;
+                        OnPropertyChanged("Greska");
+                        OnPropertyChanged("Informacija");
+                    }
+
+                    OnPropertyChanged("Uspesno");
+                }
+            }
+        }
+
+        public Visibility Greska
+        {
+            get
+            {
+                return greska;
+            }
+
+            set
+            {
+                if (greska != value)
+                {
+                    greska = value;
+
+                    if (greska == Visibility.Visible)
+                    {
+                        uspesno = informacija = Visibility.Hidden;
+                        OnPropertyChanged("Uspesno");
+                        OnPropertyChanged("Informacija");
+                    }
+
+                    OnPropertyChanged("Greska");
+                }
+            }
+        }
+
+        public Visibility Informacija
+        {
+            get
+            {
+                return informacija;
+            }
+
+            set
+            {
+                if (informacija != value)
+                {
+                    informacija = value;
+
+                    if (informacija == Visibility.Visible)
+                    {
+                        greska = uspesno = Visibility.Hidden;
+                        OnPropertyChanged("Greska");
+                        OnPropertyChanged("Uspesno");
+                    }
+
+                    OnPropertyChanged("Informacija");
+                }
+            }
         }
         #endregion
     }
