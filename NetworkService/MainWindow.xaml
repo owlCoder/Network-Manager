@@ -43,8 +43,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="70" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="70" /> <!-- red za meni -->
+                <RowDefinition Height="*" />  <!-- red za views -->
             </Grid.RowDefinitions>
             
             <!--// Meni za navigaciju //-->
