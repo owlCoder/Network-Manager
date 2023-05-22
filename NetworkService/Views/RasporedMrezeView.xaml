@@ -222,6 +222,17 @@
                     </Button>
                     <Canvas Background="White" AllowDrop="True" x:Name="c5">
                         <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="180" Y1="70" X2="-455" Y2="70" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C4e1}" />
+                        <Line X1="185" Y1="70" X2="-243" Y2="90" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C4e2}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="90" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C4e3}" />
+                        <Line X1="185" Y1="70" X2="-540" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C4e5}" />
+                        <Line X1="185" Y1="70" X2="-400" Y2="255" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C4e6}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C4e7}" />
+                        <Line X1="185" Y1="70" X2="125" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C4e8}" />
+                        <Line X1="185" Y1="70" X2="-545" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C4e9}" />
+                        <Line X1="185" Y1="70" X2="-330" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C4e10}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C4e11}" />
+                        <Line X1="185" Y1="70" X2="100" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C4e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
                                 <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c5}"/>
@@ -255,6 +266,17 @@
                     </Button>
                     <Canvas Background="White" AllowDrop="True" x:Name="c6">
                         <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="180" Y1="70" X2="-455" Y2="70" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C4e1}" />
+                        <Line X1="185" Y1="70" X2="-243" Y2="90" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C4e2}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="90" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C4e3}" />
+                        <Line X1="185" Y1="70" X2="-540" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C4e5}" />
+                        <Line X1="185" Y1="70" X2="-400" Y2="255" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C4e6}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C4e7}" />
+                        <Line X1="185" Y1="70" X2="125" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C4e8}" />
+                        <Line X1="185" Y1="70" X2="-545" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C4e9}" />
+                        <Line X1="185" Y1="70" X2="-330" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C4e10}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C4e11}" />
+                        <Line X1="185" Y1="70" X2="100" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C4e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
                                 <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c6}"/>
@@ -288,6 +310,17 @@
                     </Button>
                     <Canvas Background="White" AllowDrop="True" x:Name="c7">
                         <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="180" Y1="70" X2="-455" Y2="70" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C4e1}" />
+                        <Line X1="185" Y1="70" X2="-243" Y2="90" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C4e2}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="90" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C4e3}" />
+                        <Line X1="185" Y1="70" X2="-540" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C4e5}" />
+                        <Line X1="185" Y1="70" X2="-400" Y2="255" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C4e6}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C4e7}" />
+                        <Line X1="185" Y1="70" X2="125" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C4e8}" />
+                        <Line X1="185" Y1="70" X2="-545" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C4e9}" />
+                        <Line X1="185" Y1="70" X2="-330" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C4e10}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C4e11}" />
+                        <Line X1="185" Y1="70" X2="100" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C4e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
                                 <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c7}"/>
@@ -321,6 +354,17 @@
                     </Button>
                     <Canvas Background="White" AllowDrop="True" x:Name="c8">
                         <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="180" Y1="70" X2="-455" Y2="70" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C4e1}" />
+                        <Line X1="185" Y1="70" X2="-243" Y2="90" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C4e2}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="90" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C4e3}" />
+                        <Line X1="185" Y1="70" X2="-540" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C4e5}" />
+                        <Line X1="185" Y1="70" X2="-400" Y2="255" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C4e6}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C4e7}" />
+                        <Line X1="185" Y1="70" X2="125" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C4e8}" />
+                        <Line X1="185" Y1="70" X2="-545" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C4e9}" />
+                        <Line X1="185" Y1="70" X2="-330" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C4e10}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C4e11}" />
+                        <Line X1="185" Y1="70" X2="100" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C4e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
                                 <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c8}"/>
@@ -355,6 +399,17 @@
                     </Button>
                     <Canvas Background="White" AllowDrop="True" x:Name="c9">
                         <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="180" Y1="70" X2="-455" Y2="70" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C4e1}" />
+                        <Line X1="185" Y1="70" X2="-243" Y2="90" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C4e2}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="90" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C4e3}" />
+                        <Line X1="185" Y1="70" X2="-540" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C4e5}" />
+                        <Line X1="185" Y1="70" X2="-400" Y2="255" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C4e6}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C4e7}" />
+                        <Line X1="185" Y1="70" X2="125" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C4e8}" />
+                        <Line X1="185" Y1="70" X2="-545" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C4e9}" />
+                        <Line X1="185" Y1="70" X2="-330" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C4e10}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C4e11}" />
+                        <Line X1="185" Y1="70" X2="100" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C4e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
                                 <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c9}"/>
@@ -388,6 +443,17 @@
                     </Button>
                     <Canvas Background="White" AllowDrop="True" x:Name="c10">
                         <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="180" Y1="70" X2="-455" Y2="70" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C4e1}" />
+                        <Line X1="185" Y1="70" X2="-243" Y2="90" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C4e2}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="90" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C4e3}" />
+                        <Line X1="185" Y1="70" X2="-540" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C4e5}" />
+                        <Line X1="185" Y1="70" X2="-400" Y2="255" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C4e6}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C4e7}" />
+                        <Line X1="185" Y1="70" X2="125" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C4e8}" />
+                        <Line X1="185" Y1="70" X2="-545" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C4e9}" />
+                        <Line X1="185" Y1="70" X2="-330" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C4e10}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C4e11}" />
+                        <Line X1="185" Y1="70" X2="100" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C4e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
                                 <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c10}"/>
@@ -421,6 +487,17 @@
                     </Button>
                     <Canvas Background="White" AllowDrop="True" x:Name="c11">
                         <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="180" Y1="70" X2="-455" Y2="70" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C4e1}" />
+                        <Line X1="185" Y1="70" X2="-243" Y2="90" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C4e2}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="90" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C4e3}" />
+                        <Line X1="185" Y1="70" X2="-540" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C4e5}" />
+                        <Line X1="185" Y1="70" X2="-400" Y2="255" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C4e6}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C4e7}" />
+                        <Line X1="185" Y1="70" X2="125" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C4e8}" />
+                        <Line X1="185" Y1="70" X2="-545" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C4e9}" />
+                        <Line X1="185" Y1="70" X2="-330" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C4e10}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C4e11}" />
+                        <Line X1="185" Y1="70" X2="100" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C4e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
                                 <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c11}"/>
@@ -454,6 +531,17 @@
                     </Button>
                     <Canvas Background="White" AllowDrop="True" x:Name="c12">
                         <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="180" Y1="70" X2="-455" Y2="70" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C4e1}" />
+                        <Line X1="185" Y1="70" X2="-243" Y2="90" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C4e2}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="90" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C4e3}" />
+                        <Line X1="185" Y1="70" X2="-540" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C4e5}" />
+                        <Line X1="185" Y1="70" X2="-400" Y2="255" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C4e6}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C4e7}" />
+                        <Line X1="185" Y1="70" X2="125" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C4e8}" />
+                        <Line X1="185" Y1="70" X2="-545" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C4e9}" />
+                        <Line X1="185" Y1="70" X2="-330" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C4e10}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C4e11}" />
+                        <Line X1="185" Y1="70" X2="100" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C4e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
                                 <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c12}"/>
