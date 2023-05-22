@@ -72,6 +72,9 @@
                             <i:EventTrigger EventName="Drop">
                                 <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c1}"/>
                             </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c1}"/>
+                            </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
@@ -101,6 +104,9 @@
                             </i:EventTrigger>
                             <i:EventTrigger EventName="PreviewMouseUp">
                                 <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c2}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c2}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>

@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -64,9 +65,26 @@ namespace NetworkService.ViewModel
         private Canvas src = null;
         private Canvas dst = null;
 
+        public MyICommand<Canvas> DesniKlik { get; private set; }
+
         #endregion
         public RasporedMrezeViewModel()
         {
+            #region DEFAULT VREDNOSTI LINIJA
+            c1e1 = c1e2 = c1e3 = c1e4 = c1e5 = c1e6 = c1e7 = c1e8 = c1e9 = c1e10 = c1e11 = c1e12 = Visibility.Hidden;
+            c2e1 = c2e2 = c2e3 = c2e4 = c2e5 = c2e6 = c2e7 = c2e8 = c2e9 = c2e10 = c2e11 = c2e12 = Visibility.Hidden;
+            c3e1 = c3e2 = c3e3 = c3e4 = c3e5 = c3e6 = c3e7 = c3e8 = c3e9 = c3e10 = c3e11 = c3e12 = Visibility.Hidden;
+            c4e1 = c4e2 = c4e3 = c4e4 = c4e5 = c4e6 = c4e7 = c4e8 = c4e9 = c4e10 = c4e11 = c4e12 = Visibility.Hidden;
+            c5e1 = c5e2 = c5e3 = c5e4 = c5e5 = c5e6 = c5e7 = c5e8 = c5e9 = c5e10 = c5e11 = c5e12 = Visibility.Hidden;
+            c6e1 = c6e2 = c6e3 = c6e4 = c6e5 = c6e6 = c6e7 = c6e8 = c6e9 = c6e10 = c6e11 = c6e12 = Visibility.Hidden;
+            c7e1 = c7e2 = c7e3 = c7e4 = c7e5 = c7e6 = c7e7 = c7e8 = c7e9 = c7e10 = c7e11 = c7e12 = Visibility.Hidden;
+            c8e1 = c8e2 = c8e3 = c8e4 = c8e5 = c8e6 = c8e7 = c8e8 = c8e9 = c8e10 = c8e11 = c8e12 = Visibility.Hidden;
+            c9e1 = c9e2 = c9e3 = c9e4 = c9e5 = c9e6 = c9e7 = c9e8 = c9e9 = c9e10 = c9e11 = c9e12 = Visibility.Hidden;
+            c10e1 = c10e2 = c10e3 = c10e4 = c10e5 = c10e6 = c10e7 = c10e8 = c10e9 = c10e10 = c10e11 = c10e12 = Visibility.Hidden;
+            c11e1 = c11e2 = c11e3 = c11e4 = c11e5 = c11e6 = c11e7 = c11e8 = c11e9 = c11e10 = c11e11 = c11e12 = Visibility.Hidden;
+            c12e1 = c12e2 = c12e3 = c12e4 = c12e5 = c12e6 = c12e7 = c12e8 = c12e9 = c12e10 = c12e11 = c12e12 = Visibility.Hidden;
+            #endregion
+
             NasumicnoRasporedi = new MyICommand<Grid>(Rasporedi);
 
             // komande
@@ -75,6 +93,7 @@ namespace NetworkService.ViewModel
             MouseLevoDugme = new MyICommand(TreeView_MouseLeftButtonUp);
             TreeViewOdabran = new MyICommand<TreeView>(Promena_SelectedItemChanged);
             OslobodiKomanda = new MyICommand<Canvas>(Oslobodi_Dugme);
+            DesniKlik = new MyICommand<Canvas>(SpajanjeEntiteta);
 
             // komande za d&d
             PreviewMouseUpKomanda = new MyICommand<Canvas>(PreviewMouseUp);
@@ -95,6 +114,199 @@ namespace NetworkService.ViewModel
             Messenger.Default.Register<PassDeleteDummy>(this, UkloniElementCanvasTreeView);
 
             Messenger.Default.Register<DataChangeMessage>(this, Notifikacija);
+        }
+
+        public void SpajanjeEntiteta(Canvas canvas)
+        {
+            if(src == null)
+            {
+                // ako je pocetna pozicija ne odabrana, onda se sada postavlja
+                src = canvas;
+                dst = null; // resetuje se pozicija jer je prvi klik
+            }
+            else
+            {
+                // drugi je klik po redu
+                dst = canvas;
+
+                // koji su canvasi
+                int src_id = GetCanvasId(src.Name), dst_id = GetCanvasId(dst.Name);
+
+                // proveri da li canvasi taken
+                if (src.Resources["taken"] == null || dst.Resources["taken"] == null)
+                {
+                    // nema na canvasu entiteta
+                    goto Resetuj;
+                }
+
+                if(src_id == dst_id) // isti su id
+                {
+                    goto Resetuj;
+                }
+
+                #region  UPARI VIDLJIVOST CANVASA
+                // prvi canvas
+                if (src_id == 1 && dst_id == 2) C1e2 = Visibility.Visible;
+                if (src_id == 1 && dst_id == 3) C1e3 = Visibility.Visible;
+                if (src_id == 1 && dst_id == 4) C1e4 = Visibility.Visible;
+                if (src_id == 1 && dst_id == 5) C1e5 = Visibility.Visible;
+                if (src_id == 1 && dst_id == 6) C1e6 = Visibility.Visible;
+                if (src_id == 1 && dst_id == 7) C1e7 = Visibility.Visible;
+                if (src_id == 1 && dst_id == 8) C1e8 = Visibility.Visible;
+                if (src_id == 1 && dst_id == 9) C1e9 = Visibility.Visible;
+                if (src_id == 1 && dst_id == 10) C1e10 = Visibility.Visible;
+                if (src_id == 1 && dst_id == 11) C1e11 = Visibility.Visible;
+                if (src_id == 1 && dst_id == 12) C1e12 = Visibility.Visible;
+
+                // drugi canvas
+                if (src_id == 2 && dst_id == 1) C2e1 = Visibility.Visible;
+                if (src_id == 2 && dst_id == 3) C2e3 = Visibility.Visible;
+                if (src_id == 2 && dst_id == 4) C2e4 = Visibility.Visible;
+                if (src_id == 2 && dst_id == 5) C2e5 = Visibility.Visible;
+                if (src_id == 2 && dst_id == 6) C2e6 = Visibility.Visible;
+                if (src_id == 2 && dst_id == 7) C2e7 = Visibility.Visible;
+                if (src_id == 2 && dst_id == 8) C2e8 = Visibility.Visible;
+                if (src_id == 2 && dst_id == 9) C2e9 = Visibility.Visible;
+                if (src_id == 2 && dst_id == 10) C2e10 = Visibility.Visible;
+                if (src_id == 2 && dst_id == 11) C2e11 = Visibility.Visible;
+                if (src_id == 2 && dst_id == 12) C2e12 = Visibility.Visible;
+
+                // treci canvas
+                if (src_id == 3 && dst_id == 1) C3e1 = Visibility.Visible;
+                if (src_id == 3 && dst_id == 2) C3e2 = Visibility.Visible;
+                if (src_id == 3 && dst_id == 4) C3e4 = Visibility.Visible;
+                if (src_id == 3 && dst_id == 5) C3e5 = Visibility.Visible;
+                if (src_id == 3 && dst_id == 6) C3e6 = Visibility.Visible;
+                if (src_id == 3 && dst_id == 7) C3e7 = Visibility.Visible;
+                if (src_id == 3 && dst_id == 8) C3e8 = Visibility.Visible;
+                if (src_id == 3 && dst_id == 9) C3e9 = Visibility.Visible;
+                if (src_id == 3 && dst_id == 10) C3e10 = Visibility.Visible;
+                if (src_id == 3 && dst_id == 11) C3e11 = Visibility.Visible;
+                if (src_id == 3 && dst_id == 12) C3e12 = Visibility.Visible;
+
+                // cetvrti canvas
+                if (src_id == 4 && dst_id == 1) C4e1 = Visibility.Visible;
+                if (src_id == 4 && dst_id == 2) C4e2 = Visibility.Visible;
+                if (src_id == 4 && dst_id == 3) C4e3 = Visibility.Visible;
+                if (src_id == 4 && dst_id == 5) C4e5 = Visibility.Visible;
+                if (src_id == 4 && dst_id == 6) C4e6 = Visibility.Visible;
+                if (src_id == 4 && dst_id == 7) C4e7 = Visibility.Visible;
+                if (src_id == 4 && dst_id == 8) C4e8 = Visibility.Visible;
+                if (src_id == 4 && dst_id == 9) C4e9 = Visibility.Visible;
+                if (src_id == 4 && dst_id == 10) C4e10 = Visibility.Visible;
+                if (src_id == 4 && dst_id == 11) C4e11 = Visibility.Visible;
+                if (src_id == 4 && dst_id == 12) C4e12 = Visibility.Visible;
+
+                // peti canvas
+                if (src_id == 5 && dst_id == 1) C5e1 = Visibility.Visible;
+                if (src_id == 5 && dst_id == 2) C5e2 = Visibility.Visible;
+                if (src_id == 5 && dst_id == 3) C5e3 = Visibility.Visible;
+                if (src_id == 5 && dst_id == 4) C5e4 = Visibility.Visible;
+                if (src_id == 5 && dst_id == 6) C5e6 = Visibility.Visible;
+                if (src_id == 5 && dst_id == 7) C5e7 = Visibility.Visible;
+                if (src_id == 5 && dst_id == 8) C5e8 = Visibility.Visible;
+                if (src_id == 5 && dst_id == 9) C5e9 = Visibility.Visible;
+                if (src_id == 5 && dst_id == 10) C5e10 = Visibility.Visible;
+                if (src_id == 5 && dst_id == 11) C5e11 = Visibility.Visible;
+                if (src_id == 5 && dst_id == 12) C5e12 = Visibility.Visible;
+
+                // sesti canvas
+                if (src_id == 6 && dst_id == 1) C6e1 = Visibility.Visible;
+                if (src_id == 6 && dst_id == 2) C6e2 = Visibility.Visible;
+                if (src_id == 6 && dst_id == 3) C6e3 = Visibility.Visible;
+                if (src_id == 6 && dst_id == 4) C6e4 = Visibility.Visible;
+                if (src_id == 6 && dst_id == 5) C6e5 = Visibility.Visible;
+                if (src_id == 6 && dst_id == 7) C6e7 = Visibility.Visible;
+                if (src_id == 6 && dst_id == 8) C6e8 = Visibility.Visible;
+                if (src_id == 6 && dst_id == 9) C6e9 = Visibility.Visible;
+                if (src_id == 6 && dst_id == 10) C6e10 = Visibility.Visible;
+                if (src_id == 6 && dst_id == 11) C6e11 = Visibility.Visible;
+                if (src_id == 6 && dst_id == 12) C6e12 = Visibility.Visible;
+
+                // sedmi canvas
+                if (src_id == 7 && dst_id == 1) C7e1 = Visibility.Visible;
+                if (src_id == 7 && dst_id == 2) C7e2 = Visibility.Visible;
+                if (src_id == 7 && dst_id == 3) C7e3 = Visibility.Visible;
+                if (src_id == 7 && dst_id == 4) C7e4 = Visibility.Visible;
+                if (src_id == 7 && dst_id == 5) C7e5 = Visibility.Visible;
+                if (src_id == 7 && dst_id == 6) C7e6 = Visibility.Visible;
+                if (src_id == 7 && dst_id == 8) C7e8 = Visibility.Visible;
+                if (src_id == 7 && dst_id == 9) C7e9 = Visibility.Visible;
+                if (src_id == 7 && dst_id == 10) C7e10 = Visibility.Visible;
+                if (src_id == 7 && dst_id == 11) C7e11 = Visibility.Visible;
+                if (src_id == 7 && dst_id == 12) C7e12 = Visibility.Visible;
+
+                // osmi canvas
+                if (src_id == 8 && dst_id == 1) C8e1 = Visibility.Visible;
+                if (src_id == 8 && dst_id == 2) C8e2 = Visibility.Visible;
+                if (src_id == 8 && dst_id == 3) C8e3 = Visibility.Visible;
+                if (src_id == 8 && dst_id == 4) C8e4 = Visibility.Visible;
+                if (src_id == 8 && dst_id == 5) C8e5 = Visibility.Visible;
+                if (src_id == 8 && dst_id == 6) C8e6 = Visibility.Visible;
+                if (src_id == 8 && dst_id == 7) C8e7 = Visibility.Visible;
+                if (src_id == 8 && dst_id == 9) C8e9 = Visibility.Visible;
+                if (src_id == 8 && dst_id == 10) C8e10 = Visibility.Visible;
+                if (src_id == 8 && dst_id == 11) C8e11 = Visibility.Visible;
+                if (src_id == 8 && dst_id == 12) C8e12 = Visibility.Visible;
+
+                // deveti canvas
+                if (src_id == 9 && dst_id == 1) C9e1 = Visibility.Visible;
+                if (src_id == 9 && dst_id == 2) C9e2 = Visibility.Visible;
+                if (src_id == 9 && dst_id == 3) C9e3 = Visibility.Visible;
+                if (src_id == 9 && dst_id == 4) C9e4 = Visibility.Visible;
+                if (src_id == 9 && dst_id == 5) C9e5 = Visibility.Visible;
+                if (src_id == 9 && dst_id == 6) C9e6 = Visibility.Visible;
+                if (src_id == 9 && dst_id == 7) C9e7 = Visibility.Visible;
+                if (src_id == 9 && dst_id == 8) C9e8 = Visibility.Visible;
+                if (src_id == 9 && dst_id == 10) C9e10 = Visibility.Visible;
+                if (src_id == 9 && dst_id == 11) C9e11 = Visibility.Visible;
+                if (src_id == 9 && dst_id == 12) C9e12 = Visibility.Visible;
+
+                // deseti canvas
+                if (src_id == 10 && dst_id == 1) C10e1 = Visibility.Visible;
+                if (src_id == 10 && dst_id == 2) C10e2 = Visibility.Visible;
+                if (src_id == 10 && dst_id == 3) C10e3 = Visibility.Visible;
+                if (src_id == 10 && dst_id == 4) C10e4 = Visibility.Visible;
+                if (src_id == 10 && dst_id == 5) C10e5 = Visibility.Visible;
+                if (src_id == 10 && dst_id == 6) C10e6 = Visibility.Visible;
+                if (src_id == 10 && dst_id == 7) C10e7 = Visibility.Visible;
+                if (src_id == 10 && dst_id == 8) C10e8 = Visibility.Visible;
+                if (src_id == 10 && dst_id == 9) C10e9 = Visibility.Visible;
+                if (src_id == 10 && dst_id == 11) C10e11 = Visibility.Visible;
+                if (src_id == 10 && dst_id == 12) C10e12 = Visibility.Visible;
+
+                // jedanaesti canvas
+                if (src_id == 11 && dst_id == 1) C11e1 = Visibility.Visible;
+                if (src_id == 11 && dst_id == 2) C11e2 = Visibility.Visible;
+                if (src_id == 11 && dst_id == 3) C11e3 = Visibility.Visible;
+                if (src_id == 11 && dst_id == 4) C11e4 = Visibility.Visible;
+                if (src_id == 11 && dst_id == 5) C11e5 = Visibility.Visible;
+                if (src_id == 11 && dst_id == 6) C11e6 = Visibility.Visible;
+                if (src_id == 11 && dst_id == 7) C11e7 = Visibility.Visible;
+                if (src_id == 11 && dst_id == 8) C11e8 = Visibility.Visible;
+                if (src_id == 11 && dst_id == 9) C11e9 = Visibility.Visible;
+                if (src_id == 11 && dst_id == 10) C11e10 = Visibility.Visible;
+                if (src_id == 11 && dst_id == 12) C11e12 = Visibility.Visible;
+
+                // dvanaesti canvas
+                if (src_id == 12 && dst_id == 1) C12e1 = Visibility.Visible;
+                if (src_id == 12 && dst_id == 2) C12e2 = Visibility.Visible;
+                if (src_id == 12 && dst_id == 3) C12e3 = Visibility.Visible;
+                if (src_id == 12 && dst_id == 4) C12e4 = Visibility.Visible;
+                if (src_id == 12 && dst_id == 5) C12e5 = Visibility.Visible;
+                if (src_id == 12 && dst_id == 6) C12e6 = Visibility.Visible;
+                if (src_id == 12 && dst_id == 7) C12e7 = Visibility.Visible;
+                if (src_id == 12 && dst_id == 8) C12e8 = Visibility.Visible;
+                if (src_id == 12 && dst_id == 9) C12e9 = Visibility.Visible;
+                if (src_id == 12 && dst_id == 10) C12e10 = Visibility.Visible;
+                if (src_id == 12 && dst_id == 11) C12e10 = Visibility.Visible;
+                #endregion
+
+                Resetuj:
+                // resetuj canvase
+                src = null;
+                dst = null;
+            }
         }
 
         private void Notifikacija(DataChangeMessage message)
@@ -126,6 +338,7 @@ namespace NetworkService.ViewModel
             Uspesno = Greska = Visibility.Hidden;
             Informacija = Visibility.Visible;
             Poruka = "ℹ Dobrodošli, @Dispečer 3244! Možete započeti sa Vašim radom u aplikaciji.";
+            DesniKlik = new MyICommand<Canvas>(SpajanjeEntiteta);
 
             // restauracija canvasa
             // indeksiranje
@@ -300,6 +513,99 @@ namespace NetworkService.ViewModel
                 kanvasRoditelj.Background = Brushes.White;
                 ((TextBlock)kanvasRoditelj.Children[0]).Text = string.Empty;
                 kanvasRoditelj.Resources.Remove("taken");
+
+                int id = GetCanvasId(kanvasRoditelj.Name);
+
+                #region BRISANJE SVIH POVEZANIH LINIJA
+                if (id == 1)
+                {
+                    c1e1 = c1e2 = c1e3 = c1e4 = c1e5 = c1e6 = c1e7 = c1e8 = c1e9 = c1e10 = c1e11 = c1e12 = Visibility.Hidden;
+                    c1e1 = c2e1 = c3e1 = c4e1 = c5e1 = c6e1 = c7e1 = c8e1 = c9e1 = c10e1 = c11e1 = c12e1 = Visibility.Hidden;
+                }
+
+                if (id == 2)
+                {
+                    c1e2 = c2e1 = c2e2 = c2e3 = c2e4 = c2e5 = c2e6 = c2e7 = c2e8 = c2e9 = c2e10 = c2e11 = c2e12 = Visibility.Hidden;
+                    c1e2 = c2e2 = c3e2 = c4e2 = c5e2 = c6e2 = c7e2 = c8e2 = c9e2 = c10e2 = c11e2 = c12e2 = Visibility.Hidden;
+
+                }
+
+                if (id == 3)
+                {
+                    c3e1 = c3e2 = c3e3 = c3e4 = c3e5 = c3e6 = c3e7 = c3e8 = c3e9 = c3e10 = c3e11 = c3e12 = Visibility.Hidden;
+                    c1e3 = c2e3 = c3e3 = c4e3 = c5e3 = c6e3 = c7e3 = c8e3 = c9e3 = c10e3 = c11e3 = c12e3 = Visibility.Hidden;
+                }
+
+                if (id == 4)
+                {
+                    c4e1 = c4e2 = c4e3 = c4e4 = c4e5 = c4e6 = c4e7 = c4e8 = c4e9 = c4e10 = c4e11 = c4e12 = Visibility.Hidden;
+                    c1e4 = c2e4 = c3e4 = c4e4 = c5e4 = c6e4 = c7e4 = c8e4 = c9e4 = c10e4 = c11e4 = c12e4 = Visibility.Hidden;
+                }
+
+                if (id == 5)
+                {
+                    c5e1 = c5e2 = c5e3 = c5e4 = c5e5 = c5e6 = c5e7 = c5e8 = c5e9 = c5e10 = c5e11 = c5e12 = Visibility.Hidden;
+                    c1e5 = c2e5 = c3e5 = c4e5 = c5e5 = c6e5 = c7e5 = c8e5 = c9e5 = c10e5 = c11e5 = c12e5 = Visibility.Hidden;
+                }
+
+                if (id == 6)
+                {
+                    c6e1 = c6e2 = c6e3 = c6e4 = c6e5 = c6e6 = c6e7 = c6e8 = c6e9 = c6e10 = c6e11 = c6e12 = Visibility.Hidden;
+                    c1e2 = c2e2 = c3e2 = c4e2 = c5e2 = c6e2 = c7e2 = c8e2 = c9e2 = c10e2 = c11e2 = c12e2 = Visibility.Hidden;
+                }
+
+
+                if (id == 7)
+                {
+                    c7e1 = c7e2 = c7e3 = c7e4 = c7e5 = c7e6 = c7e7 = c7e8 = c7e9 = c7e10 = c7e11 = c7e12 = Visibility.Hidden;
+                    c1e7 = c2e7 = c3e7 = c4e7 = c5e7 = c6e7 = c7e7 = c8e7 = c9e7 = c10e7 = c11e7 = c12e7 = Visibility.Hidden;
+                }
+
+
+                if (id == 8)
+                {
+                    c8e1 = c8e2 = c8e3 = c8e4 = c8e5 = c8e6 = c8e7 = c8e8 = c8e9 = c8e10 = c8e11 = c8e12 = Visibility.Hidden;
+                    c1e8 = c2e8 = c3e8 = c4e8 = c5e8 = c6e8 = c7e8 = c8e8 = c9e8 = c10e8 = c11e8 = c12e8 = Visibility.Hidden;
+                }
+
+
+                if (id == 9)
+                {
+                    c9e1 = c9e2 = c9e3 = c9e4 = c9e5 = c9e6 = c9e7 = c9e8 = c9e9 = c9e10 = c9e11 = c9e12 = Visibility.Hidden;
+                    c1e9 = c2e9 = c3e9 = c4e9 = c5e9 = c6e9 = c7e9 = c8e9 = c9e9 = c10e9 = c11e9 = c12e9 = Visibility.Hidden;
+                }
+
+                if (id == 10)
+                {
+                    c10e1 = c10e2 = c10e3 = c10e4 = c10e5 = c10e6 = c10e7 = c10e8 = c10e9 = c10e10 = c10e11 = c10e12 = Visibility.Hidden;
+                    c1e10 = c2e10 = c3e10 = c4e10 = c5e10 = c6e10 = c7e10 = c8e10 = c9e10 = c10e10 = c11e10 = c12e10 = Visibility.Hidden;
+                }
+
+                if (id == 11)
+                {
+                    c11e1 = c11e2 = c11e3 = c11e4 = c11e5 = c11e6 = c11e7 = c11e8 = c11e9 = c11e10 = c11e11 = c11e12 = Visibility.Hidden;
+                    c1e11 = c2e11 = c3e11 = c4e11 = c5e11 = c6e11 = c7e11 = c8e11 = c9e11 = c10e11 = c11e11 = c12e11 = Visibility.Hidden;
+                }
+
+                if (id == 12)
+                {
+                    c12e1 = c12e2 = c12e3 = c12e4 = c12e5 = c12e6 = c12e7 = c12e8 = c12e9 = c12e10 = c12e11 = c12e12 = Visibility.Hidden;
+                    c1e12 = c2e12 = c3e12 = c4e12 = c5e12 = c6e12 = c7e12 = c8e12 = c9e12 = c10e12 = c11e12 = c12e12 = Visibility.Hidden;
+                }
+
+                OnPropertyChanged("C1e1"); OnPropertyChanged("C1e2"); OnPropertyChanged("C1e3"); OnPropertyChanged("C1e4"); OnPropertyChanged("C1e5"); OnPropertyChanged("C1e6"); OnPropertyChanged("C1e7"); OnPropertyChanged("C1e8"); OnPropertyChanged("C1e9"); OnPropertyChanged("C1e10"); OnPropertyChanged("C1e11"); OnPropertyChanged("C1e12");
+                OnPropertyChanged("C2e1"); OnPropertyChanged("C2e2"); OnPropertyChanged("C2e3"); OnPropertyChanged("C2e4"); OnPropertyChanged("C2e5"); OnPropertyChanged("C2e6"); OnPropertyChanged("C2e7"); OnPropertyChanged("C2e8"); OnPropertyChanged("C2e9"); OnPropertyChanged("C2e10"); OnPropertyChanged("C2e11"); OnPropertyChanged("C2e12");
+                OnPropertyChanged("C3e1"); OnPropertyChanged("C3e2"); OnPropertyChanged("C3e3"); OnPropertyChanged("C3e4"); OnPropertyChanged("C3e5"); OnPropertyChanged("C3e6"); OnPropertyChanged("C3e7"); OnPropertyChanged("C3e8"); OnPropertyChanged("C3e9"); OnPropertyChanged("C3e10"); OnPropertyChanged("C3e11"); OnPropertyChanged("C3e12");
+                OnPropertyChanged("C4e1"); OnPropertyChanged("C4e2"); OnPropertyChanged("C4e3"); OnPropertyChanged("C4e4"); OnPropertyChanged("C4e5"); OnPropertyChanged("C4e6"); OnPropertyChanged("C4e7"); OnPropertyChanged("C4e8"); OnPropertyChanged("C4e9"); OnPropertyChanged("C4e10"); OnPropertyChanged("C4e11"); OnPropertyChanged("C4e12");
+                OnPropertyChanged("C5e1"); OnPropertyChanged("C5e2"); OnPropertyChanged("C5e3"); OnPropertyChanged("C5e4"); OnPropertyChanged("C5e5"); OnPropertyChanged("C5e6"); OnPropertyChanged("C5e7"); OnPropertyChanged("C5e8"); OnPropertyChanged("C5e9"); OnPropertyChanged("C5e10"); OnPropertyChanged("C5e11"); OnPropertyChanged("C5e12");
+                OnPropertyChanged("C6e1"); OnPropertyChanged("C6e2"); OnPropertyChanged("C6e3"); OnPropertyChanged("C6e4"); OnPropertyChanged("C6e5"); OnPropertyChanged("C6e6"); OnPropertyChanged("C6e7"); OnPropertyChanged("C6e8"); OnPropertyChanged("C6e9"); OnPropertyChanged("C6e10"); OnPropertyChanged("C6e11"); OnPropertyChanged("C6e12");
+                OnPropertyChanged("C7e1"); OnPropertyChanged("C7e2"); OnPropertyChanged("C7e3"); OnPropertyChanged("C7e4"); OnPropertyChanged("C7e5"); OnPropertyChanged("C7e6"); OnPropertyChanged("C7e7"); OnPropertyChanged("C7e8"); OnPropertyChanged("C7e9"); OnPropertyChanged("C7e10"); OnPropertyChanged("C7e11"); OnPropertyChanged("C7e12");
+                OnPropertyChanged("C8e1"); OnPropertyChanged("C8e2"); OnPropertyChanged("C8e3"); OnPropertyChanged("C8e4"); OnPropertyChanged("C8e5"); OnPropertyChanged("C8e6"); OnPropertyChanged("C8e7"); OnPropertyChanged("C8e8"); OnPropertyChanged("C8e9"); OnPropertyChanged("C8e10"); OnPropertyChanged("C8e11"); OnPropertyChanged("C8e12");
+                OnPropertyChanged("C9e1"); OnPropertyChanged("C9e2"); OnPropertyChanged("C9e3"); OnPropertyChanged("C9e4"); OnPropertyChanged("C9e5"); OnPropertyChanged("C9e6"); OnPropertyChanged("C9e7"); OnPropertyChanged("C9e8"); OnPropertyChanged("C9e9"); OnPropertyChanged("C9e10"); OnPropertyChanged("C9e11"); OnPropertyChanged("C9e12");
+                OnPropertyChanged("C10e1"); OnPropertyChanged("C10e2"); OnPropertyChanged("C10e3"); OnPropertyChanged("C10e4"); OnPropertyChanged("C10e5"); OnPropertyChanged("C10e6"); OnPropertyChanged("C10e7"); OnPropertyChanged("C10e8"); OnPropertyChanged("C10e9"); OnPropertyChanged("C10e10"); OnPropertyChanged("C10e11"); OnPropertyChanged("C10e12");
+                OnPropertyChanged("C11e1"); OnPropertyChanged("C11e2"); OnPropertyChanged("C11e3"); OnPropertyChanged("C11e4"); OnPropertyChanged("C11e5"); OnPropertyChanged("C11e6"); OnPropertyChanged("C11e7"); OnPropertyChanged("C11e8"); OnPropertyChanged("C11e9"); OnPropertyChanged("C11e10"); OnPropertyChanged("C11e11"); OnPropertyChanged("C11e12");
+                OnPropertyChanged("C12e1"); OnPropertyChanged("C12e2"); OnPropertyChanged("C12e3"); OnPropertyChanged("C12e4"); OnPropertyChanged("C12e5"); OnPropertyChanged("C12e6"); OnPropertyChanged("C12e7"); OnPropertyChanged("C12e8"); OnPropertyChanged("C12e9"); OnPropertyChanged("C12e10"); OnPropertyChanged("C12e11"); OnPropertyChanged("C12e12");
+                #endregion
             }
         }
 
