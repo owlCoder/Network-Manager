@@ -89,6 +89,17 @@
                     </Button>
                     <Canvas Background="White" AllowDrop="True" x:Name="c2">
                         <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="185" Y1="70" X2="-30" Y2="50" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C2e1}" />
+                        <Line X1="185" Y1="70" X2="310" Y2="110" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C2e3}" />
+                        <Line X1="185" Y1="70" X2="450" Y2="80" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C2e4}" />
+                        <Line X1="185" Y1="70" X2="-70" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C2e5}" />
+                        <Line X1="185" Y1="70" X2="85" Y2="225" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C2e6}" />
+                        <Line X1="185" Y1="70" X2="285" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C2e7}" />
+                        <Line X1="185" Y1="70" X2="485" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C2e8}" />
+                        <Line X1="185" Y1="70" X2="-95" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C2e9}" />
+                        <Line X1="185" Y1="70" X2="100" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C2e10}" />
+                        <Line X1="185" Y1="70" X2="300" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C2e11}" />
+                        <Line X1="185" Y1="70" X2="555" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C2e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
                                 <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c2}"/>
@@ -122,6 +133,17 @@
                     </Button>
                     <Canvas Background="White" AllowDrop="True" x:Name="c3">
                         <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="185" Y1="70" X2="-250" Y2="50" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C3e1}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="70" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C3e2}" />
+                        <Line X1="185" Y1="70" X2="235" Y2="80" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C3e4}" />
+                        <Line X1="185" Y1="70" X2="-300" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C3e5}" />
+                        <Line X1="185" Y1="70" X2="-165" Y2="255" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C3e6}" />
+                        <Line X1="185" Y1="70" X2="110" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C3e7}" />
+                        <Line X1="185" Y1="70" X2="285" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C3e8}" />
+                        <Line X1="185" Y1="70" X2="-305" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C3e9}" />
+                        <Line X1="185" Y1="70" X2="-100" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C3e10}" />
+                        <Line X1="185" Y1="70" X2="100" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C3e11}" />
+                        <Line X1="185" Y1="70" X2="300" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C3e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
                                 <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c3}"/>
@@ -138,6 +160,9 @@
                             <i:EventTrigger EventName="PreviewMouseUp">
                                 <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c3}" />
                             </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c3}"/>
+                            </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
@@ -152,6 +177,17 @@
                     </Button>
                     <Canvas Background="White" AllowDrop="True" x:Name="c4">
                         <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="180" Y1="70" X2="-455" Y2="70" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C4e1}" />
+                        <Line X1="185" Y1="70" X2="-243" Y2="90" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C4e2}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="90" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C4e3}" />
+                        <Line X1="185" Y1="70" X2="-540" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C4e5}" />
+                        <Line X1="185" Y1="70" X2="-400" Y2="255" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C4e6}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C4e7}" />
+                        <Line X1="185" Y1="70" X2="125" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C4e8}" />
+                        <Line X1="185" Y1="70" X2="-545" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C4e9}" />
+                        <Line X1="185" Y1="70" X2="-330" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C4e10}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C4e11}" />
+                        <Line X1="185" Y1="70" X2="100" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C4e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
                                 <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c4}"/>
@@ -167,6 +203,9 @@
                             </i:EventTrigger>
                             <i:EventTrigger EventName="PreviewMouseUp">
                                 <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c4}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c4}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -199,6 +238,9 @@
                             <i:EventTrigger EventName="PreviewMouseUp">
                                 <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c5}" />
                             </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c5}"/>
+                            </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
@@ -228,6 +270,9 @@
                             </i:EventTrigger>
                             <i:EventTrigger EventName="PreviewMouseUp">
                                 <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c6}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c6}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -259,6 +304,9 @@
                             <i:EventTrigger EventName="PreviewMouseUp">
                                 <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c7}" />
                             </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c7}"/>
+                            </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
@@ -288,6 +336,9 @@
                             </i:EventTrigger>
                             <i:EventTrigger EventName="PreviewMouseUp">
                                 <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c8}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c8}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -320,6 +371,9 @@
                             <i:EventTrigger EventName="PreviewMouseUp">
                                 <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c9}" />
                             </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c9}"/>
+                            </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
@@ -349,6 +403,9 @@
                             </i:EventTrigger>
                             <i:EventTrigger EventName="PreviewMouseUp">
                                 <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c10}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c10}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -380,6 +437,9 @@
                             <i:EventTrigger EventName="PreviewMouseUp">
                                 <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c11}" />
                             </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c11}"/>
+                            </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
@@ -409,6 +469,9 @@
                             </i:EventTrigger>
                             <i:EventTrigger EventName="PreviewMouseUp">
                                 <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c12}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c12}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
