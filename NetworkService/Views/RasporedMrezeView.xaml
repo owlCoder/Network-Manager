@@ -44,6 +44,18 @@
                     </Button>
                     <Canvas Background="White" AllowDrop="True" x:Name="c1">
                         <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="185" Y1="70" X2="250" Y2="30" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C1e2}" />
+                        <Line X1="185" Y1="70" X2="500" Y2="70" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C1e3}" />
+                        <Line X1="185" Y1="70" X2="700" Y2="100" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C1e4}" />
+                        <Line X1="185" Y1="70" X2="185" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C1e5}" />
+                        <Line X1="185" Y1="70" X2="285" Y2="225" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C1e6}" />
+                        <Line X1="185" Y1="70" X2="485" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C1e7}" />
+                        <Line X1="185" Y1="70" X2="685" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C1e8}" />
+                        <Line X1="185" Y1="70" X2="135" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C1e9}" />
+                        <Line X1="185" Y1="70" X2="255" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C1e10}" />
+                        <Line X1="185" Y1="70" X2="475" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C1e11}" />
+                        <Line X1="185" Y1="70" X2="675" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C1e12}" />
+
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
                                 <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c1}"/>
@@ -402,7 +414,7 @@
         <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Visibility="{Binding Informacija}" Margin="5" Background="{StaticResource UIQuatriraryColor}" CornerRadius="10">
             <TextBlock Text="{Binding Poruka}" FontSize="16" Foreground="DarkCyan" FontWeight="Bold" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
         </Border>
-        
+
         <Border Grid.Row="1" Grid.Column="0" Visibility="{Binding Uspesno}" Grid.ColumnSpan="1" Margin="5" Background="#C1E1C1 " CornerRadius="10">
             <TextBlock Text="{Binding Poruka}" FontSize="16" Foreground="#2F4C39" FontWeight="Bold" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
         </Border>

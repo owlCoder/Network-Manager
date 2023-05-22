@@ -47,6 +47,24 @@ namespace NetworkService.ViewModel
         private Visibility uspesno, greska, informacija;
         private string poruka;
 
+        #region LINIJA ZA POVEZIVANJE NA CANVASU
+        private static Visibility c1e1, c1e2, c1e3, c1e4, c1e5, c1e6, c1e7, c1e8, c1e9, c1e10, c1e11, c1e12;
+        private static Visibility c2e1, c2e2, c2e3, c2e4, c2e5, c2e6, c2e7, c2e8, c2e9, c2e10, c2e11, c2e12;
+        private static Visibility c3e1, c3e2, c3e3, c3e4, c3e5, c3e6, c3e7, c3e8, c3e9, c3e10, c3e11, c3e12;
+        private static Visibility c4e1, c4e2, c4e3, c4e4, c4e5, c4e6, c4e7, c4e8, c4e9, c4e10, c4e11, c4e12;
+        private static Visibility c5e1, c5e2, c5e3, c5e4, c5e5, c5e6, c5e7, c5e8, c5e9, c5e10, c5e11, c5e12;
+        private static Visibility c6e1, c6e2, c6e3, c6e4, c6e5, c6e6, c6e7, c6e8, c6e9, c6e10, c6e11, c6e12;
+        private static Visibility c7e1, c7e2, c7e3, c7e4, c7e5, c7e6, c7e7, c7e8, c7e9, c7e10, c7e11, c7e12;
+        private static Visibility c8e1, c8e2, c8e3, c8e4, c8e5, c8e6, c8e7, c8e8, c8e9, c8e10, c8e11, c8e12;
+        private static Visibility c9e1, c9e2, c9e3, c9e4, c9e5, c9e6, c9e7, c9e8, c9e9, c9e10, c9e11, c9e12;
+        private static Visibility c10e1, c10e2, c10e3, c10e4, c10e5, c10e6, c10e7, c10e8, c10e9, c10e10, c10e11, c10e12;
+        private static Visibility c11e1, c11e2, c11e3, c11e4, c11e5, c11e6, c11e7, c11e8, c11e9, c11e10, c11e11, c11e12;
+        private static Visibility c12e1, c12e2, c12e3, c12e4, c12e5, c12e6, c12e7, c12e8, c12e9, c12e10, c12e11, c12e12;
+
+        private Canvas src = null;
+        private Canvas dst = null;
+
+        #endregion
         public RasporedMrezeViewModel()
         {
             NasumicnoRasporedi = new MyICommand<Grid>(Rasporedi);
@@ -640,6 +658,2600 @@ namespace NetworkService.ViewModel
 
                     OnPropertyChanged("Informacija");
                 }
+            }
+        }
+        #endregion
+
+        #region ZA LINIJE
+        public Visibility C1e1
+        {
+            get
+            {
+                return c1e1;
+            }
+
+            set
+            {
+                if (c1e1 != value)
+                {
+                    c1e1 = value;
+                    OnPropertyChanged("C1e1");
+                }
+
+            }
+        }
+
+        public Visibility C1e2
+        {
+            get
+            {
+                return c1e2;
+            }
+
+            set
+            {
+                if (c1e2 != value)
+                {
+                    c1e2 = value;
+                    OnPropertyChanged("C1e2");
+                }
+
+            }
+        }
+
+        public Visibility C1e3
+        {
+            get
+            {
+                return c1e3;
+            }
+
+            set
+            {
+                if (c1e3 != value)
+                {
+                    c1e3 = value;
+                    OnPropertyChanged("C1e3");
+                }
+
+            }
+        }
+
+        public Visibility C1e4
+        {
+            get
+            {
+                return c1e4;
+            }
+
+            set
+            {
+                if (c1e4 != value)
+                {
+                    c1e4 = value;
+                    OnPropertyChanged("C1e4");
+                }
+
+            }
+        }
+
+        public Visibility C1e5
+        {
+            get
+            {
+                return c1e5;
+            }
+
+            set
+            {
+                if (c1e5 != value)
+                {
+                    c1e5 = value;
+                    OnPropertyChanged("C1e5");
+                }
+
+            }
+        }
+
+        public Visibility C1e6
+        {
+            get
+            {
+                return c1e6;
+            }
+
+            set
+            {
+                if (c1e6 != value)
+                {
+                    c1e6 = value;
+                    OnPropertyChanged("C1e6");
+                }
+
+            }
+        }
+
+        public Visibility C1e7
+        {
+            get
+            {
+                return c1e7;
+            }
+
+            set
+            {
+                if (c1e7 != value)
+                {
+                    c1e7 = value;
+                    OnPropertyChanged("C1e7");
+                }
+
+            }
+        }
+
+        public Visibility C1e8
+        {
+            get
+            {
+                return c1e8;
+            }
+
+            set
+            {
+                if (c1e8 != value)
+                {
+                    c1e8 = value;
+                    OnPropertyChanged("C1e8");
+                }
+
+            }
+        }
+
+        public Visibility C1e9
+        {
+            get
+            {
+                return c1e9;
+            }
+
+            set
+            {
+                if (c1e9 != value)
+                {
+                    c1e9 = value;
+                    OnPropertyChanged("C1e9");
+                }
+
+            }
+        }
+
+        public Visibility C1e10
+        {
+            get
+            {
+                return c1e10;
+            }
+
+            set
+            {
+                if (c1e10 != value)
+                {
+                    c1e10 = value;
+                    OnPropertyChanged("C1e10");
+                }
+
+            }
+        }
+
+        public Visibility C1e11
+        {
+            get
+            {
+                return c1e11;
+            }
+
+            set
+            {
+                if (c1e11 != value)
+                {
+                    c1e11 = value;
+                    OnPropertyChanged("C1e11");
+                }
+
+            }
+        }
+
+        public Visibility C1e12
+        {
+            get
+            {
+                return c1e12;
+            }
+
+            set
+            {
+                if (c1e12 != value)
+                {
+                    c1e12 = value;
+                    OnPropertyChanged("C1e12");
+                }
+
+            }
+        }
+
+        public Visibility C2e1
+        {
+            get
+            {
+                return c2e1;
+            }
+
+            set
+            {
+                if (c2e1 != value)
+                {
+                    c2e1 = value;
+                    OnPropertyChanged("C2e1");
+                }
+
+            }
+        }
+
+        public Visibility C2e2
+        {
+            get
+            {
+                return c2e2;
+            }
+
+            set
+            {
+                if (c2e2 != value)
+                {
+                    c2e2 = value;
+                    OnPropertyChanged("C2e2");
+                }
+
+            }
+        }
+
+        public Visibility C2e3
+        {
+            get
+            {
+                return c2e3;
+            }
+
+            set
+            {
+                if (c2e3 != value)
+                {
+                    c2e3 = value;
+                    OnPropertyChanged("C2e3");
+                }
+
+            }
+        }
+
+        public Visibility C2e4
+        {
+            get
+            {
+                return c2e4;
+            }
+
+            set
+            {
+                if (c2e4 != value)
+                {
+                    c2e4 = value;
+                    OnPropertyChanged("C2e4");
+                }
+
+            }
+        }
+
+        public Visibility C2e5
+        {
+            get
+            {
+                return c2e5;
+            }
+
+            set
+            {
+                if (c2e5 != value)
+                {
+                    c2e5 = value;
+                    OnPropertyChanged("C2e5");
+                }
+
+            }
+        }
+
+        public Visibility C2e6
+        {
+            get
+            {
+                return c2e6;
+            }
+
+            set
+            {
+                if (c2e6 != value)
+                {
+                    c2e6 = value;
+                    OnPropertyChanged("C2e6");
+                }
+
+            }
+        }
+
+        public Visibility C2e7
+        {
+            get
+            {
+                return c2e7;
+            }
+
+            set
+            {
+                if (c2e7 != value)
+                {
+                    c2e7 = value;
+                    OnPropertyChanged("C2e7");
+                }
+
+            }
+        }
+
+        public Visibility C2e8
+        {
+            get
+            {
+                return c2e8;
+            }
+
+            set
+            {
+                if (c2e8 != value)
+                {
+                    c2e8 = value;
+                    OnPropertyChanged("C2e8");
+                }
+
+            }
+        }
+
+        public Visibility C2e9
+        {
+            get
+            {
+                return c2e9;
+            }
+
+            set
+            {
+                if (c2e9 != value)
+                {
+                    c2e9 = value;
+                    OnPropertyChanged("C2e9");
+                }
+
+            }
+        }
+
+        public Visibility C2e10
+        {
+            get
+            {
+                return c2e10;
+            }
+
+            set
+            {
+                if (c2e10 != value)
+                {
+                    c2e10 = value;
+                    OnPropertyChanged("C2e10");
+                }
+
+            }
+        }
+
+        public Visibility C2e11
+        {
+            get
+            {
+                return c2e11;
+            }
+
+            set
+            {
+                if (c2e11 != value)
+                {
+                    c2e11 = value;
+                    OnPropertyChanged("C2e11");
+                }
+
+            }
+        }
+
+        public Visibility C2e12
+        {
+            get
+            {
+                return c2e12;
+            }
+
+            set
+            {
+                if (c2e12 != value)
+                {
+                    c2e12 = value;
+                    OnPropertyChanged("C2e12");
+                }
+
+            }
+        }
+
+        public Visibility C3e1
+        {
+            get
+            {
+                return c3e1;
+            }
+
+            set
+            {
+                if (c3e1 != value)
+                {
+                    c3e1 = value;
+                    OnPropertyChanged("C3e1");
+                }
+
+            }
+        }
+
+        public Visibility C3e2
+        {
+            get
+            {
+                return c3e2;
+            }
+
+            set
+            {
+                if (c3e2 != value)
+                {
+                    c3e2 = value;
+                    OnPropertyChanged("C3e2");
+                }
+
+            }
+        }
+
+        public Visibility C3e3
+        {
+            get
+            {
+                return c3e3;
+            }
+
+            set
+            {
+                if (c3e3 != value)
+                {
+                    c3e3 = value;
+                    OnPropertyChanged("C3e3");
+                }
+
+            }
+        }
+
+        public Visibility C3e4
+        {
+            get
+            {
+                return c3e4;
+            }
+
+            set
+            {
+                if (c3e4 != value)
+                {
+                    c3e4 = value;
+                    OnPropertyChanged("C3e4");
+                }
+
+            }
+        }
+
+        public Visibility C3e5
+        {
+            get
+            {
+                return c3e5;
+            }
+
+            set
+            {
+                if (c3e5 != value)
+                {
+                    c3e5 = value;
+                    OnPropertyChanged("C3e5");
+                }
+
+            }
+        }
+
+        public Visibility C3e6
+        {
+            get
+            {
+                return c3e6;
+            }
+
+            set
+            {
+                if (c3e6 != value)
+                {
+                    c3e6 = value;
+                    OnPropertyChanged("C3e6");
+                }
+
+            }
+        }
+
+        public Visibility C3e7
+        {
+            get
+            {
+                return c3e7;
+            }
+
+            set
+            {
+                if (c3e7 != value)
+                {
+                    c3e7 = value;
+                    OnPropertyChanged("C3e7");
+                }
+
+            }
+        }
+
+        public Visibility C3e8
+        {
+            get
+            {
+                return c3e8;
+            }
+
+            set
+            {
+                if (c3e8 != value)
+                {
+                    c3e8 = value;
+                    OnPropertyChanged("C3e8");
+                }
+
+            }
+        }
+
+        public Visibility C3e9
+        {
+            get
+            {
+                return c3e9;
+            }
+
+            set
+            {
+                if (c3e9 != value)
+                {
+                    c3e9 = value;
+                    OnPropertyChanged("C3e9");
+                }
+
+            }
+        }
+
+        public Visibility C3e10
+        {
+            get
+            {
+                return c3e10;
+            }
+
+            set
+            {
+                if (c3e10 != value)
+                {
+                    c3e10 = value;
+                    OnPropertyChanged("C3e10");
+                }
+
+            }
+        }
+
+        public Visibility C3e11
+        {
+            get
+            {
+                return c3e11;
+            }
+
+            set
+            {
+                if (c3e11 != value)
+                {
+                    c3e11 = value;
+                    OnPropertyChanged("C3e11");
+                }
+
+            }
+        }
+
+        public Visibility C3e12
+        {
+            get
+            {
+                return c3e12;
+            }
+
+            set
+            {
+                if (c3e12 != value)
+                {
+                    c3e12 = value;
+                    OnPropertyChanged("C3e12");
+                }
+
+            }
+        }
+
+        public Visibility C4e1
+        {
+            get
+            {
+                return c4e1;
+            }
+
+            set
+            {
+                if (c4e1 != value)
+                {
+                    c4e1 = value;
+                    OnPropertyChanged("C4e1");
+                }
+
+            }
+        }
+
+        public Visibility C4e2
+        {
+            get
+            {
+                return c4e2;
+            }
+
+            set
+            {
+                if (c4e2 != value)
+                {
+                    c4e2 = value;
+                    OnPropertyChanged("C4e2");
+                }
+
+            }
+        }
+
+        public Visibility C4e3
+        {
+            get
+            {
+                return c4e3;
+            }
+
+            set
+            {
+                if (c4e3 != value)
+                {
+                    c4e3 = value;
+                    OnPropertyChanged("C4e3");
+                }
+
+            }
+        }
+
+        public Visibility C4e4
+        {
+            get
+            {
+                return c4e4;
+            }
+
+            set
+            {
+                if (c4e4 != value)
+                {
+                    c4e4 = value;
+                    OnPropertyChanged("C4e4");
+                }
+
+            }
+        }
+
+        public Visibility C4e5
+        {
+            get
+            {
+                return c4e5;
+            }
+
+            set
+            {
+                if (c4e5 != value)
+                {
+                    c4e5 = value;
+                    OnPropertyChanged("C4e5");
+                }
+
+            }
+        }
+
+        public Visibility C4e6
+        {
+            get
+            {
+                return c4e6;
+            }
+
+            set
+            {
+                if (c4e6 != value)
+                {
+                    c4e6 = value;
+                    OnPropertyChanged("C4e6");
+                }
+
+            }
+        }
+
+        public Visibility C4e7
+        {
+            get
+            {
+                return c4e7;
+            }
+
+            set
+            {
+                if (c4e7 != value)
+                {
+                    c4e7 = value;
+                    OnPropertyChanged("C4e7");
+                }
+
+            }
+        }
+
+        public Visibility C4e8
+        {
+            get
+            {
+                return c4e8;
+            }
+
+            set
+            {
+                if (c4e8 != value)
+                {
+                    c4e8 = value;
+                    OnPropertyChanged("C4e8");
+                }
+
+            }
+        }
+
+        public Visibility C4e9
+        {
+            get
+            {
+                return c4e9;
+            }
+
+            set
+            {
+                if (c4e9 != value)
+                {
+                    c4e9 = value;
+                    OnPropertyChanged("C4e9");
+                }
+
+            }
+        }
+
+        public Visibility C4e10
+        {
+            get
+            {
+                return c4e10;
+            }
+
+            set
+            {
+                if (c4e10 != value)
+                {
+                    c4e10 = value;
+                    OnPropertyChanged("C4e10");
+                }
+
+            }
+        }
+
+        public Visibility C4e11
+        {
+            get
+            {
+                return c4e11;
+            }
+
+            set
+            {
+                if (c4e11 != value)
+                {
+                    c4e11 = value;
+                    OnPropertyChanged("C4e11");
+                }
+
+            }
+        }
+
+        public Visibility C4e12
+        {
+            get
+            {
+                return c4e12;
+            }
+
+            set
+            {
+                if (c4e12 != value)
+                {
+                    c4e12 = value;
+                    OnPropertyChanged("C4e12");
+                }
+
+            }
+        }
+
+        public Visibility C5e1
+        {
+            get
+            {
+                return c5e1;
+            }
+
+            set
+            {
+                if (c5e1 != value)
+                {
+                    c5e1 = value;
+                    OnPropertyChanged("C5e1");
+                }
+
+            }
+        }
+
+        public Visibility C5e2
+        {
+            get
+            {
+                return c5e2;
+            }
+
+            set
+            {
+                if (c5e2 != value)
+                {
+                    c5e2 = value;
+                    OnPropertyChanged("C5e2");
+                }
+
+            }
+        }
+
+        public Visibility C5e3
+        {
+            get
+            {
+                return c5e3;
+            }
+
+            set
+            {
+                if (c5e3 != value)
+                {
+                    c5e3 = value;
+                    OnPropertyChanged("C5e3");
+                }
+
+            }
+        }
+
+        public Visibility C5e4
+        {
+            get
+            {
+                return c5e4;
+            }
+
+            set
+            {
+                if (c5e4 != value)
+                {
+                    c5e4 = value;
+                    OnPropertyChanged("C5e4");
+                }
+
+            }
+        }
+
+        public Visibility C5e5
+        {
+            get
+            {
+                return c5e5;
+            }
+
+            set
+            {
+                if (c5e5 != value)
+                {
+                    c5e5 = value;
+                    OnPropertyChanged("C5e5");
+                }
+
+            }
+        }
+
+        public Visibility C5e6
+        {
+            get
+            {
+                return c5e6;
+            }
+
+            set
+            {
+                if (c5e6 != value)
+                {
+                    c5e6 = value;
+                    OnPropertyChanged("C5e6");
+                }
+
+            }
+        }
+
+        public Visibility C5e7
+        {
+            get
+            {
+                return c5e7;
+            }
+
+            set
+            {
+                if (c5e7 != value)
+                {
+                    c5e7 = value;
+                    OnPropertyChanged("C5e7");
+                }
+
+            }
+        }
+
+        public Visibility C5e8
+        {
+            get
+            {
+                return c5e8;
+            }
+
+            set
+            {
+                if (c5e8 != value)
+                {
+                    c5e8 = value;
+                    OnPropertyChanged("C5e8");
+                }
+
+            }
+        }
+
+        public Visibility C5e9
+        {
+            get
+            {
+                return c5e9;
+            }
+
+            set
+            {
+                if (c5e9 != value)
+                {
+                    c5e9 = value;
+                    OnPropertyChanged("C5e9");
+                }
+
+            }
+        }
+
+        public Visibility C5e10
+        {
+            get
+            {
+                return c5e10;
+            }
+
+            set
+            {
+                if (c5e10 != value)
+                {
+                    c5e10 = value;
+                    OnPropertyChanged("C5e10");
+                }
+
+            }
+        }
+
+        public Visibility C5e11
+        {
+            get
+            {
+                return c5e11;
+            }
+
+            set
+            {
+                if (c5e11 != value)
+                {
+                    c5e11 = value;
+                    OnPropertyChanged("C5e11");
+                }
+
+            }
+        }
+
+        public Visibility C5e12
+        {
+            get
+            {
+                return c5e12;
+            }
+
+            set
+            {
+                if (c5e12 != value)
+                {
+                    c5e12 = value;
+                    OnPropertyChanged("C5e12");
+                }
+
+            }
+        }
+
+        public Visibility C6e1
+        {
+            get
+            {
+                return c6e1;
+            }
+
+            set
+            {
+                if (c6e1 != value)
+                {
+                    c6e1 = value;
+                    OnPropertyChanged("C6e1");
+                }
+
+            }
+        }
+
+        public Visibility C6e2
+        {
+            get
+            {
+                return c6e2;
+            }
+
+            set
+            {
+                if (c6e2 != value)
+                {
+                    c6e2 = value;
+                    OnPropertyChanged("C6e2");
+                }
+
+            }
+        }
+
+        public Visibility C6e3
+        {
+            get
+            {
+                return c6e3;
+            }
+
+            set
+            {
+                if (c6e3 != value)
+                {
+                    c6e3 = value;
+                    OnPropertyChanged("C6e3");
+                }
+
+            }
+        }
+
+        public Visibility C6e4
+        {
+            get
+            {
+                return c6e4;
+            }
+
+            set
+            {
+                if (c6e4 != value)
+                {
+                    c6e4 = value;
+                    OnPropertyChanged("C6e4");
+                }
+
+            }
+        }
+
+        public Visibility C6e5
+        {
+            get
+            {
+                return c6e5;
+            }
+
+            set
+            {
+                if (c6e5 != value)
+                {
+                    c6e5 = value;
+                    OnPropertyChanged("C6e5");
+                }
+
+            }
+        }
+
+        public Visibility C6e6
+        {
+            get
+            {
+                return c6e6;
+            }
+
+            set
+            {
+                if (c6e6 != value)
+                {
+                    c6e6 = value;
+                    OnPropertyChanged("C6e6");
+                }
+
+            }
+        }
+
+        public Visibility C6e7
+        {
+            get
+            {
+                return c6e7;
+            }
+
+            set
+            {
+                if (c6e7 != value)
+                {
+                    c6e7 = value;
+                    OnPropertyChanged("C6e7");
+                }
+
+            }
+        }
+
+        public Visibility C6e8
+        {
+            get
+            {
+                return c6e8;
+            }
+
+            set
+            {
+                if (c6e8 != value)
+                {
+                    c6e8 = value;
+                    OnPropertyChanged("C6e8");
+                }
+
+            }
+        }
+
+        public Visibility C6e9
+        {
+            get
+            {
+                return c6e9;
+            }
+
+            set
+            {
+                if (c6e9 != value)
+                {
+                    c6e9 = value;
+                    OnPropertyChanged("C6e9");
+                }
+
+            }
+        }
+
+        public Visibility C6e10
+        {
+            get
+            {
+                return c6e10;
+            }
+
+            set
+            {
+                if (c6e10 != value)
+                {
+                    c6e10 = value;
+                    OnPropertyChanged("C6e10");
+                }
+
+            }
+        }
+
+        public Visibility C6e11
+        {
+            get
+            {
+                return c6e11;
+            }
+
+            set
+            {
+                if (c6e11 != value)
+                {
+                    c6e11 = value;
+                    OnPropertyChanged("C6e11");
+                }
+
+            }
+        }
+
+        public Visibility C6e12
+        {
+            get
+            {
+                return c6e12;
+            }
+
+            set
+            {
+                if (c6e12 != value)
+                {
+                    c6e12 = value;
+                    OnPropertyChanged("C6e12");
+                }
+
+            }
+        }
+
+        public Visibility C7e1
+        {
+            get
+            {
+                return c7e1;
+            }
+
+            set
+            {
+                if (c7e1 != value)
+                {
+                    c7e1 = value;
+                    OnPropertyChanged("C7e1");
+                }
+
+            }
+        }
+
+        public Visibility C7e2
+        {
+            get
+            {
+                return c7e2;
+            }
+
+            set
+            {
+                if (c7e2 != value)
+                {
+                    c7e2 = value;
+                    OnPropertyChanged("C7e2");
+                }
+
+            }
+        }
+
+        public Visibility C7e3
+        {
+            get
+            {
+                return c7e3;
+            }
+
+            set
+            {
+                if (c7e3 != value)
+                {
+                    c7e3 = value;
+                    OnPropertyChanged("C7e3");
+                }
+
+            }
+        }
+
+        public Visibility C7e4
+        {
+            get
+            {
+                return c7e4;
+            }
+
+            set
+            {
+                if (c7e4 != value)
+                {
+                    c7e4 = value;
+                    OnPropertyChanged("C7e4");
+                }
+
+            }
+        }
+
+        public Visibility C7e5
+        {
+            get
+            {
+                return c7e5;
+            }
+
+            set
+            {
+                if (c7e5 != value)
+                {
+                    c7e5 = value;
+                    OnPropertyChanged("C7e5");
+                }
+
+            }
+        }
+
+        public Visibility C7e6
+        {
+            get
+            {
+                return c7e6;
+            }
+
+            set
+            {
+                if (c7e6 != value)
+                {
+                    c7e6 = value;
+                    OnPropertyChanged("C7e6");
+                }
+
+            }
+        }
+
+        public Visibility C7e7
+        {
+            get
+            {
+                return c7e7;
+            }
+
+            set
+            {
+                if (c7e7 != value)
+                {
+                    c7e7 = value;
+                    OnPropertyChanged("C7e7");
+                }
+
+            }
+        }
+
+        public Visibility C7e8
+        {
+            get
+            {
+                return c7e8;
+            }
+
+            set
+            {
+                if (c7e8 != value)
+                {
+                    c7e8 = value;
+                    OnPropertyChanged("C7e8");
+                }
+
+            }
+        }
+
+        public Visibility C7e9
+        {
+            get
+            {
+                return c7e9;
+            }
+
+            set
+            {
+                if (c7e9 != value)
+                {
+                    c7e9 = value;
+                    OnPropertyChanged("C7e9");
+                }
+
+            }
+        }
+
+        public Visibility C7e10
+        {
+            get
+            {
+                return c7e10;
+            }
+
+            set
+            {
+                if (c7e10 != value)
+                {
+                    c7e10 = value;
+                    OnPropertyChanged("C7e10");
+                }
+
+            }
+        }
+
+        public Visibility C7e11
+        {
+            get
+            {
+                return c7e11;
+            }
+
+            set
+            {
+                if (c7e11 != value)
+                {
+                    c7e11 = value;
+                    OnPropertyChanged("C7e11");
+                }
+
+            }
+        }
+
+        public Visibility C7e12
+        {
+            get
+            {
+                return c7e12;
+            }
+
+            set
+            {
+                if (c7e12 != value)
+                {
+                    c7e12 = value;
+                    OnPropertyChanged("C7e12");
+                }
+
+            }
+        }
+
+        public Visibility C8e1
+        {
+            get
+            {
+                return c8e1;
+            }
+
+            set
+            {
+                if (c8e1 != value)
+                {
+                    c8e1 = value;
+                    OnPropertyChanged("C8e1");
+                }
+
+            }
+        }
+
+        public Visibility C8e2
+        {
+            get
+            {
+                return c8e2;
+            }
+
+            set
+            {
+                if (c8e2 != value)
+                {
+                    c8e2 = value;
+                    OnPropertyChanged("C8e2");
+                }
+
+            }
+        }
+
+        public Visibility C8e3
+        {
+            get
+            {
+                return c8e3;
+            }
+
+            set
+            {
+                if (c8e3 != value)
+                {
+                    c8e3 = value;
+                    OnPropertyChanged("C8e3");
+                }
+
+            }
+        }
+
+        public Visibility C8e4
+        {
+            get
+            {
+                return c8e4;
+            }
+
+            set
+            {
+                if (c8e4 != value)
+                {
+                    c8e4 = value;
+                    OnPropertyChanged("C8e4");
+                }
+
+            }
+        }
+
+        public Visibility C8e5
+        {
+            get
+            {
+                return c8e5;
+            }
+
+            set
+            {
+                if (c8e5 != value)
+                {
+                    c8e5 = value;
+                    OnPropertyChanged("C8e5");
+                }
+
+            }
+        }
+
+        public Visibility C8e6
+        {
+            get
+            {
+                return c8e6;
+            }
+
+            set
+            {
+                if (c8e6 != value)
+                {
+                    c8e6 = value;
+                    OnPropertyChanged("C8e6");
+                }
+
+            }
+        }
+
+        public Visibility C8e7
+        {
+            get
+            {
+                return c8e7;
+            }
+
+            set
+            {
+                if (c8e7 != value)
+                {
+                    c8e7 = value;
+                    OnPropertyChanged("C8e7");
+                }
+
+            }
+        }
+
+        public Visibility C8e8
+        {
+            get
+            {
+                return c8e8;
+            }
+
+            set
+            {
+                if (c8e8 != value)
+                {
+                    c8e8 = value;
+                    OnPropertyChanged("C8e8");
+                }
+
+            }
+        }
+
+        public Visibility C8e9
+        {
+            get
+            {
+                return c8e9;
+            }
+
+            set
+            {
+                if (c8e9 != value)
+                {
+                    c8e9 = value;
+                    OnPropertyChanged("C8e9");
+                }
+
+            }
+        }
+
+        public Visibility C8e10
+        {
+            get
+            {
+                return c8e10;
+            }
+
+            set
+            {
+                if (c8e10 != value)
+                {
+                    c8e10 = value;
+                    OnPropertyChanged("C8e10");
+                }
+
+            }
+        }
+
+        public Visibility C8e11
+        {
+            get
+            {
+                return c8e11;
+            }
+
+            set
+            {
+                if (c8e11 != value)
+                {
+                    c8e11 = value;
+                    OnPropertyChanged("C8e11");
+                }
+
+            }
+        }
+
+        public Visibility C8e12
+        {
+            get
+            {
+                return c8e12;
+            }
+
+            set
+            {
+                if (c8e12 != value)
+                {
+                    c8e12 = value;
+                    OnPropertyChanged("C8e12");
+                }
+
+            }
+        }
+
+        public Visibility C9e1
+        {
+            get
+            {
+                return c9e1;
+            }
+
+            set
+            {
+                if (c9e1 != value)
+                {
+                    c9e1 = value;
+                    OnPropertyChanged("C9e1");
+                }
+
+            }
+        }
+
+        public Visibility C9e2
+        {
+            get
+            {
+                return c9e2;
+            }
+
+            set
+            {
+                if (c9e2 != value)
+                {
+                    c9e2 = value;
+                    OnPropertyChanged("C9e2");
+                }
+
+            }
+        }
+
+        public Visibility C9e3
+        {
+            get
+            {
+                return c9e3;
+            }
+
+            set
+            {
+                if (c9e3 != value)
+                {
+                    c9e3 = value;
+                    OnPropertyChanged("C9e3");
+                }
+
+            }
+        }
+
+        public Visibility C9e4
+        {
+            get
+            {
+                return c9e4;
+            }
+
+            set
+            {
+                if (c9e4 != value)
+                {
+                    c9e4 = value;
+                    OnPropertyChanged("C9e4");
+                }
+
+            }
+        }
+
+        public Visibility C9e5
+        {
+            get
+            {
+                return c9e5;
+            }
+
+            set
+            {
+                if (c9e5 != value)
+                {
+                    c9e5 = value;
+                    OnPropertyChanged("C9e5");
+                }
+
+            }
+        }
+
+        public Visibility C9e6
+        {
+            get
+            {
+                return c9e6;
+            }
+
+            set
+            {
+                if (c9e6 != value)
+                {
+                    c9e6 = value;
+                    OnPropertyChanged("C9e6");
+                }
+
+            }
+        }
+
+        public Visibility C9e7
+        {
+            get
+            {
+                return c9e7;
+            }
+
+            set
+            {
+                if (c9e7 != value)
+                {
+                    c9e7 = value;
+                    OnPropertyChanged("C9e7");
+                }
+
+            }
+        }
+
+        public Visibility C9e8
+        {
+            get
+            {
+                return c9e8;
+            }
+
+            set
+            {
+                if (c9e8 != value)
+                {
+                    c9e8 = value;
+                    OnPropertyChanged("C9e8");
+                }
+
+            }
+        }
+
+        public Visibility C9e9
+        {
+            get
+            {
+                return c9e9;
+            }
+
+            set
+            {
+                if (c9e9 != value)
+                {
+                    c9e9 = value;
+                    OnPropertyChanged("C9e9");
+                }
+
+            }
+        }
+
+        public Visibility C9e10
+        {
+            get
+            {
+                return c9e10;
+            }
+
+            set
+            {
+                if (c9e10 != value)
+                {
+                    c9e10 = value;
+                    OnPropertyChanged("C9e10");
+                }
+
+            }
+        }
+
+        public Visibility C9e11
+        {
+            get
+            {
+                return c9e11;
+            }
+
+            set
+            {
+                if (c9e11 != value)
+                {
+                    c9e11 = value;
+                    OnPropertyChanged("C9e11");
+                }
+
+            }
+        }
+
+        public Visibility C9e12
+        {
+            get
+            {
+                return c9e12;
+            }
+
+            set
+            {
+                if (c9e12 != value)
+                {
+                    c9e12 = value;
+                    OnPropertyChanged("C9e12");
+                }
+
+            }
+        }
+
+        public Visibility C10e1
+        {
+            get
+            {
+                return c10e1;
+            }
+
+            set
+            {
+                if (c10e1 != value)
+                {
+                    c10e1 = value;
+                    OnPropertyChanged("C10e1");
+                }
+
+            }
+        }
+
+        public Visibility C10e2
+        {
+            get
+            {
+                return c10e2;
+            }
+
+            set
+            {
+                if (c10e2 != value)
+                {
+                    c10e2 = value;
+                    OnPropertyChanged("C10e2");
+                }
+
+            }
+        }
+
+        public Visibility C10e3
+        {
+            get
+            {
+                return c10e3;
+            }
+
+            set
+            {
+                if (c10e3 != value)
+                {
+                    c10e3 = value;
+                    OnPropertyChanged("C10e3");
+                }
+
+            }
+        }
+
+        public Visibility C10e4
+        {
+            get
+            {
+                return c10e4;
+            }
+
+            set
+            {
+                if (c10e4 != value)
+                {
+                    c10e4 = value;
+                    OnPropertyChanged("C10e4");
+                }
+
+            }
+        }
+
+        public Visibility C10e5
+        {
+            get
+            {
+                return c10e5;
+            }
+
+            set
+            {
+                if (c10e5 != value)
+                {
+                    c10e5 = value;
+                    OnPropertyChanged("C10e5");
+                }
+
+            }
+        }
+
+        public Visibility C10e6
+        {
+            get
+            {
+                return c10e6;
+            }
+
+            set
+            {
+                if (c10e6 != value)
+                {
+                    c10e6 = value;
+                    OnPropertyChanged("C10e6");
+                }
+
+            }
+        }
+
+        public Visibility C10e7
+        {
+            get
+            {
+                return c10e7;
+            }
+
+            set
+            {
+                if (c10e7 != value)
+                {
+                    c10e7 = value;
+                    OnPropertyChanged("C10e7");
+                }
+
+            }
+        }
+
+        public Visibility C10e8
+        {
+            get
+            {
+                return c10e8;
+            }
+
+            set
+            {
+                if (c10e8 != value)
+                {
+                    c10e8 = value;
+                    OnPropertyChanged("C10e8");
+                }
+
+            }
+        }
+
+        public Visibility C10e9
+        {
+            get
+            {
+                return c10e9;
+            }
+
+            set
+            {
+                if (c10e9 != value)
+                {
+                    c10e9 = value;
+                    OnPropertyChanged("C10e9");
+                }
+
+            }
+        }
+
+        public Visibility C10e10
+        {
+            get
+            {
+                return c10e10;
+            }
+
+            set
+            {
+                if (c10e10 != value)
+                {
+                    c10e10 = value;
+                    OnPropertyChanged("C10e10");
+                }
+
+            }
+        }
+
+        public Visibility C10e11
+        {
+            get
+            {
+                return c10e11;
+            }
+
+            set
+            {
+                if (c10e11 != value)
+                {
+                    c10e11 = value;
+                    OnPropertyChanged("C10e11");
+                }
+
+            }
+        }
+
+        public Visibility C10e12
+        {
+            get
+            {
+                return c10e12;
+            }
+
+            set
+            {
+                if (c10e12 != value)
+                {
+                    c10e12 = value;
+                    OnPropertyChanged("C10e12");
+                }
+
+            }
+        }
+
+        public Visibility C11e1
+        {
+            get
+            {
+                return c11e1;
+            }
+
+            set
+            {
+                if (c11e1 != value)
+                {
+                    c11e1 = value;
+                    OnPropertyChanged("C11e1");
+                }
+
+            }
+        }
+
+        public Visibility C11e2
+        {
+            get
+            {
+                return c11e2;
+            }
+
+            set
+            {
+                if (c11e2 != value)
+                {
+                    c11e2 = value;
+                    OnPropertyChanged("C11e2");
+                }
+
+            }
+        }
+
+        public Visibility C11e3
+        {
+            get
+            {
+                return c11e3;
+            }
+
+            set
+            {
+                if (c11e3 != value)
+                {
+                    c11e3 = value;
+                    OnPropertyChanged("C11e3");
+                }
+
+            }
+        }
+
+        public Visibility C11e4
+        {
+            get
+            {
+                return c11e4;
+            }
+
+            set
+            {
+                if (c11e4 != value)
+                {
+                    c11e4 = value;
+                    OnPropertyChanged("C11e4");
+                }
+
+            }
+        }
+
+        public Visibility C11e5
+        {
+            get
+            {
+                return c11e5;
+            }
+
+            set
+            {
+                if (c11e5 != value)
+                {
+                    c11e5 = value;
+                    OnPropertyChanged("C11e5");
+                }
+
+            }
+        }
+
+        public Visibility C11e6
+        {
+            get
+            {
+                return c11e6;
+            }
+
+            set
+            {
+                if (c11e6 != value)
+                {
+                    c11e6 = value;
+                    OnPropertyChanged("C11e6");
+                }
+
+            }
+        }
+
+        public Visibility C11e7
+        {
+            get
+            {
+                return c11e7;
+            }
+
+            set
+            {
+                if (c11e7 != value)
+                {
+                    c11e7 = value;
+                    OnPropertyChanged("C11e7");
+                }
+
+            }
+        }
+
+        public Visibility C11e8
+        {
+            get
+            {
+                return c11e8;
+            }
+
+            set
+            {
+                if (c11e8 != value)
+                {
+                    c11e8 = value;
+                    OnPropertyChanged("C11e8");
+                }
+
+            }
+        }
+
+        public Visibility C11e9
+        {
+            get
+            {
+                return c11e9;
+            }
+
+            set
+            {
+                if (c11e9 != value)
+                {
+                    c11e9 = value;
+                    OnPropertyChanged("C11e9");
+                }
+
+            }
+        }
+
+        public Visibility C11e10
+        {
+            get
+            {
+                return c11e10;
+            }
+
+            set
+            {
+                if (c11e10 != value)
+                {
+                    c11e10 = value;
+                    OnPropertyChanged("C11e10");
+                }
+
+            }
+        }
+
+        public Visibility C11e11
+        {
+            get
+            {
+                return c11e11;
+            }
+
+            set
+            {
+                if (c11e11 != value)
+                {
+                    c11e11 = value;
+                    OnPropertyChanged("C11e11");
+                }
+
+            }
+        }
+
+        public Visibility C11e12
+        {
+            get
+            {
+                return c11e12;
+            }
+
+            set
+            {
+                if (c11e12 != value)
+                {
+                    c11e12 = value;
+                    OnPropertyChanged("C11e12");
+                }
+
+            }
+        }
+
+        public Visibility C12e1
+        {
+            get
+            {
+                return c12e1;
+            }
+
+            set
+            {
+                if (c12e1 != value)
+                {
+                    c12e1 = value;
+                    OnPropertyChanged("C12e1");
+                }
+
+            }
+        }
+
+        public Visibility C12e2
+        {
+            get
+            {
+                return c12e2;
+            }
+
+            set
+            {
+                if (c12e2 != value)
+                {
+                    c12e2 = value;
+                    OnPropertyChanged("C12e2");
+                }
+
+            }
+        }
+
+        public Visibility C12e3
+        {
+            get
+            {
+                return c12e3;
+            }
+
+            set
+            {
+                if (c12e3 != value)
+                {
+                    c12e3 = value;
+                    OnPropertyChanged("C12e3");
+                }
+
+            }
+        }
+
+        public Visibility C12e4
+        {
+            get
+            {
+                return c12e4;
+            }
+
+            set
+            {
+                if (c12e4 != value)
+                {
+                    c12e4 = value;
+                    OnPropertyChanged("C12e4");
+                }
+
+            }
+        }
+
+        public Visibility C12e5
+        {
+            get
+            {
+                return c12e5;
+            }
+
+            set
+            {
+                if (c12e5 != value)
+                {
+                    c12e5 = value;
+                    OnPropertyChanged("C12e5");
+                }
+
+            }
+        }
+
+        public Visibility C12e6
+        {
+            get
+            {
+                return c12e6;
+            }
+
+            set
+            {
+                if (c12e6 != value)
+                {
+                    c12e6 = value;
+                    OnPropertyChanged("C12e6");
+                }
+
+            }
+        }
+
+        public Visibility C12e7
+        {
+            get
+            {
+                return c12e7;
+            }
+
+            set
+            {
+                if (c12e7 != value)
+                {
+                    c12e7 = value;
+                    OnPropertyChanged("C12e7");
+                }
+
+            }
+        }
+
+        public Visibility C12e8
+        {
+            get
+            {
+                return c12e8;
+            }
+
+            set
+            {
+                if (c12e8 != value)
+                {
+                    c12e8 = value;
+                    OnPropertyChanged("C12e8");
+                }
+
+            }
+        }
+
+        public Visibility C12e9
+        {
+            get
+            {
+                return c12e9;
+            }
+
+            set
+            {
+                if (c12e9 != value)
+                {
+                    c12e9 = value;
+                    OnPropertyChanged("C12e9");
+                }
+
+            }
+        }
+
+        public Visibility C12e10
+        {
+            get
+            {
+                return c12e10;
+            }
+
+            set
+            {
+                if (c12e10 != value)
+                {
+                    c12e10 = value;
+                    OnPropertyChanged("C12e10");
+                }
+
+            }
+        }
+
+        public Visibility C12e11
+        {
+            get
+            {
+                return c12e11;
+            }
+
+            set
+            {
+                if (c12e11 != value)
+                {
+                    c12e11 = value;
+                    OnPropertyChanged("C12e11");
+                }
+
+            }
+        }
+
+        public Visibility C12e12
+        {
+            get
+            {
+                return c12e12;
+            }
+
+            set
+            {
+                if (c12e12 != value)
+                {
+                    c12e12 = value;
+                    OnPropertyChanged("C12e12");
+                }
+
             }
         }
         #endregion
