@@ -471,30 +471,35 @@ namespace NetworkService.ViewModel
                 if (naziv_entiteta.Equals(""))
                 {
                     // prazan je canvas
-                    if (EntitetiCanvas[0].ListaEntiteta.Count > 0)
+                    if (EntitetiTreeView[0].ListaEntiteta.Count > 0)
                     {
-                        draggedItem = EntitetiCanvas[0].ListaEntiteta[0];
-                        EntitetiCanvas[0].ListaEntiteta.RemoveAt(0);
+                        draggedItem = EntitetiTreeView[0].ListaEntiteta[0];
+                        EntitetiTreeView[0].ListaEntiteta.RemoveAt(0);
+                        EntitetiCanvas[0].ListaEntiteta.Add(draggedItem);
                     }
-                    else if (EntitetiCanvas[1].ListaEntiteta.Count > 0)
+                    else if (EntitetiTreeView[1].ListaEntiteta.Count > 0)
                     {
-                        draggedItem = EntitetiCanvas[1].ListaEntiteta[0];
-                        EntitetiCanvas[1].ListaEntiteta.RemoveAt(0);
+                        draggedItem = EntitetiTreeView[1].ListaEntiteta[0];
+                        EntitetiTreeView[1].ListaEntiteta.RemoveAt(0);
+                        EntitetiCanvas[1].ListaEntiteta.Add(draggedItem);
                     }
-                    else if (EntitetiCanvas[2].ListaEntiteta.Count > 0)
+                    else if (EntitetiTreeView[2].ListaEntiteta.Count > 0)
                     {
-                        draggedItem = EntitetiCanvas[2].ListaEntiteta[0];
-                        EntitetiCanvas[2].ListaEntiteta.RemoveAt(0);
+                        draggedItem = EntitetiTreeView[2].ListaEntiteta[0];
+                        EntitetiTreeView[2].ListaEntiteta.RemoveAt(0);
+                        EntitetiCanvas[2].ListaEntiteta.Add(draggedItem);
                     }
-                    else if (EntitetiCanvas[3].ListaEntiteta.Count > 0)
+                    else if (EntitetiTreeView[3].ListaEntiteta.Count > 0)
                     {
-                        draggedItem = EntitetiCanvas[3].ListaEntiteta[0];
-                        EntitetiCanvas[3].ListaEntiteta.RemoveAt(0);
+                        draggedItem = EntitetiTreeView[3].ListaEntiteta[0];
+                        EntitetiTreeView[3].ListaEntiteta.RemoveAt(0);
+                        EntitetiCanvas[3].ListaEntiteta.Add(draggedItem);
                     }
-                    else if (EntitetiCanvas[4].ListaEntiteta.Count > 0)
+                    else if (EntitetiTreeView[4].ListaEntiteta.Count > 0)
                     {
-                        draggedItem = EntitetiCanvas[4].ListaEntiteta[0];
-                        EntitetiCanvas[4].ListaEntiteta.RemoveAt(0);
+                        draggedItem = EntitetiTreeView[4].ListaEntiteta[0];
+                        EntitetiTreeView[4].ListaEntiteta.RemoveAt(0);
+                        EntitetiCanvas[4].ListaEntiteta.Add(draggedItem);
                     }
 
                     if (draggedItem != null)
@@ -505,7 +510,7 @@ namespace NetworkService.ViewModel
                         {
                             BitmapImage img = new BitmapImage();
                             img.BeginInit();
-                            string putanja = Directory.GetCurrentDirectory() + draggedItem.Slika;
+                            string putanja = Directory.GetCurrentDirectory() + "/Assets/uredjaj.png";
                             img.UriSource = new Uri(putanja, UriKind.Absolute);
                             img.EndInit();
                             kanvas.Background = new ImageBrush(img);
@@ -513,7 +518,7 @@ namespace NetworkService.ViewModel
                             trenutni.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#000000"));
                             draggedItem.Canvas_pozicija = GetCanvasId(kanvas.Name);
                             kanvas.Resources.Add("taken", true);
-                            UkloniElement(draggedItem);
+                            //UkloniElement(draggedItem);
                         }
                         draggedItem = null;
                         dragging = false;
