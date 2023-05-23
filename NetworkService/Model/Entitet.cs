@@ -141,7 +141,7 @@ namespace NetworkService.Model
                         {
                             Visibility_Uspesno = Visibility.Visible,
                             Visibility_Greska = Visibility.Hidden,
-                            Poruka = "✅ Entitet (" + IP + ", " + Naziv + ", " + IP + ") je prijavio REGULARNU VREDNOSST " + Zauzece + "%."
+                            Poruka = "✅ Entitet (" + IP + ", " + Naziv + ", " + IP + ") je prijavio REGULARNU VREDNOST " + Zauzece + "%."
                     };
 
                         Messenger.Default.Send(message);
