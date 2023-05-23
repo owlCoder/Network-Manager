@@ -386,6 +386,8 @@ namespace NetworkService.ViewModel
                 }
             }
 
+            Messenger.Default.Register<DataChangeMessage>(this, Notifikacija);
+
         }
 
         private void PreviewMouseDown(Canvas canvas)
