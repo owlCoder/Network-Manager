@@ -269,8 +269,8 @@
                         <Line X1="180" Y1="70" X2="-115" Y2="-60" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C6e1}" />
                         <Line X1="185" Y1="70" X2="140" Y2="-60" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C6e2}" />
                         <Line X1="185" Y1="70" X2="260" Y2="-60" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C6e3}" />
-                        <Line X1="185" Y1="70" X2="440" Y2="-60" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C6e5}" />
-                        <Line X1="185" Y1="70" X2="-30" Y2="70" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C6e4}" />
+                        <Line X1="185" Y1="70" X2="440" Y2="-60" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C6e4}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="70" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C6e5}" />
                         <Line X1="185" Y1="70" X2="250" Y2="90" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C6e7}" />
                         <Line X1="185" Y1="70" X2="450" Y2="70" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C6e8}" />
                         <Line X1="185" Y1="70" X2="-155" Y2="325" Stroke="Black" StrokeThickness="3" Visibility="{Binding C6e9}" />
@@ -313,9 +313,9 @@
                         <Line X1="180" Y1="70" X2="-285" Y2="-60" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C7e1}" />
                         <Line X1="185" Y1="70" X2="-140" Y2="-60" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C7e2}" />
                         <Line X1="185" Y1="70" X2="80" Y2="-60" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C7e3}" />
-                        <Line X1="185" Y1="70" X2="230" Y2="-65" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C7e5}" />
-                        <Line X1="185" Y1="70" X2="-245" Y2="80" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C7e6}" />
-                        <Line X1="185" Y1="70" X2="-35" Y2="90" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C7e4}" />
+                        <Line X1="185" Y1="70" X2="230" Y2="-65" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C7e4}" />
+                        <Line X1="185" Y1="70" X2="-245" Y2="80" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C7e5}" />
+                        <Line X1="185" Y1="70" X2="-35" Y2="90" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C7e6}" />
                         <Line X1="185" Y1="70" X2="325" Y2="90" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C7e8}" />
                         <Line X1="185" Y1="70" X2="-345" Y2="325" Stroke="Black" StrokeThickness="3" Visibility="{Binding C7e9}" />
                         <Line X1="185" Y1="70" X2="-150" Y2="250" Stroke="Red" StrokeThickness="3" Visibility="{Binding C7e10}" />
@@ -354,17 +354,17 @@
                     </Button>
                     <Canvas Background="White" AllowDrop="True" x:Name="c8">
                         <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
-                        <Line X1="180" Y1="70" X2="-455" Y2="70" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C8e1}" />
-                        <Line X1="185" Y1="70" X2="-243" Y2="90" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C8e2}" />
-                        <Line X1="185" Y1="70" X2="-30" Y2="90" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C8e3}" />
-                        <Line X1="185" Y1="70" X2="-540" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C8e5}" />
-                        <Line X1="185" Y1="70" X2="-400" Y2="255" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C8e6}" />
-                        <Line X1="185" Y1="70" X2="-110" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C8e4}" />
-                        <Line X1="185" Y1="70" X2="125" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C8e7}" />
-                        <Line X1="185" Y1="70" X2="-545" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C8e9}" />
-                        <Line X1="185" Y1="70" X2="-330" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C8e10}" />
-                        <Line X1="185" Y1="70" X2="-110" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C8e11}" />
-                        <Line X1="185" Y1="70" X2="100" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C8e12}" />
+                        <Line X1="180" Y1="70" X2="-448" Y2="-70" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C8e1}" />
+                        <Line X1="185" Y1="70" X2="-243" Y2="-90" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C8e2}" />
+                        <Line X1="185" Y1="70" X2="55" Y2="-60" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C8e4}" />
+                        <Line X1="185" Y1="70" X2="-456" Y2="90" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C8e5}" />
+                        <Line X1="185" Y1="70" X2="-250" Y2="100" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C8e6}" />
+                        <Line X1="185" Y1="70" X2="-250" Y2="60" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C8e6}" />
+                        <Line X1="185" Y1="70" X2="125" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C8e12}" />
+                        <Line X1="185" Y1="70" X2="-545" Y2="225" Stroke="Black" StrokeThickness="3" Visibility="{Binding C8e9}" />
+                        <Line X1="185" Y1="70" X2="-330" Y2="225" Stroke="Red" StrokeThickness="3" Visibility="{Binding C8e10}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="225" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C8e11}" />
+                        <Line X1="185" Y1="70" X2="100" Y2="225" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C8e3}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
                                 <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c8}"/>

@@ -553,7 +553,7 @@ namespace NetworkService.ViewModel
                 if (id == 6)
                 {
                     c6e1 = c6e2 = c6e3 = c6e4 = c6e5 = c6e6 = c6e7 = c6e8 = c6e9 = c6e10 = c6e11 = c6e12 = Visibility.Hidden;
-                    c1e2 = c2e2 = c3e2 = c4e2 = c5e2 = c6e2 = c7e2 = c8e2 = c9e2 = c10e2 = c11e2 = c12e2 = Visibility.Hidden;
+                    c8e6 = c1e2 = c2e2 = c3e2 = c4e2 = c5e2 = c6e2 = c7e2 = c8e2 = c9e2 = c10e2 = c11e2 = c12e2 = Visibility.Hidden;
                 }
 
 
