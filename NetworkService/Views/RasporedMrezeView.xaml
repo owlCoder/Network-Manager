@@ -45,7 +45,7 @@
                     <Canvas Background="White" AllowDrop="True" x:Name="c1">
                         <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
                         <Line X1="185" Y1="70" X2="250" Y2="30" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C1e2}" />
-                        <Line X1="185" Y1="70" X2="500" Y2="70" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C1e3}" />
+                        <Line X1="185" Y1="70" X2="500" Y2="40" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C1e3}" />
                         <Line X1="185" Y1="70" X2="700" Y2="100" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C1e4}" />
                         <Line X1="185" Y1="70" X2="185" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C1e5}" />
                         <Line X1="185" Y1="70" X2="285" Y2="225" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C1e6}" />

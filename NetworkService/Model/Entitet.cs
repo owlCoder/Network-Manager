@@ -18,7 +18,6 @@ namespace NetworkService.Model
         private bool boja;
         private string klasa;
         private int canvas_pozicija;
-        private List<int> povezan_sa_entitet_id;
         #endregion
 
         #region KONSTRUKTOR KLASE Entitet
@@ -201,23 +200,6 @@ namespace NetworkService.Model
                 {
                     canvas_pozicija = value;
                     OnPropertyChanged("Canvas_pozicija");
-                }
-            }
-        }
-
-        public List<int> Povezan_sa_entitet_id
-        {
-            get
-            {
-                return povezan_sa_entitet_id;
-            }
-
-            set
-            {
-                if (povezan_sa_entitet_id != value)
-                {
-                    povezan_sa_entitet_id = value;
-                    OnPropertyChanged("Povezan_sa_entitet_id");
                 }
             }
         }
