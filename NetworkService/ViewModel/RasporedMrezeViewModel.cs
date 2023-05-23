@@ -542,6 +542,85 @@ namespace NetworkService.ViewModel
                                 C1e5 = C5e1 = Visibility.Hidden;
                             }
 
+                            if (nova_canvas_id == 6)
+                            {
+                                C6e2 = C1e2; C1e2 = Visibility.Hidden;
+                                C6e3 = C1e3; C1e3 = Visibility.Hidden;
+                                C6e4 = C1e4; C1e4 = Visibility.Hidden;
+                                C6e5 = C1e5; C1e5 = Visibility.Hidden;
+                                C6e7 = C1e7; C1e7 = Visibility.Hidden;
+                                C6e8 = C1e8; C1e8 = Visibility.Hidden;
+                                C6e9 = C1e9; C1e9 = Visibility.Hidden;
+                                C6e10 = C1e10; C1e10 = Visibility.Hidden;
+                                C6e11 = C1e11; C1e11 = Visibility.Hidden;
+                                C6e12 = C1e12; C1e12 = Visibility.Hidden;
+
+                                C1e6 = C6e1 = Visibility.Hidden;
+                            }
+
+                            if (nova_canvas_id == 7)
+                            {
+                                C7e2 = C1e2; C1e2 = Visibility.Hidden;
+                                C7e3 = C1e3; C1e3 = Visibility.Hidden;
+                                C7e4 = C1e4; C1e4 = Visibility.Hidden;
+                                C7e5 = C1e5; C1e5 = Visibility.Hidden;
+                                C7e6 = C1e6; C1e6 = Visibility.Hidden;
+                                C7e7 = C1e7; C1e7 = Visibility.Hidden;
+                                C7e8 = C1e8; C1e8 = Visibility.Hidden;
+                                C7e9 = C1e9; C1e9 = Visibility.Hidden;
+                                C7e10 = C1e10; C1e10 = Visibility.Hidden;
+                                C7e11 = C1e11; C1e11 = Visibility.Hidden;
+                                C7e12 = C1e12; C1e12 = Visibility.Hidden;
+
+                                C1e7 = C7e1 = Visibility.Hidden;
+                            }
+
+                            if (nova_canvas_id == 8)
+                            {
+                                C8e2 = C1e2; C1e2 = Visibility.Hidden;
+                                C8e3 = C1e3; C1e3 = Visibility.Hidden;
+                                C8e4 = C1e4; C1e4 = Visibility.Hidden;
+                                C8e5 = C1e5; C1e5 = Visibility.Hidden;
+                                C8e6 = C1e6; C1e6 = Visibility.Hidden;
+                                C8e7 = C1e7; C1e7 = Visibility.Hidden;
+                                C8e9 = C1e9; C1e9 = Visibility.Hidden;
+                                C8e10 = C1e10; C1e10 = Visibility.Hidden;
+                                C8e11 = C1e11; C1e11 = Visibility.Hidden;
+                                C8e12 = C1e12; C1e12 = Visibility.Hidden;
+
+                                C1e8 = C8e1 = Visibility.Hidden;
+                            }
+
+                            if (nova_canvas_id == 9)
+                            {
+                                C9e2 = C1e2; C1e2 = Visibility.Hidden;
+                                C9e3 = C1e3; C1e3 = Visibility.Hidden;
+                                C9e4 = C1e4; C1e4 = Visibility.Hidden;
+                                C9e5 = C1e5; C1e5 = Visibility.Hidden;
+                                C9e6 = C1e6; C1e6 = Visibility.Hidden;
+                                C9e7 = C1e7; C1e7 = Visibility.Hidden;
+                                C9e10 = C1e10; C1e10 = Visibility.Hidden;
+                                C9e11 = C1e11; C1e11 = Visibility.Hidden;
+                                C9e12 = C1e12; C1e12 = Visibility.Hidden;
+
+                                C1e9 = C9e1 = Visibility.Hidden;
+                            }
+
+                            if (nova_canvas_id == 10)
+                            {
+                                C10e2 = C1e2; C1e2 = Visibility.Hidden;
+                                C10e3 = C1e3; C1e3 = Visibility.Hidden;
+                                C10e4 = C1e4; C1e4 = Visibility.Hidden;
+                                C10e5 = C1e5; C1e5 = Visibility.Hidden;
+                                C10e6 = C1e6; C1e6 = Visibility.Hidden;
+                                C10e7 = C1e7; C1e7 = Visibility.Hidden;
+                                C10e10 = C1e10; C1e10 = Visibility.Hidden;
+                                C10e11 = C1e11; C1e11 = Visibility.Hidden;
+                                C10e12 = C1e12; C1e12 = Visibility.Hidden;
+
+                                C1e10 = C10e1 = Visibility.Hidden;
+                            }
+
                         }
                         else if(stara_canvas_id == 2)
                         {
@@ -717,19 +796,75 @@ namespace NetworkService.ViewModel
                         }
                         else if(stara_canvas_id == 6)
                         {
-                            
+                            if (nova_canvas_id == 1)
+                            {
+                                C1e2 = C6e2; C6e2 = Visibility.Hidden;
+                                C1e3 = C6e3; C6e3 = Visibility.Hidden;
+                                C1e4 = C6e4; C6e4 = Visibility.Hidden;
+                                C1e5 = C6e5; C6e5 = Visibility.Hidden;
+                                C1e7 = C6e7; C6e7 = Visibility.Hidden;
+                                C1e8 = C6e8; C6e8 = Visibility.Hidden;
+                                C1e9 = C6e9; C6e9 = Visibility.Hidden;
+                                C1e10 = C6e10; C6e10 = Visibility.Hidden;
+                                C1e11 = C6e11; C6e11 = Visibility.Hidden;
+                                C1e12 = C6e12; C6e12 = Visibility.Hidden;
+
+                                C1e6 = C6e1 = Visibility.Hidden;
+                            }
                         }
                         else if (stara_canvas_id == 7)
                         {
+                            if (nova_canvas_id == 1)
+                            {
+                                C1e2 = C7e2; C7e2 = Visibility.Hidden;
+                                C1e3 = C7e3; C7e3 = Visibility.Hidden;
+                                C1e4 = C7e4; C7e4 = Visibility.Hidden;
+                                C1e5 = C7e5; C7e5 = Visibility.Hidden;
+                                C1e6 = C7e6; C7e6 = Visibility.Hidden;
+                                C1e7 = C7e7; C7e7 = Visibility.Hidden;
+                                C1e8 = C7e8; C7e8 = Visibility.Hidden;
+                                C1e9 = C7e9; C7e9 = Visibility.Hidden;
+                                C1e10 = C7e10; C7e10 = Visibility.Hidden;
+                                C1e11 = C7e11; C7e11 = Visibility.Hidden;
+                                C1e12 = C7e12; C7e12 = Visibility.Hidden;
 
+                                C1e7 = C7e1 = Visibility.Hidden;
+                            }
                         }
                         else if (stara_canvas_id == 8)
                         {
+                            if (nova_canvas_id == 1)
+                            {
+                                C1e2 = C8e2; C8e2 = Visibility.Hidden;
+                                C1e3 = C8e3; C8e3 = Visibility.Hidden;
+                                C1e4 = C8e4; C8e4 = Visibility.Hidden;
+                                C1e5 = C8e5; C8e5 = Visibility.Hidden;
+                                C1e6 = C8e6; C8e6 = Visibility.Hidden;
+                                C1e7 = C8e7; C8e7 = Visibility.Hidden;
+                                C1e9 = C8e9; C8e9 = Visibility.Hidden;
+                                C1e10 = C8e10; C8e10 = Visibility.Hidden;
+                                C1e11 = C8e11; C8e11 = Visibility.Hidden;
+                                C1e12 = C8e12; C8e12 = Visibility.Hidden;
 
+                                C1e8 = C8e1 = Visibility.Hidden;
+                            }
                         }
                         else if (stara_canvas_id == 9)
                         {
+                            if (nova_canvas_id == 1)
+                            {
+                                C1e2 = C9e2; C9e2 = Visibility.Hidden;
+                                C1e3 = C9e3; C9e3 = Visibility.Hidden;
+                                C1e4 = C9e4; C9e4 = Visibility.Hidden;
+                                C1e5 = C9e5; C9e5 = Visibility.Hidden;
+                                C1e6 = C9e6; C9e6 = Visibility.Hidden;
+                                C1e7 = C9e7; C9e7 = Visibility.Hidden;
+                                C1e10 = C9e10; C9e10 = Visibility.Hidden;
+                                C1e11 = C9e11; C9e11 = Visibility.Hidden;
+                                C1e12 = C9e12; C9e12 = Visibility.Hidden;
 
+                                C1e9 = C9e1 = Visibility.Hidden;
+                            }
                         }
                         else if (stara_canvas_id == 10)
                         {
