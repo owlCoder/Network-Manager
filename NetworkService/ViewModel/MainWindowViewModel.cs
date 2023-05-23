@@ -242,7 +242,13 @@ namespace NetworkService.ViewModel
 
         private void RemoveFromList(int index)
         {
+            int idx = Entiteti[index].Canvas_pozicija;
             Entiteti.RemoveAt(index);
+
+            if(idx != -1)
+            {
+                Messenger.Default.Send(idx);
+            }
         }
 
         private void GetList(ObservableCollection<Entitet> e)

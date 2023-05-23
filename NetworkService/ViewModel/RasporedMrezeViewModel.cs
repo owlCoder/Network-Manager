@@ -45,6 +45,8 @@ namespace NetworkService.ViewModel
         private int selected;
         private Canvas pocetni = null;
 
+        public static Grid desni;
+
         private Visibility uspesno, greska, informacija;
         private string poruka;
 
@@ -114,6 +116,8 @@ namespace NetworkService.ViewModel
             Messenger.Default.Register<PassDeleteDummy>(this, UkloniElementCanvasTreeView);
 
             Messenger.Default.Register<DataChangeMessage>(this, Notifikacija);
+
+            Messenger.Default.Register<int>(this, UkloniAkoJeNaCanvasu);
         }
 
         public void SpajanjeEntiteta(Canvas canvas)
@@ -299,7 +303,7 @@ namespace NetworkService.ViewModel
                 if (src_id == 12 && dst_id == 8) C12e8 = Visibility.Visible;
                 if (src_id == 12 && dst_id == 9) C12e9 = Visibility.Visible;
                 if (src_id == 12 && dst_id == 10) C12e10 = Visibility.Visible;
-                if (src_id == 12 && dst_id == 11) C12e10 = Visibility.Visible;
+                if (src_id == 12 && dst_id == 11) C12e11 = Visibility.Visible;
                 #endregion
 
                 Resetuj:
@@ -319,6 +323,8 @@ namespace NetworkService.ViewModel
         // Kako bi se pamtilo stanje na canvasu - potrebno je koristiti konstruktor sa parametrima
         public RasporedMrezeViewModel(Grid desniGridCanvas)
         {
+            desni = desniGridCanvas;
+
             #region PODESAVANJE KOMANDI
             NasumicnoRasporedi = new MyICommand<Grid>(Rasporedi);
 
@@ -387,7 +393,27 @@ namespace NetworkService.ViewModel
             }
 
             Messenger.Default.Register<DataChangeMessage>(this, Notifikacija);
+            Messenger.Default.Register<int>(this, UkloniAkoJeNaCanvasu);
 
+        }
+
+        // metoda koje povezuje brisanje iz MV i Canvas
+        private void UkloniAkoJeNaCanvasu(int id_canvasa)
+        {
+            // indeksiranje
+            // dock paneli krecu od indeksa 1
+            // indeks 1 u dock panelu je canvas
+            List<Canvas> kanvasi = new List<Canvas>();
+
+            for (int i = 1; i < 13; i++)
+            {
+                DockPanel panel = (DockPanel)(desni.Children[i]);
+                Canvas canvas = (Canvas)(panel.Children[1]);
+                kanvasi.Add(canvas);
+            }
+
+            // poziva se oslobodi za dati canvas
+            Oslobodi_Dugme(kanvasi[id_canvasa]);
         }
 
         private void PreviewMouseDown(Canvas canvas)
@@ -553,16 +579,14 @@ namespace NetworkService.ViewModel
                 if (id == 6)
                 {
                     c6e1 = c6e2 = c6e3 = c6e4 = c6e5 = c6e6 = c6e7 = c6e8 = c6e9 = c6e10 = c6e11 = c6e12 = Visibility.Hidden;
-                    c8e6 = c1e2 = c2e2 = c3e2 = c4e2 = c5e2 = c6e2 = c7e2 = c8e2 = c9e2 = c10e2 = c11e2 = c12e2 = Visibility.Hidden;
+                    c1e6 = c2e6 = c3e6 = c4e6 = c5e6 = c7e6 = c8e6 = c9e6 = c10e6 = c12e6 = c11e6 =c6e7 = c1e6 = c9e6 = c8e6 = c1e2 = c2e2 = c3e2 = c4e2 = c5e2 = c6e2 = c7e2 = c8e2 = c9e2 = c10e2 = c11e2 = c12e2 = Visibility.Hidden;
                 }
-
 
                 if (id == 7)
                 {
                     c7e1 = c7e2 = c7e3 = c7e4 = c7e5 = c7e6 = c7e7 = c7e8 = c7e9 = c7e10 = c7e11 = c7e12 = Visibility.Hidden;
                     c1e7 = c2e7 = c3e7 = c4e7 = c5e7 = c6e7 = c7e7 = c8e7 = c9e7 = c10e7 = c11e7 = c12e7 = Visibility.Hidden;
                 }
-
 
                 if (id == 8)
                 {
@@ -652,9 +676,6 @@ namespace NetworkService.ViewModel
 
             // dodajemo u tree view u odredjenu klasu adresa kojoj entitet i pripada
             EntitetiTreeView[brojac_klase].ListaEntiteta.Add(item);
-
-            // ukloniti sve linije kao i sve linije sa kojima je entitet povezan na canvasu
-            // TO DO
         }
 
         private void DropMetoda(Canvas kanvas)

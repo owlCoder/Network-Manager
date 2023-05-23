@@ -8,10 +8,9 @@
     xmlns:viewModel="clr-namespace:NetworkService.ViewModel"
     xmlns:views="clr-namespace:NetworkService.Views"
     mc:Ignorable="d"
-    AllowsTransparency="True"
-    Background="Transparent"
+
     ResizeMode="NoResize" 
-    WindowStyle="None" 
+    
     WindowStartupLocation="CenterScreen" 
     Title="Monitor Mrežnih Entiteta"
     Name="MainWindowRef"
