@@ -175,7 +175,6 @@ namespace NetworkService.ViewModel
         }
         #endregion
 
-
         #region POZADINSKA NIT KOJA CITA IZ FAJLA POSLEDNJIH 5 MERENJA
 
         public void AzuriranjeMerenja()

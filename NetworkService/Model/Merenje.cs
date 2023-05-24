@@ -10,10 +10,12 @@ namespace NetworkService.Model
         private bool vanOpsega;
         #endregion
 
+        #region PRAZAN KONSTURKTOR
         public Merenje()
         {
             // Prazan konstruktor
         }
+        #endregion
 
         #region PROPERTY KLASE Merenje
         public int Izmereno

@@ -206,6 +206,7 @@ namespace NetworkService.ViewModel
         }
         #endregion
 
+        #region NAVIGACIONO MANIPULATIVNE METODE
         public BindableBase CurrentViewModel
         {
             get { return currentViewModel; }
@@ -256,7 +257,7 @@ namespace NetworkService.ViewModel
             e = Entiteti;
         }
 
-        #region delimiter datoteke
+        #region DELIMITER DATOTEKE
         void Delimit_File(string str)
         {
             PocetnaViewModel.DELIMITER_CONST.Add(str);
@@ -270,5 +271,6 @@ namespace NetworkService.ViewModel
         {
             MainWindow.Close();
         }
+        #endregion
     }
 }
