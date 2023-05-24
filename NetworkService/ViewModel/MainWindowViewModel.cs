@@ -238,7 +238,7 @@ namespace NetworkService.ViewModel
         private void AddToList(Entitet novi)
         {
             Entiteti.Add(novi);
-            Messenger.Default.Send(new PassForwardDummy() { Entitet = novi});
+            Messenger.Default.Send(new PassForwardDummy() { Entitet = novi });
         }
 
         private void RemoveFromList(int index)
@@ -246,7 +246,7 @@ namespace NetworkService.ViewModel
             int idx = Entiteti[index].Canvas_pozicija;
             Entiteti.RemoveAt(index);
 
-            if(idx != -1)
+            if (idx != -1)
             {
                 Messenger.Default.Send(idx);
             }

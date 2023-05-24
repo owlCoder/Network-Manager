@@ -1,8 +1,5 @@
 ﻿using MVVMLight.Messaging;
 using NetworkService.Helpers;
-using NetworkService.ViewModel;
-using System.Collections;
-using System.Collections.Generic;
 using System.Windows;
 
 namespace NetworkService.Model
@@ -142,7 +139,7 @@ namespace NetworkService.Model
                             Visibility_Uspesno = Visibility.Visible,
                             Visibility_Greska = Visibility.Hidden,
                             Poruka = "✅ Entitet (" + IP + ", " + Naziv + ", " + IP + ") je prijavio REGULARNU VREDNOST " + Zauzece + "%."
-                    };
+                        };
 
                         Messenger.Default.Send(message);
                     }

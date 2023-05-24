@@ -4,13 +4,9 @@ using NetworkService.Model;
 using NetworkService.Views;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -117,7 +113,7 @@ namespace NetworkService.ViewModel
 
             // za prijem novih entiteta
             Messenger.Default.Register<PassForwardDummy>(this, DodajUTreeViewListu);
-            
+
             // za uklanjanje entiteta ako se ukloni iz liste svih
             Messenger.Default.Register<PassDeleteDummy>(this, UkloniElementCanvasTreeView);
 
@@ -130,7 +126,7 @@ namespace NetworkService.ViewModel
         #region SPAJANJE LINIJAMA NA CANVASU PRISUTNIH ENTITETA
         public void SpajanjeEntiteta(Canvas canvas)
         {
-            if(src == null)
+            if (src == null)
             {
                 // ako je pocetna pozicija ne odabrana, onda se sada postavlja
                 src = canvas;
@@ -151,7 +147,7 @@ namespace NetworkService.ViewModel
                     goto Resetuj;
                 }
 
-                if(src_id == dst_id) // isti su id
+                if (src_id == dst_id) // isti su id
                 {
                     goto Resetuj;
                 }
@@ -350,7 +346,7 @@ namespace NetworkService.ViewModel
             PreviewMouseMoveKomanda = new MyICommand<Canvas>(PreviewMouseMove);
             PreviewMouseDownKomanda = new MyICommand<Canvas>(PreviewMouseDown);
             #endregion
-            
+
             Uspesno = Greska = Visibility.Hidden;
             Informacija = Visibility.Visible;
             Poruka = "ℹ Dobrodošli, @Dispečer 3244! Možete započeti sa Vašim radom u aplikaciji.";
@@ -362,18 +358,18 @@ namespace NetworkService.ViewModel
             // indeks 1 u dock panelu je canvas
             List<Canvas> kanvasi = new List<Canvas>();
 
-            for(int i = 1; i < 13; i++)
+            for (int i = 1; i < 13; i++)
             {
                 DockPanel panel = (DockPanel)(desniGridCanvas.Children[i]);
                 Canvas canvas = (Canvas)(panel.Children[1]);
                 kanvasi.Add(canvas);
             }
 
-            foreach(KlasifikovaniEntiteti ke in EntitetiCanvas.ToList())
+            foreach (KlasifikovaniEntiteti ke in EntitetiCanvas.ToList())
             {
-                foreach(Entitet e in ke.ListaEntiteta.ToList())
+                foreach (Entitet e in ke.ListaEntiteta.ToList())
                 {
-                    if(e.Canvas_pozicija != -1)
+                    if (e.Canvas_pozicija != -1)
                     {
                         draggedItem = MainWindowViewModel.Entiteti.FirstOrDefault(p => p.Id == e.Id);
                         Canvas kanvas = kanvasi[e.Canvas_pozicija - 1];
@@ -434,11 +430,11 @@ namespace NetworkService.ViewModel
             string naziv_entiteta = ((TextBlock)canvas.Children[0]).Text;
             Entitet ent = null;
 
-            foreach(KlasifikovaniEntiteti ke in EntitetiCanvas)
+            foreach (KlasifikovaniEntiteti ke in EntitetiCanvas)
             {
-                foreach(Entitet e in ke.ListaEntiteta)
+                foreach (Entitet e in ke.ListaEntiteta)
                 {
-                    if(e.Naziv.Equals(naziv_entiteta))
+                    if (e.Naziv.Equals(naziv_entiteta))
                     {
                         ent = e;
                         goto Izlaz;
@@ -496,7 +492,7 @@ namespace NetworkService.ViewModel
                                 C2e10 = C1e10; C1e10 = Visibility.Hidden;
                                 C2e11 = C1e11; C1e11 = Visibility.Hidden;
                                 C2e12 = C1e12; C1e12 = Visibility.Hidden;
-                                
+
                                 C1e2 = Visibility.Hidden;
 
                             }
@@ -668,9 +664,9 @@ namespace NetworkService.ViewModel
                             }
 
                         }
-                        else if(stara_canvas_id == 2)
+                        else if (stara_canvas_id == 2)
                         {
-                            if(nova_canvas_id == 1)
+                            if (nova_canvas_id == 1)
                             {
                                 C1e3 = C2e3; C2e3 = Visibility.Hidden;
                                 C1e4 = C2e4; C2e4 = Visibility.Hidden;
@@ -847,7 +843,7 @@ namespace NetworkService.ViewModel
                             }
 
                         }
-                        else if(stara_canvas_id == 3)
+                        else if (stara_canvas_id == 3)
                         {
                             if (nova_canvas_id == 1)
                             {
@@ -1025,7 +1021,7 @@ namespace NetworkService.ViewModel
                                 C12e3 = C3e12 = Visibility.Hidden;
                             }
                         }
-                        else if(stara_canvas_id == 4)
+                        else if (stara_canvas_id == 4)
                         {
                             if (nova_canvas_id == 1)
                             {
@@ -1204,7 +1200,7 @@ namespace NetworkService.ViewModel
                             }
 
                         }
-                        else if(stara_canvas_id == 5)
+                        else if (stara_canvas_id == 5)
                         {
                             if (nova_canvas_id == 1)
                             {
@@ -1382,7 +1378,7 @@ namespace NetworkService.ViewModel
                                 C12e5 = C5e12 = Visibility.Hidden;
                             }
                         }
-                        else if(stara_canvas_id == 6)
+                        else if (stara_canvas_id == 6)
                         {
                             if (nova_canvas_id == 1)
                             {
@@ -2762,7 +2758,7 @@ namespace NetworkService.ViewModel
                 if (id == 6)
                 {
                     c6e1 = c6e2 = c6e3 = c6e4 = c6e5 = c6e6 = c6e7 = c6e8 = c6e9 = c6e10 = c6e11 = c6e12 = Visibility.Hidden;
-                    c1e6 = c2e6 = c3e6 = c4e6 = c5e6 = c7e6 = c8e6 = c9e6 = c10e6 = c12e6 = c11e6 =c6e7 = c1e6 = c9e6 = c8e6 = c1e2 = c2e2 = c3e2 = c4e2 = c5e2 = c6e2 = c7e2 = c8e2 = c9e2 = c10e2 = c11e2 = c12e2 = Visibility.Hidden;
+                    c1e6 = c2e6 = c3e6 = c4e6 = c5e6 = c7e6 = c8e6 = c9e6 = c10e6 = c12e6 = c11e6 = c6e7 = c1e6 = c9e6 = c8e6 = c1e2 = c2e2 = c3e2 = c4e2 = c5e2 = c6e2 = c7e2 = c8e2 = c9e2 = c10e2 = c11e2 = c12e2 = Visibility.Hidden;
                 }
 
                 if (id == 7)
@@ -2827,12 +2823,12 @@ namespace NetworkService.ViewModel
             int brojac_klase = 0;
 
             // prolazimo kroz sve adresne klase
-            foreach(KlasifikovaniEntiteti ke in EntitetiCanvas)
+            foreach (KlasifikovaniEntiteti ke in EntitetiCanvas)
             {
                 // i trazimo u listi entiteta odredjene klase onaj entitet koji je na canvasu
-                foreach(Entitet e in ke.ListaEntiteta)
+                foreach (Entitet e in ke.ListaEntiteta)
                 {
-                    if(e.Naziv.Equals(naziv_entiteta))
+                    if (e.Naziv.Equals(naziv_entiteta))
                     {
                         // pronasli smo entitet, zapamti
                         klasa_u_kojoj_se_nalazi = ke;

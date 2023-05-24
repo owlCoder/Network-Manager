@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 
 namespace NetworkService.Model
 {
@@ -13,7 +8,7 @@ namespace NetworkService.Model
         public Visibility Visibility_Greska { get; set; }
         public string Poruka { get; set; }
 
-        public DataChangeMessage() 
+        public DataChangeMessage()
         {
             // Prazan konstruktor
         }
