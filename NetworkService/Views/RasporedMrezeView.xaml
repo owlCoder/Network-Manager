@@ -1,19 +1,14 @@
-﻿<UserControl x:Class="NetworkService.Views.RasporedMrezeView"
+<UserControl x:Class="NetworkService.Views.RasporedMrezeView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              xmlns:local="clr-namespace:NetworkService.Views"
              xmlns:model="clr-namespace:NetworkService.Model"
-             xmlns:helpers="clr-namespace:NetworkService.Helpers"
              mc:Ignorable="d" 
-             Name="ReferencaProzora"
+             Name="Prozor"
              d:DesignHeight="450" d:DesignWidth="1200">
-    <UserControl.Resources>
-        <helpers:PassThroughConverter x:Key="PassthroughConverter" />
-    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2.5*" />
@@ -21,9 +16,10 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
+            <RowDefinition Height="0.1*" />
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" Grid.Column="0" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
-            <Grid Margin="10">
+        <Border Grid.Row="0" Grid.Column="0" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
+            <Grid Margin="10" x:Name="desniGridSaCanvas" Background="{StaticResource UIWhiteColor}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -31,7 +27,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.3*" />
+                    <RowDefinition Height="0*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
@@ -39,83 +35,140 @@
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Content="RASPORED ENTITETA U MREŽI" FontSize="20" FontWeight="Bold" Foreground="{StaticResource UIWhiteColor}" />
 
                 <DockPanel Grid.Column="0" Grid.Row="1" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" CommandParameter="{Binding ElementName=c1}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    <Canvas Background="White" AllowDrop="True" x:Name="c1">
+                        <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="185" Y1="70" X2="250" Y2="30" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C1e2}" />
+                        <Line X1="185" Y1="70" X2="500" Y2="40" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C1e3}" />
+                        <Line X1="185" Y1="70" X2="700" Y2="100" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C1e4}" />
+                        <Line X1="185" Y1="70" X2="185" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C1e5}" />
+                        <Line X1="185" Y1="70" X2="285" Y2="225" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C1e6}" />
+                        <Line X1="185" Y1="70" X2="485" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C1e7}" />
+                        <Line X1="185" Y1="70" X2="685" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C1e8}" />
+                        <Line X1="185" Y1="70" X2="135" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C1e9}" />
+                        <Line X1="185" Y1="70" X2="255" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C1e10}" />
+                        <Line X1="185" Y1="70" X2="475" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C1e11}" />
+                        <Line X1="185" Y1="70" X2="675" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C1e12}" />
+
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c1}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c1}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c1}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c1}" />
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c1}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c1}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
 
                 <DockPanel Grid.Column="1" Grid.Row="1" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" CommandParameter="{Binding ElementName=c2}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    <Canvas Background="White" AllowDrop="True" x:Name="c2">
+                        <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="185" Y1="70" X2="-30" Y2="50" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C2e1}" />
+                        <Line X1="185" Y1="70" X2="310" Y2="110" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C2e3}" />
+                        <Line X1="185" Y1="70" X2="450" Y2="80" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C2e4}" />
+                        <Line X1="185" Y1="70" X2="-70" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C2e5}" />
+                        <Line X1="185" Y1="70" X2="85" Y2="225" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C2e6}" />
+                        <Line X1="185" Y1="70" X2="285" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C2e7}" />
+                        <Line X1="185" Y1="70" X2="485" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C2e8}" />
+                        <Line X1="185" Y1="70" X2="-95" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C2e9}" />
+                        <Line X1="185" Y1="70" X2="100" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C2e10}" />
+                        <Line X1="185" Y1="70" X2="300" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C2e11}" />
+                        <Line X1="185" Y1="70" X2="555" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C2e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c2}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c2}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c2}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c2}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c2}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c2}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
 
                 <DockPanel Grid.Column="2" Grid.Row="1" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" CommandParameter="{Binding ElementName=c3}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    <Canvas Background="White" AllowDrop="True" x:Name="c3">
+                        <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="185" Y1="70" X2="-250" Y2="50" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C3e1}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="70" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C3e2}" />
+                        <Line X1="185" Y1="70" X2="235" Y2="80" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C3e4}" />
+                        <Line X1="185" Y1="70" X2="-300" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C3e5}" />
+                        <Line X1="185" Y1="70" X2="-165" Y2="255" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C3e6}" />
+                        <Line X1="185" Y1="70" X2="110" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C3e7}" />
+                        <Line X1="185" Y1="70" X2="285" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C3e8}" />
+                        <Line X1="185" Y1="70" X2="-305" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C3e9}" />
+                        <Line X1="185" Y1="70" X2="-100" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C3e10}" />
+                        <Line X1="185" Y1="70" X2="100" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C3e11}" />
+                        <Line X1="185" Y1="70" X2="300" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C3e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c3}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c3}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c3}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c3}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c3}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c3}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
 
-                <DockPanel Grid.Column="3" Grid.Row="1" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="4"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
-                    </Canvas>
-                </DockPanel>
-
                 <DockPanel Grid.Column="4" Grid.Row="1" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" CommandParameter="{Binding ElementName=c4}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
@@ -123,111 +176,213 @@
                         </Button.Resources>
                     </Button>
                     <Canvas Background="White" AllowDrop="True" x:Name="c4">
+                        <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="180" Y1="70" X2="-455" Y2="70" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C4e1}" />
+                        <Line X1="185" Y1="70" X2="-243" Y2="90" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C4e2}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="90" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C4e3}" />
+                        <Line X1="185" Y1="70" X2="-540" Y2="225" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C4e5}" />
+                        <Line X1="185" Y1="70" X2="-400" Y2="255" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C4e6}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="225" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C4e7}" />
+                        <Line X1="185" Y1="70" X2="125" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C4e8}" />
+                        <Line X1="185" Y1="70" X2="-545" Y2="425" Stroke="Black" StrokeThickness="3" Visibility="{Binding C4e9}" />
+                        <Line X1="185" Y1="70" X2="-330" Y2="425" Stroke="Red" StrokeThickness="3" Visibility="{Binding C4e10}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="425" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C4e11}" />
+                        <Line X1="185" Y1="70" X2="100" Y2="425" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C4e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <ei:CallMethodAction TargetObject="{Binding}" MethodName="PrevuciNaCanvas"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c4}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c4}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c4}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c4}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c4}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c4}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
                     </Canvas>
                 </DockPanel>
 
                 <!-- drugi red -->
                 <DockPanel Grid.Column="0" Grid.Row="2" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" CommandParameter="{Binding ElementName=c5}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    <Canvas Background="White" AllowDrop="True" x:Name="c5">
+                        <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="100" Y1="25" X2="100" Y2="-57" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C5e1}" />
+                        <Line X1="185" Y1="70" X2="243" Y2="-60" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C5e2}" />
+                        <Line X1="185" Y1="70" X2="540" Y2="-60" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C5e3}" />
+                        <Line X1="185" Y1="70" X2="670" Y2="-80" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C5e4}" />
+                        <Line X1="185" Y1="70" X2="240" Y2="80" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C5e6}" />
+                        <Line X1="185" Y1="70" X2="450" Y2="70" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C5e7}" />
+                        <Line X1="185" Y1="70" X2="670" Y2="85" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C5e8}" />
+                        <Line X1="185" Y1="70" X2="150" Y2="235" Stroke="Black" StrokeThickness="3" Visibility="{Binding C5e9}" />
+                        <Line X1="185" Y1="70" X2="300" Y2="225" Stroke="Red" StrokeThickness="3" Visibility="{Binding C5e10}" />
+                        <Line X1="185" Y1="70" X2="500" Y2="225" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C5e11}" />
+                        <Line X1="185" Y1="70" X2="720" Y2="225" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C5e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c5}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c5}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c5}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c5}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c5}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c5}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
 
                 <DockPanel Grid.Column="1" Grid.Row="2" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" CommandParameter="{Binding ElementName=c6}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    <Canvas Background="White" AllowDrop="True" x:Name="c6">
+                        <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="180" Y1="70" X2="-115" Y2="-60" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C6e1}" />
+                        <Line X1="185" Y1="70" X2="140" Y2="-60" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C6e2}" />
+                        <Line X1="185" Y1="70" X2="260" Y2="-60" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C6e3}" />
+                        <Line X1="185" Y1="70" X2="440" Y2="-60" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C6e4}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="70" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C6e5}" />
+                        <Line X1="185" Y1="70" X2="250" Y2="90" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C6e7}" />
+                        <Line X1="185" Y1="70" X2="450" Y2="70" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C6e8}" />
+                        <Line X1="185" Y1="70" X2="-155" Y2="315" Stroke="Black" StrokeThickness="3" Visibility="{Binding C6e9}" />
+                        <Line X1="185" Y1="70" X2="20" Y2="300" Stroke="Red" StrokeThickness="3" Visibility="{Binding C6e10}" />
+                        <Line X1="185" Y1="70" X2="320" Y2="315" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C6e11}" />
+                        <Line X1="185" Y1="70" X2="450" Y2="235" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C6e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c6}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c6}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c6}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c6}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c6}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c6}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
 
                 <DockPanel Grid.Column="2" Grid.Row="2" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" CommandParameter="{Binding ElementName=c7}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    <Canvas Background="White" AllowDrop="True" x:Name="c7">
+                        <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="180" Y1="70" X2="-285" Y2="-60" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C7e1}" />
+                        <Line X1="185" Y1="70" X2="-140" Y2="-60" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C7e2}" />
+                        <Line X1="185" Y1="70" X2="80" Y2="-60" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C7e3}" />
+                        <Line X1="185" Y1="70" X2="230" Y2="-65" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C7e4}" />
+                        <Line X1="185" Y1="70" X2="-245" Y2="80" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C7e5}" />
+                        <Line X1="185" Y1="70" X2="-35" Y2="90" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C7e6}" />
+                        <Line X1="185" Y1="70" X2="325" Y2="90" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C7e8}" />
+                        <Line X1="185" Y1="70" X2="-345" Y2="325" Stroke="Black" StrokeThickness="3" Visibility="{Binding C7e9}" />
+                        <Line X1="185" Y1="70" X2="-150" Y2="250" Stroke="Red" StrokeThickness="3" Visibility="{Binding C7e10}" />
+                        <Line X1="185" Y1="70" X2="60" Y2="250" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C7e11}" />
+                        <Line X1="185" Y1="70" X2="360" Y2="325" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C7e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c7}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c7}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c7}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c7}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c7}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c7}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
 
-                <DockPanel Grid.Column="3" Grid.Row="2" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="4"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
-                    </Canvas>
-                </DockPanel>
-
                 <DockPanel Grid.Column="4" Grid.Row="2" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" CommandParameter="{Binding ElementName=c8}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    <Canvas Background="White" AllowDrop="True" x:Name="c8">
+                        <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="180" Y1="70" X2="-448" Y2="-70" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C8e1}" />
+                        <Line X1="185" Y1="70" X2="-243" Y2="-90" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C8e2}" />
+                        <Line X1="185" Y1="70" X2="55" Y2="-60" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C8e4}" />
+                        <Line X1="185" Y1="70" X2="-456" Y2="90" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C8e5}" />
+                        <Line X1="185" Y1="70" X2="-250" Y2="100" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C8e6}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="60" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C8e7}" />
+                        <Line X1="185" Y1="70" X2="125" Y2="225" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C8e12}" />
+                        <Line X1="185" Y1="70" X2="-545" Y2="225" Stroke="Black" StrokeThickness="3" Visibility="{Binding C8e9}" />
+                        <Line X1="185" Y1="70" X2="-330" Y2="225" Stroke="Red" StrokeThickness="3" Visibility="{Binding C8e10}" />
+                        <Line X1="185" Y1="70" X2="-110" Y2="225" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C8e11}" />
+                        <Line X1="185" Y1="70" X2="-100" Y2="-57" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C8e3}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c8}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c8}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c8}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c8}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c8}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c8}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -235,97 +390,176 @@
 
                 <!-- treci red -->
                 <DockPanel Grid.Column="0" Grid.Row="3" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" CommandParameter="{Binding ElementName=c9}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    <Canvas Background="White" AllowDrop="True" x:Name="c9">
+                        <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="185" Y1="70" X2="100" Y2="-257" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C9e1}" />
+                        <Line X1="185" Y1="70" X2="243" Y2="-260" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C9e2}" />
+                        <Line X1="185" Y1="70" X2="540" Y2="-255" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C9e3}" />
+                        <Line X1="185" Y1="70" X2="665" Y2="-255" Stroke="Black" StrokeThickness="3" Visibility="{Binding C9e4}" />
+                        <Line X1="185" Y1="70" X2="100" Y2="-60" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C9e5}" />
+                        <Line X1="185" Y1="70" X2="340" Y2="-60" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C9e6}" />
+                        <Line X1="185" Y1="70" X2="450" Y2="-60" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C9e7}" />
+                        <Line X1="185" Y1="70" X2="670" Y2="-60" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C9e8}" />
+                        <Line X1="185" Y1="70" X2="240" Y2="80" Stroke="Red" StrokeThickness="3" Visibility="{Binding C9e10}" />
+                        <Line X1="185" Y1="70" X2="500" Y2="100" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C9e11}" />
+                        <Line X1="185" Y1="70" X2="720" Y2="100" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C9e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c9}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}"  CommandParameter="{Binding ElementName=c9}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c9}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c9}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c9}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c9}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
 
                 <DockPanel Grid.Column="1" Grid.Row="3" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" CommandParameter="{Binding ElementName=c10}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    <Canvas Background="White" AllowDrop="True" x:Name="c10">
+                        <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="180" Y1="70" X2="-155" Y2="-245" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C10e1}" />
+                        <Line X1="185" Y1="70" X2="80" Y2="-245" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C10e2}" />
+                        <Line X1="185" Y1="70" X2="280" Y2="-245" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C10e3}" />
+                        <Line X1="185" Y1="70" X2="440" Y2="-245" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C10e4}" />
+                        <Line X1="185" Y1="70" X2="-100" Y2="-55" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C10e5}" />
+                        <Line X1="185" Y1="70" X2="60" Y2="-55" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C10e6}" />
+                        <Line X1="185" Y1="70" X2="340" Y2="-55" Stroke="Red" StrokeThickness="3" Visibility="{Binding C10e7}" />
+                        <Line X1="185" Y1="70" X2="435" Y2="-55" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C10e8}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="75" Stroke="Black" StrokeThickness="3" Visibility="{Binding C10e9}" />
+                        <Line X1="185" Y1="70" X2="330" Y2="55" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C10e11}" />
+                        <Line X1="185" Y1="70" X2="450" Y2="75" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C10e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c10}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c10}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c10}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c10}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c10}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c10}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
 
                 <DockPanel Grid.Column="2" Grid.Row="3" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" CommandParameter="{Binding ElementName=c11}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    <Canvas Background="White" AllowDrop="True" x:Name="c11">
+                        <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="180" Y1="70" X2="-275" Y2="-245" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C11e1}" />
+                        <Line X1="185" Y1="70" X2="-20" Y2="-245" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C11e2}" />
+                        <Line X1="185" Y1="70" X2="150" Y2="-245" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C11e3}" />
+                        <Line X1="185" Y1="70" X2="340" Y2="-245" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C11e4}" />
+                        <Line X1="185" Y1="70" X2="-240" Y2="-55" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C11e5}" />
+                        <Line X1="185" Y1="70" X2="-60" Y2="-55" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C11e6}" />
+                        <Line X1="185" Y1="70" X2="140" Y2="-55" Stroke="Red" StrokeThickness="3" Visibility="{Binding C11e7}" />
+                        <Line X1="185" Y1="70" X2="335" Y2="-55" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C11e8}" />
+                        <Line X1="185" Y1="70" X2="-240" Y2="75" Stroke="Black" StrokeThickness="3" Visibility="{Binding C11e9}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="55" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C11e10}" />
+                        <Line X1="185" Y1="70" X2="250" Y2="75" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C11e12}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c11}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c11}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c11}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c11}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c11}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c11}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
                 </DockPanel>
 
-                <DockPanel Grid.Column="3" Grid.Row="3" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="7"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
-                    </Canvas>
-                </DockPanel>
-
                 <DockPanel Grid.Column="4" Grid.Row="3" Margin="5">
-                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
+                    <Button Content="OSLOBODI" FontWeight="Bold" Command="{Binding OslobodiKomanda}" CommandParameter="{Binding ElementName=c12}" DockPanel.Dock="Bottom" FontSize="16" Background="{StaticResource UIRedColor}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="4"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Canvas Background="White" AllowDrop="True">
-                        <TextBlock FontSize="12" Margin="5" Text=""/>
+                    <Canvas Background="White" AllowDrop="True" x:Name="c12">
+                        <TextBlock FontSize="14" FontWeight="Bold" Margin="5" Text=""/>
+                        <Line X1="180" Y1="70" X2="-480" Y2="-243" Stroke="Crimson" StrokeThickness="3" Visibility="{Binding C12e1}" />
+                        <Line X1="185" Y1="70" X2="-370" Y2="-250" Stroke="DarkMagenta" StrokeThickness="3" Visibility="{Binding C12e2}" />
+                        <Line X1="185" Y1="70" X2="-100" Y2="-242" Stroke="Pink" StrokeThickness="3" Visibility="{Binding C12e3}" />
+                        <Line X1="185" Y1="70" X2="55" Y2="-243" Stroke="DarkOrange" StrokeThickness="3" Visibility="{Binding C12e4}" />
+                        <Line X1="185" Y1="70" X2="-456" Y2="-90" Stroke="DarkBlue" StrokeThickness="3" Visibility="{Binding C12e5}" />
+                        <Line X1="185" Y1="70" X2="-250" Y2="-75" Stroke="DarkGreen" StrokeThickness="3" Visibility="{Binding C12e6}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="-70" Stroke="DarkTurquoise" StrokeThickness="3" Visibility="{Binding C12e7}" />
+                        <Line X1="185" Y1="70" X2="115" Y2="-55" Stroke="DarkViolet" StrokeThickness="3" Visibility="{Binding C12e8}" />
+                        <Line X1="185" Y1="70" X2="-450" Y2="85" Stroke="Black" StrokeThickness="3" Visibility="{Binding C12e9}" />
+                        <Line X1="185" Y1="70" X2="-240" Y2="55" Stroke="Red" StrokeThickness="3" Visibility="{Binding C12e10}" />
+                        <Line X1="185" Y1="70" X2="-30" Y2="75" Stroke="Blue" StrokeThickness="3" Visibility="{Binding C12e11}" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="DragOver">
-                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DragOverKomanda}" CommandParameter="{Binding ElementName=c12}"/>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="Drop">
-                                <i:InvokeCommandAction Command="{Binding DropKomanda}"/>
+                                <i:InvokeCommandAction Command="{Binding DropKomanda}" CommandParameter="{Binding ElementName=c12}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseDownKomanda}" CommandParameter="{Binding ElementName=c12}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseMove">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseMoveKomanda}" CommandParameter="{Binding ElementName=c12}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding PreviewMouseUpKomanda}" CommandParameter="{Binding ElementName=c12}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DesniKlik}" CommandParameter="{Binding ElementName=c12}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Canvas>
@@ -334,8 +568,20 @@
             </Grid>
         </Border>
 
+        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Visibility="{Binding Informacija}" Margin="5" Background="{StaticResource UIQuatriraryColor}" CornerRadius="10">
+            <TextBlock Text="{Binding Poruka}" FontSize="16" Foreground="DarkCyan" FontWeight="Bold" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
+        </Border>
 
-        <Border Grid.Row="1" Grid.Column="1" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
+        <Border Grid.Row="1" Grid.Column="0" Visibility="{Binding Uspesno}" Grid.ColumnSpan="1" Margin="5" Background="#C1E1C1 " CornerRadius="10">
+            <TextBlock Text="{Binding Poruka}" FontSize="16" Foreground="#2F4C39" FontWeight="Bold" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
+        </Border>
+
+        <Border Grid.Row="1" Grid.Column="0" Visibility="{Binding Greska}" Grid.ColumnSpan="1" Margin="5" Background="#FFCCCC " CornerRadius="10">
+            <TextBlock Text="{Binding Poruka}" FontSize="16" Foreground="#D55244" FontWeight="Bold" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
+        </Border>
+
+
+        <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -352,7 +598,7 @@
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Content="DOSTUPNI ENTITETI" FontSize="20" FontWeight="Bold" Foreground="{StaticResource UIWhiteColor}" />
 
                 <!-- tree view -->
-                <TreeView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="Transparent" x:Name="drvo" BorderThickness="0" BorderBrush="Transparent" Grid.ColumnSpan="4" Margin="5, 50, 5, 5" ItemsSource="{Binding Klasifikovani}">
+                <TreeView x:Name="treeView" ItemsSource="{Binding EntitetiTreeView}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Grid.ColumnSpan="4" Margin="5, 50, 5, 5">
                     <TreeView.Resources>
                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{StaticResource GradientColorOne}" />
                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
@@ -395,7 +641,7 @@
                             <i:InvokeCommandAction Command="{Binding MouseLevoDugme}"/>
                         </i:EventTrigger>
                         <i:EventTrigger EventName="SelectedItemChanged">
-                            <i:InvokeCommandAction Command="{Binding SelectedItemPromena}" CommandParameter="{Binding SelectedItem, ElementName=drvo}" />
+                            <i:InvokeCommandAction Command="{Binding TreeViewOdabran}" CommandParameter="{Binding ElementName=treeView}"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </TreeView>
@@ -404,6 +650,7 @@
                                 x:Name="rasporedi" 
                                 Width="290" 
                                 Command="{Binding NasumicnoRasporedi}" 
+                                CommandParameter="{Binding ElementName=desniGridSaCanvas}"
                                 BorderThickness="0.5"
                                 Height="37"
                                 Background="{StaticResource UIQuatriraryColor}"

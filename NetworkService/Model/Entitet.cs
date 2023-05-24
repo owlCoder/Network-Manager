@@ -1,4 +1,6 @@
-﻿using NetworkService.Helpers;
+﻿using MVVMLight.Messaging;
+using NetworkService.Helpers;
+using System.Windows;
 
 namespace NetworkService.Model
 {
@@ -13,7 +15,6 @@ namespace NetworkService.Model
         private bool boja;
         private string klasa;
         private int canvas_pozicija;
-        private int povezan_sa_entitet_id;
         #endregion
 
         #region KONSTRUKTOR KLASE Entitet
@@ -110,13 +111,42 @@ namespace NetworkService.Model
                 if (zauzece < 45 || zauzece > 75)
                 {
                     Boja = true;
+                    Slika = "/Assets/uredjaj_error.png";
+
+                    // samo ako je na canvasu ispisuje se poruka
+                    if (Canvas_pozicija != -1)
+                    {
+                        DataChangeMessage message = new DataChangeMessage()
+                        {
+                            Visibility_Uspesno = Visibility.Hidden,
+                            Visibility_Greska = Visibility.Visible,
+                            Poruka = "⚠ Entitet (" + IP + ", " + Naziv + ", " + IP + ") je prijavio KRITIČNU VREDNOST " + Zauzece + "%!"
+                        };
+
+                        Messenger.Default.Send(message);
+                    }
                 }
                 else
                 {
                     Boja = false;
+                    Slika = "/Assets/uredjaj.png";
+
+                    // samo ako je na canvasu ispisuje se poruka
+                    if (Canvas_pozicija != -1)
+                    {
+                        DataChangeMessage message = new DataChangeMessage()
+                        {
+                            Visibility_Uspesno = Visibility.Visible,
+                            Visibility_Greska = Visibility.Hidden,
+                            Poruka = "✅ Entitet (" + IP + ", " + Naziv + ", " + IP + ") je prijavio REGULARNU VREDNOST " + Zauzece + "%."
+                        };
+
+                        Messenger.Default.Send(message);
+                    }
                 }
 
                 OnPropertyChanged("Boja");
+                OnPropertyChanged("Slika");
             }
         }
 
@@ -167,23 +197,6 @@ namespace NetworkService.Model
                 {
                     canvas_pozicija = value;
                     OnPropertyChanged("Canvas_pozicija");
-                }
-            }
-        }
-
-        public int Povezan_sa_entitet_id
-        {
-            get
-            {
-                return povezan_sa_entitet_id;
-            }
-
-            set
-            {
-                if (povezan_sa_entitet_id != value)
-                {
-                    povezan_sa_entitet_id = value;
-                    OnPropertyChanged("Povezan_sa_entitet_id");
                 }
             }
         }

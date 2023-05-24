@@ -21,7 +21,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\build\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -75,10 +75,13 @@
     <Compile Include="Helpers\MyICommand.cs" />
     <Compile Include="Helpers\PassThroughConverter.cs" />
     <Compile Include="Helpers\ValidationBase.cs" />
+    <Compile Include="Model\DataChangeMessage.cs" />
     <Compile Include="Model\Entitet.cs" />
     <Compile Include="Model\Filter.cs" />
     <Compile Include="Model\KlasifikovaniEntiteti.cs" />
     <Compile Include="Model\Merenje.cs" />
+    <Compile Include="Model\PassDeleteDummy.cs" />
+    <Compile Include="Model\PassForwardDummy.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MrezniEntitetiViewModel.cs" />
     <Compile Include="ViewModel\PocetnaViewModel.cs" />
@@ -183,7 +186,12 @@
     <Resource Include="Assets\search.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\uredjaj.png" />
+    <Content Include="Assets\uredjaj.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\uredjaj_error.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\minus.png" />
@@ -191,6 +199,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\random.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MeteringSimulator\MeteringSimulator.csproj">
+      <Project>{134d87ad-f428-469f-a98e-5f007edd241b}</Project>
+      <Name>MeteringSimulator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

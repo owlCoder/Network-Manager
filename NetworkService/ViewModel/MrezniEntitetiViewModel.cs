@@ -5,6 +5,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.Windows;
 
 namespace NetworkService.ViewModel
 {
@@ -48,6 +49,9 @@ namespace NetworkService.ViewModel
 
         private Filter odabraniFilter = new Filter();
 
+        private Visibility uspesno, greska, informacija;
+        private string poruka;
+
         // Ako nije primenjen nijedan filter - prikazuje se originalna lista entiteta
         // U suprotnom prikazuju se filtrirani entiteti iz Liste FiltriraniEntiteti
         private static ObservableCollection<Entitet> listaEntiteta { get; set; }
@@ -70,6 +74,101 @@ namespace NetworkService.ViewModel
             listaEntiteta = MainWindowViewModel.Entiteti; // na prvi prikaz prikazuju se svi entiteti
             MoguceBrisanje = false;
             OdabraniEntitet = null; // nije odabran nijedan entitet
+            Uspesno = Greska = Informacija = Visibility.Hidden;
+        }
+
+        #endregion
+
+        #region PROPERTY ZA PORUKE
+        public string Poruka
+        {
+            get
+            {
+                return poruka;
+            }
+
+            set
+            {
+                if (poruka != value)
+                {
+                    poruka = value;
+                    OnPropertyChanged("Poruka");
+                }
+            }
+        }
+        public Visibility Uspesno
+        {
+            get
+            {
+                return uspesno;
+            }
+
+            set
+            {
+                if (uspesno != value)
+                {
+                    uspesno = value;
+
+                    if (uspesno == Visibility.Visible)
+                    {
+                        Greska = Informacija = Visibility.Hidden;
+                        OnPropertyChanged("Greska");
+                        OnPropertyChanged("Informacija");
+                    }
+
+                    OnPropertyChanged("Uspesno");
+                }
+            }
+        }
+
+        public Visibility Greska
+        {
+            get
+            {
+                return greska;
+            }
+
+            set
+            {
+                if (greska != value)
+                {
+                    greska = value;
+
+                    if (greska == Visibility.Visible)
+                    {
+                        uspesno = informacija = Visibility.Hidden;
+                        OnPropertyChanged("Uspesno");
+                        OnPropertyChanged("Informacija");
+                    }
+
+                    OnPropertyChanged("Greska");
+                }
+            }
+        }
+
+        public Visibility Informacija
+        {
+            get
+            {
+                return informacija;
+            }
+
+            set
+            {
+                if (informacija != value)
+                {
+                    informacija = value;
+
+                    if (informacija == Visibility.Visible)
+                    {
+                        greska = uspesno = Visibility.Hidden;
+                        OnPropertyChanged("Greska");
+                        OnPropertyChanged("Uspesno");
+                    }
+
+                    OnPropertyChanged("Informacija");
+                }
+            }
         }
         #endregion
 
@@ -357,28 +456,39 @@ namespace NetworkService.ViewModel
             ip_cetvrti_oktet = new Random().Next(ip_min, ip_max);
 
             ip = ip_prvi_oktet + "." + ip_drugi_oktet + "." + ip_treci_oktet + "." + ip_cetvrti_oktet;
+            string naziv = "Entitet " + (max_id < 10 ? ("0" + max_id).ToString() : max_id.ToString());
 
             Messenger.Default.Send(
                 new Entitet()
                 {
                     Id = max_id,
-                    Naziv = "Entitet " + (max_id < 10 ? ("0" + max_id).ToString() : max_id.ToString()),
+                    Naziv = naziv,
                     IP = ip,
                     Slika = "/Assets/uredjaj.png",
                     Zauzece = new Random().Next(0, 100),
                     Klasa = klasa,
                     Canvas_pozicija = -1,
-                    Povezan_sa_entitet_id = -1
+                    //Povezan_sa_entitet_id = -1
                 });
 
-            MainWindowViewModel.rasporedMrezeViewModel.Preraspodela();
+            // informativna poruka
+            Uspesno = Visibility.Visible;
+            Poruka = "ℹ Novi entitet (" + max_id + ", " + naziv + ", " + ip + ") je uspešno dodat u infrastrukturni sistem!";
         }
 
         public void OnBrisanjePress()
         {
+            int id = OdabraniEntitet.Id;
+            string naziv = OdabraniEntitet.Naziv;
+            string ip = OdabraniEntitet.IP;
+
             Messenger.Default.Send(ListaEntiteta.IndexOf(OdabraniEntitet));
             OdabraniEntitet = null;
             Messenger.Default.Send(ListaEntiteta);
+
+            // poruka korisniku
+            Greska = Visibility.Visible;
+            Poruka = "❎ Entitet (" + id + ", " + naziv + ", " + ip + ") je uspešno izbrisan iz infrastrukturnog sistema!";
         }
         #endregion
 
@@ -413,6 +523,10 @@ namespace NetworkService.ViewModel
 
             // Primena filtera
             ListaEntiteta = Filtracija();
+
+            // poruka korisniku
+            Informacija = Visibility.Visible;
+            Poruka = "ℹ Filter (" + istorija + ") je uspešno primenjen! Filtirarani entiteti su vidljivi u tabeli!";
         }
         #endregion
 
