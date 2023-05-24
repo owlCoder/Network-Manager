@@ -20,8 +20,10 @@ namespace NetworkService.ViewModel
 {
     public class RasporedMrezeViewModel : BindableBase
     {
+        #region POLJA ZA BINDING ENTITETA
         public static BindingList<KlasifikovaniEntiteti> EntitetiCanvas { get; set; }
         public static BindingList<KlasifikovaniEntiteti> EntitetiTreeView { get; set; }
+        #endregion
 
         #region KOMANDE ZA DRAG & DROP
         // komande za drag & drop
@@ -39,6 +41,7 @@ namespace NetworkService.ViewModel
         public MyICommand<Canvas> PreviewMouseDownKomanda { get; private set; }
         #endregion
 
+        #region POLJA ZA TRENUTNI ENTITET, D&D
         // za drag & drop
         private Entitet draggedItem = null;
         private bool dragging = false;
@@ -49,6 +52,7 @@ namespace NetworkService.ViewModel
 
         private Visibility uspesno, greska, informacija;
         private string poruka;
+        #endregion
 
         #region LINIJA ZA POVEZIVANJE NA CANVASU
         private static Visibility c1e1, c1e2, c1e3, c1e4, c1e5, c1e6, c1e7, c1e8, c1e9, c1e10, c1e11, c1e12;
@@ -70,6 +74,8 @@ namespace NetworkService.ViewModel
         public MyICommand<Canvas> DesniKlik { get; private set; }
 
         #endregion
+
+        #region INICIJALNI KONSTRUKTOR
         public RasporedMrezeViewModel()
         {
             #region DEFAULT VREDNOSTI LINIJA
@@ -119,7 +125,9 @@ namespace NetworkService.ViewModel
 
             Messenger.Default.Register<int>(this, UkloniAkoJeNaCanvasu);
         }
+        #endregion
 
+        #region SPAJANJE LINIJAMA NA CANVASU PRISUTNIH ENTITETA
         public void SpajanjeEntiteta(Canvas canvas)
         {
             if(src == null)
@@ -312,7 +320,9 @@ namespace NetworkService.ViewModel
                 dst = null;
             }
         }
+        #endregion
 
+        #region NOTIFIKAICIONI METOD I KONSTRUKTOR MEMOIZACIJE
         private void Notifikacija(DataChangeMessage message)
         {
             Greska = message.Visibility_Greska;
@@ -396,7 +406,9 @@ namespace NetworkService.ViewModel
             Messenger.Default.Register<int>(this, UkloniAkoJeNaCanvasu);
 
         }
+        #endregion
 
+        #region METODE ZA RAD IZMEDJU POMERAJA OBJEKATA SA CANVAS-A NA DRUGI CANVAS
         // metoda koje povezuje brisanje iz MV i Canvas
         private void UkloniAkoJeNaCanvasu(int id_canvasa)
         {
@@ -1013,8 +1025,7 @@ namespace NetworkService.ViewModel
                                 C12e3 = C3e12 = Visibility.Hidden;
                             }
                         }
-
-                        else if (stara_canvas_id == 4)
+                        else if(stara_canvas_id == 4)
                         {
                             if (nova_canvas_id == 1)
                             {
@@ -1388,6 +1399,23 @@ namespace NetworkService.ViewModel
 
                                 C1e6 = C6e1 = Visibility.Hidden;
                             }
+
+                            if (nova_canvas_id == 1)
+                            {
+                                C1e1 = C6e1; C6e1 = Visibility.Hidden;
+                                C1e2 = C6e2; C6e2 = Visibility.Hidden;
+                                C1e3 = C6e3; C6e3 = Visibility.Hidden;
+                                C1e4 = C6e4; C6e4 = Visibility.Hidden;
+                                C1e5 = C6e5; C6e5 = Visibility.Hidden;
+                                C1e7 = C6e7; C6e7 = Visibility.Hidden;
+                                C1e8 = C6e8; C6e8 = Visibility.Hidden;
+                                C1e9 = C6e9; C6e9 = Visibility.Hidden;
+                                C1e10 = C6e10; C6e10 = Visibility.Hidden;
+                                C1e11 = C6e11; C6e11 = Visibility.Hidden;
+                                C1e12 = C6e12; C6e12 = Visibility.Hidden;
+
+                                C1e6 = C6e1 = Visibility.Hidden;
+                            }
                         }
                         else if (stara_canvas_id == 7)
                         {
@@ -1528,7 +1556,9 @@ namespace NetworkService.ViewModel
                 pocetni = null;
             }
         }
+        #endregion
 
+        #region METODE ZA RAD SA TREE VIEW I DRAG & DROP NA CANVAS
         private void UkloniElementCanvasTreeView(PassDeleteDummy pd)
         {
             Entitet za_brisanje = pd.Entitet;
@@ -1746,7 +1776,9 @@ namespace NetworkService.ViewModel
                 dragging = false;
             }
         }
+        #endregion
 
+        #region METODE ZA RAD SA CANVAS-OM
         private int GetCanvasId(string name)
         {
             int id = 1;
@@ -1779,7 +1811,6 @@ namespace NetworkService.ViewModel
                 DragDrop.DoDragDrop(prozor, draggedItem, DragDropEffects.Move | DragDropEffects.Copy);
             }
         }
-
 
         private void TreeView_MouseLeftButtonUp()
         {
@@ -1847,6 +1878,7 @@ namespace NetworkService.ViewModel
         {
             // TO DO
         }
+        #endregion
 
         #region PROPERTY KLASE RasporedMrezeViewModel
         private void Rasporedi(Grid desni_grid_canvas)
