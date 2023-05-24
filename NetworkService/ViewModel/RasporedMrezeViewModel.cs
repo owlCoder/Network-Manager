@@ -1570,7 +1570,6 @@ namespace NetworkService.ViewModel
                                 C1e4 = C7e4; C7e4 = Visibility.Hidden;
                                 C1e5 = C7e5; C7e5 = Visibility.Hidden;
                                 C1e6 = C7e6; C7e6 = Visibility.Hidden;
-                                C1e7 = C7e7; C7e7 = Visibility.Hidden;
                                 C1e8 = C7e8; C7e8 = Visibility.Hidden;
                                 C1e9 = C7e9; C7e9 = Visibility.Hidden;
                                 C1e10 = C7e10; C7e10 = Visibility.Hidden;
@@ -1579,6 +1578,167 @@ namespace NetworkService.ViewModel
 
                                 C1e7 = C7e1 = Visibility.Hidden;
                             }
+
+                            if (nova_canvas_id == 2)
+                            {
+                                C2e1 = C7e1; C7e1 = Visibility.Hidden;
+                                C2e3 = C7e3; C7e3 = Visibility.Hidden;
+                                C2e4 = C7e4; C7e4 = Visibility.Hidden;
+                                C2e5 = C7e5; C7e5 = Visibility.Hidden;
+                                C2e6 = C7e6; C7e6 = Visibility.Hidden;
+                                C2e8 = C7e8; C7e8 = Visibility.Hidden;
+                                C2e9 = C7e9; C7e9 = Visibility.Hidden;
+                                C2e10 = C7e10; C7e10 = Visibility.Hidden;
+                                C2e11 = C7e11; C7e11 = Visibility.Hidden;
+                                C2e12 = C7e12; C7e12 = Visibility.Hidden;
+
+                                C2e7 = C7e2 = Visibility.Hidden;
+                            }
+
+                            if (nova_canvas_id == 3)
+                            {
+                                C3e1 = C7e1; C7e1 = Visibility.Hidden;
+                                C3e2 = C7e2; C7e2 = Visibility.Hidden;
+                                C3e4 = C7e4; C7e4 = Visibility.Hidden;
+                                C3e5 = C7e5; C7e5 = Visibility.Hidden;
+                                C3e6 = C7e6; C7e6 = Visibility.Hidden;
+                                C3e8 = C7e8; C7e8 = Visibility.Hidden;
+                                C3e9 = C7e9; C7e9 = Visibility.Hidden;
+                                C3e10 = C7e10; C7e10 = Visibility.Hidden;
+                                C3e11 = C7e11; C7e11 = Visibility.Hidden;
+                                C3e12 = C7e12; C7e12 = Visibility.Hidden;
+
+                                C3e7 = C7e3 = Visibility.Hidden;
+                            }
+
+                            if (nova_canvas_id == 4)
+                            {
+                                C4e1 = C7e1; C7e1 = Visibility.Hidden;
+                                C4e2 = C7e2; C7e2 = Visibility.Hidden;
+                                C4e3 = C7e3; C7e3 = Visibility.Hidden;
+                                C4e5 = C7e5; C7e5 = Visibility.Hidden;
+                                C4e6 = C7e6; C7e6 = Visibility.Hidden;
+                                C4e8 = C7e8; C7e8 = Visibility.Hidden;
+                                C4e9 = C7e9; C7e9 = Visibility.Hidden;
+                                C4e10 = C7e10; C7e10 = Visibility.Hidden;
+                                C4e11 = C7e11; C7e11 = Visibility.Hidden;
+                                C4e12 = C7e12; C7e12 = Visibility.Hidden;
+
+                                C4e7 = C7e4 = Visibility.Hidden;
+                            }
+
+                            if (nova_canvas_id == 5)
+                            {
+                                C5e1 = C7e1; C7e1 = Visibility.Hidden;
+                                C5e2 = C7e2; C7e2 = Visibility.Hidden;
+                                C5e3 = C7e3; C7e3 = Visibility.Hidden;
+                                C5e4 = C7e4; C7e4 = Visibility.Hidden;
+                                C5e6 = C7e6; C7e6 = Visibility.Hidden;
+                                C5e8 = C7e8; C7e8 = Visibility.Hidden;
+                                C5e9 = C7e9; C7e9 = Visibility.Hidden;
+                                C5e10 = C7e10; C7e10 = Visibility.Hidden;
+                                C5e11 = C7e11; C7e11 = Visibility.Hidden;
+                                C1e12 = C7e12; C7e12 = Visibility.Hidden;
+
+                                C5e7 = C7e5 = Visibility.Hidden;
+                            }
+
+                            if (nova_canvas_id == 6)
+                            {
+                                C6e1 = C7e1; C7e1 = Visibility.Hidden;
+                                C6e2 = C7e2; C7e2 = Visibility.Hidden;
+                                C6e3 = C7e3; C7e3 = Visibility.Hidden;
+                                C6e4 = C7e4; C7e4 = Visibility.Hidden;
+                                C6e5 = C7e5; C7e5 = Visibility.Hidden;
+                                C6e8 = C7e8; C7e8 = Visibility.Hidden;
+                                C6e9 = C7e9; C7e9 = Visibility.Hidden;
+                                C6e10 = C7e10; C7e10 = Visibility.Hidden;
+                                C6e11 = C7e11; C7e11 = Visibility.Hidden;
+                                C6e12 = C7e12; C7e12 = Visibility.Hidden;
+
+                                C6e7 = C7e6 = Visibility.Hidden;
+                            }
+
+                            if (nova_canvas_id == 8)
+                            {
+                                C8e1 = C7e1; C7e1 = Visibility.Hidden;
+                                C8e2 = C7e2; C7e2 = Visibility.Hidden;
+                                C8e3 = C7e3; C7e3 = Visibility.Hidden;
+                                C8e4 = C7e4; C7e4 = Visibility.Hidden;
+                                C8e5 = C7e5; C7e5 = Visibility.Hidden;
+                                C8e6 = C7e6; C7e6 = Visibility.Hidden;
+                                C8e9 = C7e9; C7e9 = Visibility.Hidden;
+                                C8e10 = C7e10; C7e10 = Visibility.Hidden;
+                                C8e11 = C7e11; C7e11 = Visibility.Hidden;
+                                C8e12 = C7e12; C7e12 = Visibility.Hidden;
+
+                                C8e7 = C7e8 = Visibility.Hidden;
+                            }
+
+                            if (nova_canvas_id == 9)
+                            {
+                                C9e1 = C7e1; C7e1 = Visibility.Hidden;
+                                C9e2 = C7e2; C7e2 = Visibility.Hidden;
+                                C9e3 = C7e3; C7e3 = Visibility.Hidden;
+                                C9e4 = C7e4; C7e4 = Visibility.Hidden;
+                                C9e5 = C7e5; C7e5 = Visibility.Hidden;
+                                C9e6 = C7e6; C7e6 = Visibility.Hidden;
+                                C9e8 = C7e8; C7e8 = Visibility.Hidden;
+                                C9e10 = C7e10; C7e10 = Visibility.Hidden;
+                                C9e11 = C7e11; C7e11 = Visibility.Hidden;
+                                C9e12 = C7e12; C7e12 = Visibility.Hidden;
+
+                                C1e7 = C7e1 = Visibility.Hidden;
+                            }
+
+                            if (nova_canvas_id == 10)
+                            {
+                                C10e1 = C7e1; C7e1 = Visibility.Hidden;
+                                C10e2 = C7e2; C7e2 = Visibility.Hidden;
+                                C10e3 = C7e3; C7e3 = Visibility.Hidden;
+                                C10e4 = C7e4; C7e4 = Visibility.Hidden;
+                                C10e5 = C7e5; C7e5 = Visibility.Hidden;
+                                C10e6 = C7e6; C7e6 = Visibility.Hidden;
+                                C10e8 = C7e8; C7e8 = Visibility.Hidden;
+                                C10e9 = C7e9; C7e9 = Visibility.Hidden;
+                                C10e11 = C7e11; C7e11 = Visibility.Hidden;
+                                C10e12 = C7e12; C7e12 = Visibility.Hidden;
+
+                                C10e7 = C7e10 = Visibility.Hidden;
+                            }
+
+                            if (nova_canvas_id == 11)
+                            {
+                                C11e1 = C7e1; C7e1 = Visibility.Hidden;
+                                C11e2 = C7e2; C7e2 = Visibility.Hidden;
+                                C11e3 = C7e3; C7e3 = Visibility.Hidden;
+                                C11e4 = C7e4; C7e4 = Visibility.Hidden;
+                                C11e5 = C7e5; C7e5 = Visibility.Hidden;
+                                C11e6 = C7e6; C7e6 = Visibility.Hidden;
+                                C11e8 = C7e8; C7e8 = Visibility.Hidden;
+                                C11e9 = C7e9; C7e9 = Visibility.Hidden;
+                                C11e10 = C7e10; C7e10 = Visibility.Hidden;
+                                C11e12 = C7e12; C7e12 = Visibility.Hidden;
+
+                                C11e7 = C7e11 = Visibility.Hidden;
+                            }
+
+                            if (nova_canvas_id == 12)
+                            {
+                                C12e1 = C7e1; C7e1 = Visibility.Hidden;
+                                C12e2 = C7e2; C7e2 = Visibility.Hidden;
+                                C12e3 = C7e3; C7e3 = Visibility.Hidden;
+                                C12e4 = C7e4; C7e4 = Visibility.Hidden;
+                                C12e5 = C7e5; C7e5 = Visibility.Hidden;
+                                C12e6 = C7e6; C7e6 = Visibility.Hidden;
+                                C12e8 = C7e8; C7e8 = Visibility.Hidden;
+                                C12e9 = C7e9; C7e9 = Visibility.Hidden;
+                                C12e10 = C7e10; C7e10 = Visibility.Hidden;
+                                C12e11 = C7e11; C7e11 = Visibility.Hidden;
+
+                                C12e7 = C7e12 = Visibility.Hidden;
+                            }
+
                         }
                         else if (stara_canvas_id == 8)
                         {
