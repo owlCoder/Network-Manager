@@ -1,4 +1,4 @@
-﻿using MVVMLight.Messaging;
+using MVVMLight.Messaging;
 using NetworkService.Helpers;
 using NetworkService.Model;
 using NetworkService.Views;

@@ -1,4 +1,4 @@
-﻿using NetworkService.ViewModel;
+using NetworkService.ViewModel;
 using System.Windows.Controls;
 
 namespace NetworkService.Views
