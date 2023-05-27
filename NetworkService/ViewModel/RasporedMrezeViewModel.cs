@@ -408,6 +408,10 @@ namespace NetworkService.ViewModel
         // metoda koje povezuje brisanje iz MV i Canvas
         private void UkloniAkoJeNaCanvasu(int id_canvasa)
         {
+            // ako jos uvek nije inicijalizovan view, return
+            if (desni == null)
+                return;
+                
             // indeksiranje
             // dock paneli krecu od indeksa 1
             // indeks 1 u dock panelu je canvas
