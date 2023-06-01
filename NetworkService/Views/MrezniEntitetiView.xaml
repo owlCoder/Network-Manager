@@ -1,0 +1,189 @@
+﻿<UserControl x:Class="NetworkService.Views.MrezniEntitetiView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NetworkService.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
+            <TextBlock Text="PREGLED I DODAVANJE NOVIH SERVERA" FontSize="26" TextAlignment="Center" Foreground="#fff" FontWeight="Bold" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
+        </Border>
+        
+        <Border Grid.Row="2" Grid.Column="0" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.8*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="FILTRIRANJE" FontSize="20" FontWeight="Bold" Foreground="{StaticResource UIWhiteColor}" />
+
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6">
+                    <ComboBox Height="25" FontSize="18" FontWeight="Bold" ItemsSource="{Binding AdresneKlase}" SelectedIndex="{Binding OdabranaKlasaIndeks}" />
+                    <Viewbox Height="23" Margin="20, 0, 15, 0">
+                        <RadioButton Content=">" Foreground="White" IsChecked="{Binding VeceCekirano}" />
+                    </Viewbox>
+                    <Viewbox Height="23" Margin="0, 0, 15, 0">
+                        <RadioButton Content="&lt;" Foreground="White" IsChecked="{Binding ManjeCekirano}" />
+                    </Viewbox>
+                    <Viewbox Height="23" Margin="0, 0, 15, 0">
+                        <RadioButton Content="=" Foreground="White" IsChecked="{Binding JednakoCekirano}" />
+                    </Viewbox>
+
+                    <TextBox Height="25" Width="110" FontSize="20" FontWeight="Bold" Style="{StaticResource stilTextBox}" 
+                             MaxLength="5" Text="{Binding TrenutniId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <DockPanel>
+                                    <TextBlock Foreground="Red" DockPanel.Dock="Bottom" FontWeight="Bold" FontSize="16" Margin="3, -3, 0, 0">Nevalidan ID!</TextBlock>
+                                    <AdornedElementPlaceholder x:Name="ErrorAdorner"></AdornedElementPlaceholder>
+                                </DockPanel>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <Button Grid.Column="0" 
+                                x:Name="filter" 
+                                Width="110" 
+                                Command="{Binding FiltrirajKomanda}"
+                                BorderThickness="0.5"
+                            Height="37"
+                                Background="{StaticResource UIQuatriraryColor}"
+                                HorizontalAlignment="Left"
+                                Margin="10,0,-10,0">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="7"/>
+                            </Style>
+                        </Button.Resources>
+                        <StackPanel Background="Transparent" Orientation="Horizontal" VerticalAlignment="Center" Width="180">
+                            <TextBlock Margin="10,0,0,0" FontSize="18" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center">FILTRIRAJ</TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0, 10, 0, 0" Content="ISTORIJA FILTERA" FontSize="18" FontWeight="SemiBold" Foreground="{StaticResource UIWhiteColor}" />
+                <ComboBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="4" Height="25" FontSize="18" FontWeight="Bold" ItemsSource="{Binding IstorijaFiltera}" SelectedItem="{Binding OdabraniFilter}" SelectedIndex="{Binding OdabraniIndeksIstorijeFiltera}" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="1" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.8*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="UPRAVLJANJE SERVERIMA" FontSize="20" FontWeight="Bold" Foreground="{StaticResource UIWhiteColor}" />
+
+                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="20, 5, 0, 0" Content="ŽELJENA IP KLASA:" FontSize="20" FontWeight="SemiBold" Foreground="{StaticResource UIWhiteColor}" />
+                <ComboBox Grid.Row="1" Grid.Column="2" Margin="0, 5, 5, 0" Grid.ColumnSpan="2" Height="30" FontSize="18" FontWeight="Bold" ItemsSource="{Binding AdresneKlase}" SelectedIndex="{Binding OdabraniIndeksDodavanjeEntiteta}" />
+
+                <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"
+                                x:Name="dodavanje" 
+                                Width="270" 
+                                Command="{Binding DodajKomanda}" 
+                                BorderThickness="0.5"
+                            Height="37"
+                                Background="{StaticResource UIBlueColor}"
+                                HorizontalAlignment="Left"
+                                Margin="20,0,-10,0">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="7"/>
+                        </Style>
+                    </Button.Resources>
+                    <StackPanel Background="Transparent" Orientation="Horizontal" VerticalAlignment="Center" Width="195">
+                        <TextBlock Margin="5,0,0,0" FontSize="18" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center">DODAVANJE SERVERA</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3"
+                                x:Name="brisanje" 
+                                Width="270" 
+                                Command="{Binding ObrisiKomanda}" 
+                                BorderThickness="0.5"
+                                Height="37"
+                                Background="{StaticResource UIRedColor}"
+                                IsEnabled="{Binding MoguceBrisanje}"
+                                HorizontalAlignment="Left"
+                                Margin="20,0,-10,0">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="7"/>
+                        </Style>
+                    </Button.Resources>
+                    <StackPanel Background="Transparent" Orientation="Horizontal" VerticalAlignment="Center" Width="172">
+                        <TextBlock Margin="5,0,0,0" FontSize="18" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center">BRISANJE SERVERA</TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Background="{StaticResource UIPrimaryColor}" CornerRadius="10">
+            <DataGrid ItemsSource="{Binding ListaEntiteta}" CanUserSortColumns="False" CanUserResizeColumns="False" SelectedItem="{Binding OdabraniEntitet}" SelectionMode="Single" SelectionUnit="FullRow"  AutoGenerateColumns="False" IsReadOnly="True" FontWeight="Bold" FontSize="18" Margin="10">
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#D3EAE7" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#D3EAE7" />
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="ID" Binding="{Binding Id}" Width="100" />
+                    <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="Naziv" Binding="{Binding Naziv}" Width="250" />
+                    <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="IP Adresa" Binding="{Binding IP}" Width="200" />
+                    <DataGridTextColumn FontWeight="Bold" FontSize="18" Header="Zauzeće" Binding="{Binding Zauzece}" Width="150">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Boja}" Value="false">
+                                        <Setter Property="Foreground" Value="DarkGreen" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Boja}" Value="true">
+                                        <Setter Property="Foreground" Value="Crimson" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTemplateColumn Header="Trenutni Status Servera U Mreži" Width="*" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Slika}" Width="40" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</UserControl>
